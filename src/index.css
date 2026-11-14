@@ -1,19 +1,17 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #0c1220;
-  --color-mute: #5f6b7a;
-  --color-wash: #eef2f6;
-  --color-sand: #f7f8fa;
-  --color-white: #ffffff;
-  --color-line: rgba(12, 18, 32, 0.1);
-  --color-tide: #071a32;
-  --color-sea: #128f9e;
-  --color-sea-deep: #0b6d79;
-  --color-spark: #e8f7f8;
-  --font-display: 'Archivo', sans-serif;
-  --font-sans: 'Figtree', sans-serif;
-  --font-serif: 'Newsreader', Georgia, serif;
+  --color-bg: #fafafa;
+  --color-ink: #0a0a0a;
+  --color-soft: #5c5c5c;
+  --color-dim: #8a8a8a;
+  --color-line: rgba(10, 10, 10, 0.08);
+  --color-panel: #ffffff;
+  --color-signal: #0055ff;
+  --color-signal-dark: #003fcc;
+  --color-deep: #0a0a0a;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Manrope', sans-serif;
 }
 
 @layer base {
@@ -24,11 +22,11 @@
   body {
     margin: 0;
     min-width: 320px;
-    background: var(--color-sand);
+    background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 17px;
-    line-height: 1.65;
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -37,17 +35,13 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-sea) 28%, white);
+    background: color-mix(in oklab, var(--color-signal) 25%, white);
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
-    font-stretch: condensed;
-  }
-  .font-serif {
-    font-family: var(--font-serif);
   }
 }
 

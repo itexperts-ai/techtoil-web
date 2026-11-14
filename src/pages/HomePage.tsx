@@ -1,234 +1,166 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 import { Logo } from '../components/brand/Logo'
-
-const path = [
-  {
-    k: '01',
-    title: 'Discover',
-    line: 'Name the real problem, the real user, and the outcome that matters.',
-  },
-  {
-    k: '02',
-    title: 'Design & build',
-    line: 'Shape the experience and ship the product people can actually use.',
-  },
-  {
-    k: '03',
-    title: 'Grow',
-    line: 'Bring customers in with presence, pipeline, and a story that lands.',
-  },
-  {
-    k: '04',
-    title: 'Strengthen',
-    line: 'Automate the noise, hire with intent, prepare for the next chapter.',
-  },
-]
 
 export function HomePage() {
   return (
-    <div className="bg-sand">
-      {/* NEW theme: Split atelier hero — light copy plane + full-height visual */}
-      <section className="relative min-h-[100svh] lg:grid lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative z-10 flex flex-col justify-center px-4 pb-16 pt-28 md:px-8 lg:px-10 lg:py-24 xl:pl-[max(2.5rem,calc((100vw-72rem)/2))]">
+    <div className="bg-bg">
+      {/* Hero — brand as monument, then full-bleed visual */}
+      <section className="px-5 pt-28 md:px-6 md:pt-36">
+        <div className="mx-auto max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-xl"
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Logo to={null} size="lg" />
-            <p className="mt-10 text-[11px] font-bold uppercase tracking-[0.24em] text-sea">
-              Studio for builders
-            </p>
-            <h1 className="mt-4 font-display text-[clamp(2.8rem,6vw,4.6rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-ink">
-              Ideas deserve
-              <br />
-              a cleaner
-              <br />
-              <span className="text-sea">path forward.</span>
+            <Logo to={null} size="xl" />
+            <h1 className="mt-10 max-w-3xl font-display text-[clamp(2.4rem,6vw,4.25rem)] font-bold leading-[1.02] tracking-[-0.045em]">
+              We turn ambition into
+              <span className="text-signal"> working businesses.</span>
             </h1>
-            <p className="mt-6 max-w-md text-[1.05rem] leading-relaxed text-mute md:text-lg">
-              Techtoil helps ambitious teams design, build, grow, and operate —
-              as one partner from first spark to a business that runs.
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-soft md:text-xl">
+              Techtoil is a premium studio for teams who want design, product,
+              growth, and operations handled as one clear journey — not a stack
+              of disconnected vendors.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap items-center gap-6">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-tide px-5 py-3.5 text-sm font-bold text-white transition hover:bg-sea"
+                className="inline-flex rounded-md bg-signal px-6 py-3.5 text-sm font-bold text-white transition hover:bg-signal-dark"
               >
-                Start a project <ArrowUpRight className="h-4 w-4" />
+                Start a project
               </Link>
-              <a
-                href="#manifesto"
-                className="inline-flex items-center rounded-full border border-line bg-white px-5 py-3.5 text-sm font-bold text-ink transition hover:border-sea/40"
-              >
-                Read the manifesto
+              <a href="#aim" className="text-sm font-bold text-ink hover:text-signal">
+                Our aim ↓
               </a>
             </div>
           </motion.div>
         </div>
 
         <motion.div
-          className="relative min-h-[48vh] overflow-hidden lg:min-h-[100svh]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          className="mx-auto mt-14 max-w-6xl overflow-hidden md:mt-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.8 }}
         >
-          <img
-            src="/media/panel.jpg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-tide/35 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-sand/20" />
-          <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/25 bg-white/10 p-4 backdrop-blur-md lg:bottom-10 lg:left-8 lg:right-auto lg:max-w-xs">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-              What we hold together
-            </p>
-            <p className="mt-2 font-serif text-lg leading-snug text-white">
-              Product, growth, intelligence, and talent — one continuous conversation.
-            </p>
+          <div className="relative aspect-[16/8] w-full overflow-hidden md:aspect-[16/7]">
+            <img
+              src="/media/lumen.jpg"
+              alt=""
+              className="h-full w-full object-cover"
+            />
           </div>
         </motion.div>
       </section>
 
-      {/* Manifesto band — unique tide + sea identity */}
-      <section id="manifesto" className="bg-tide px-4 py-20 text-white md:px-6 md:py-28">
-        <div className="mx-auto max-w-6xl">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-sea">
-            Manifesto
-          </p>
-          <h2 className="mt-6 max-w-4xl font-serif text-[clamp(1.7rem,4vw,2.85rem)] font-medium italic leading-[1.25] text-white">
-            Most teams do not lack ambition. They lack a single thread from the
-            idea in their head to a product customers can feel — and a business
-            that can keep going.
-          </h2>
-          <p className="mt-8 max-w-2xl text-base leading-relaxed text-white/60 md:text-lg">
-            That is why Techtoil exists. We stay with the work across design,
-            engineering, growth, guidance, automation, and hiring — so you are
-            not stitching five vendors into one unfinished story.
-          </p>
+      {/* Aim */}
+      <section id="aim" className="px-5 py-24 md:px-6 md:py-32">
+        <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal">Our aim</p>
+            <h2 className="mt-4 font-display text-3xl font-bold tracking-[-0.03em] md:text-4xl">
+              Keep the thread intact.
+            </h2>
+          </div>
+          <div className="space-y-5 text-base leading-relaxed text-soft md:col-span-8 md:text-lg">
+            <p>
+              Great ideas stall when design lives in one place, engineering in
+              another, marketing somewhere else, and operations last.
+            </p>
+            <p>
+              Techtoil exists to hold that whole arc — from the first sketch to a
+              product people use, a pipeline that grows, and systems that keep
+              the company moving.
+            </p>
+            <p className="font-semibold text-ink">
+              One partner. One conversation. From vision to execution.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Path */}
-      <section id="path" className="px-4 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-sea">
-              The path
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.04em] md:text-4xl">
-              Four movements. One aim.
-            </h2>
-            <p className="mt-4 text-mute md:text-lg">
-              We meet you where you are — then move the story forward without
-              turning your business into a checklist of departments.
-            </p>
-          </div>
-
-          <div className="mt-14 space-y-0">
-            {path.map((step, i) => (
-              <motion.article
-                key={step.k}
-                className="grid gap-4 border-t border-line py-8 md:grid-cols-[6rem_14rem_1fr] md:items-baseline md:gap-8"
+      {/* Beliefs — large type, not cards */}
+      <section className="border-y border-line bg-panel px-5 py-24 md:px-6 md:py-32">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal">
+            What we believe
+          </p>
+          <div className="mt-12 space-y-12 md:space-y-16">
+            {[
+              {
+                title: 'Clarity beats complexity.',
+                body: 'We cut noise early — so every design, build, and campaign serves a real outcome.',
+              },
+              {
+                title: 'Shipping beats slides.',
+                body: 'Progress should be tangible: products, growth systems, automations, and teams you can run.',
+              },
+              {
+                title: 'Partnership beats handoffs.',
+                body: 'We stay through the messy middle, so strategy and execution never lose each other.',
+              },
+            ].map((b, i) => (
+              <motion.div
+                key={b.title}
+                className="grid gap-4 border-t border-line pt-10 md:grid-cols-12 md:gap-8"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
               >
-                <span className="font-display text-sm font-bold text-sea">{step.k}</span>
-                <h3 className="font-display text-2xl font-bold tracking-tight">{step.title}</h3>
-                <p className="text-mute md:text-[1.05rem]">{step.line}</p>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Aim strip */}
-      <section className="border-y border-line bg-spark px-4 py-20 md:px-6 md:py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-sea">
-              Our aim
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.04em] md:text-[2.6rem] md:leading-[1.1]">
-              Shorten the distance between vision and something that runs.
-            </h2>
-          </div>
-          <div className="space-y-4 text-mute md:text-lg">
-            <p>
-              We bring craft where it counts — product design and development,
-              marketing and growth, startup guidance, funding readiness, AI-powered
-              operations, and hiring support.
-            </p>
-            <p className="font-semibold text-ink">
-              Not as separate shops. As one studio that keeps the thread intact.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Feel */}
-      <section className="px-4 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="max-w-lg font-display text-3xl font-extrabold tracking-[-0.04em] md:text-4xl">
-            How it feels to work with us.
-          </h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                t: 'Clear',
-                d: 'Honest timelines, sharp briefs, and decisions you can follow.',
-              },
-              {
-                t: 'Concrete',
-                d: 'Designs, products, campaigns, automations — progress you can point to.',
-              },
-              {
-                t: 'Continuous',
-                d: 'We stay through the messy middle, not only the kickoff workshop.',
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.t}
-                className="rounded-3xl border border-line bg-white p-7"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-              >
-                <h3 className="font-display text-xl font-bold text-sea">{item.t}</h3>
-                <p className="mt-3 text-mute">{item.d}</p>
+                <p className="font-display text-sm font-bold text-dim md:col-span-2">
+                  0{i + 1}
+                </p>
+                <div className="md:col-span-10">
+                  <h3 className="font-display text-2xl font-bold tracking-[-0.03em] md:text-3xl">
+                    {b.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-soft md:text-lg">{b.body}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* How we help — prose, not service menu */}
+      <section className="px-5 py-24 md:px-6 md:py-32">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal">
+            How we help
+          </p>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-[-0.03em] md:text-4xl">
+            The work behind the aim.
+          </h2>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-soft md:text-xl">
+            Depending on your stage, we bring{' '}
+            <strong className="font-semibold text-ink">product design</strong>,{' '}
+            <strong className="font-semibold text-ink">product development</strong>,{' '}
+            <strong className="font-semibold text-ink">marketing and growth</strong>,{' '}
+            <strong className="font-semibold text-ink">startup consultancy</strong>,{' '}
+            <strong className="font-semibold text-ink">funding readiness</strong>,{' '}
+            <strong className="font-semibold text-ink">AI operations</strong>, and{' '}
+            <strong className="font-semibold text-ink">hiring support</strong>
+            — always in service of where you need to go next.
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="px-4 pb-24 md:px-6">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-tide px-6 py-14 text-white md:px-12 md:py-16">
-          <div className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-sea">
-              Next step
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.04em] md:text-4xl">
-              Tell us what you are building.
-            </h2>
-            <p className="mt-4 text-white/60 md:text-lg">
-              A short note is enough. We will answer with a practical next step —
-              specific to your stage, not a generic pitch.
-            </p>
-            <Link
-              to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-sea px-5 py-3.5 text-sm font-bold text-white transition hover:bg-sea-deep"
-            >
-              Talk to Techtoil <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
+      <section className="px-5 pb-28 md:px-6">
+        <div className="mx-auto max-w-5xl rounded-2xl bg-deep px-8 py-14 text-white md:px-14 md:py-16">
+          <h2 className="font-display text-3xl font-bold tracking-[-0.03em] md:text-4xl">
+            Ready to build what comes next?
+          </h2>
+          <p className="mt-4 max-w-lg text-white/65 md:text-lg">
+            Tell us where you are. We will reply with a clear, practical next step.
+          </p>
+          <Link
+            to="/contact"
+            className="mt-8 inline-flex rounded-md bg-signal px-6 py-3.5 text-sm font-bold text-white hover:bg-signal-dark"
+          >
+            Talk to Techtoil
+          </Link>
         </div>
       </section>
     </div>

@@ -1,16 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #101418;
-  --color-ink-soft: #3a424c;
-  --color-fog: #eef1f4;
-  --color-mist: #f7f8fa;
-  --color-line: rgba(16, 20, 24, 0.1);
-  --color-signal: #0c5ef0;
-  --color-signal-deep: #0846b5;
-  --color-steel: #6b7582;
-  --font-display: 'Syne', sans-serif;
-  --font-sans: 'Instrument Sans', sans-serif;
+  --color-void: #07090d;
+  --color-ink: #12151a;
+  --color-mute: #5c6570;
+  --color-paper: #f4f6f8;
+  --color-snow: #fbfcfd;
+  --color-line: rgba(18, 21, 26, 0.1);
+  --color-accent: #155eef;
+  --color-accent-2: #0b3db8;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Onest', sans-serif;
 }
 
 @layer base {
@@ -21,7 +21,7 @@
   body {
     margin: 0;
     min-width: 320px;
-    background: var(--color-mist);
+    background: var(--color-snow);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -32,24 +32,13 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-signal) 28%, white);
+    background: color-mix(in oklab, var(--color-accent) 30%, white);
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
-  }
-
-  .mesh {
-    background:
-      radial-gradient(ellipse 70% 50% at 85% 10%, rgba(12, 94, 240, 0.14), transparent 55%),
-      radial-gradient(ellipse 50% 40% at 5% 90%, rgba(12, 94, 240, 0.08), transparent 50%),
-      linear-gradient(165deg, #f9fafb 0%, #eef2f7 45%, #f7f8fa 100%);
-  }
-
-  .grain {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
 }
 

@@ -1,74 +1,48 @@
-import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Logo } from '../brand/Logo'
 
-const links = [
-  { to: '/#aim', label: 'Our aim' },
-  { to: '/#work', label: 'What we do' },
-  { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' },
-]
-
 export function TopNav() {
-  const [open, setOpen] = useState(false)
+  const [solid, setSolid] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-mist/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
-        <Logo size="sm" />
-
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className="rounded-md px-3 py-2 text-sm font-semibold text-ink-soft transition hover:text-ink"
-            >
-              {l.label}
-            </NavLink>
-          ))}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        solid
+          ? 'border-b border-line bg-snow/90 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
+        <Logo tone={solid ? 'dark' : 'light'} />
+        <nav className="flex items-center gap-1 sm:gap-2">
+          <Link
+            to="/about"
+            className={`hidden rounded-md px-3 py-2 text-sm font-semibold sm:inline ${
+              solid ? 'text-mute hover:text-ink' : 'text-white/75 hover:text-white'
+            }`}
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className={`rounded-md px-3.5 py-2 text-sm font-bold transition ${
+              solid
+                ? 'bg-ink text-white hover:bg-accent'
+                : 'bg-white text-ink hover:bg-white/90'
+            }`}
+          >
+            Contact
+          </Link>
         </nav>
-
-        <div className="flex items-center gap-2">
-          <Link
-            to="/contact"
-            className="hidden rounded-md bg-ink px-3.5 py-2 text-sm font-bold text-white transition hover:bg-signal sm:inline-flex"
-          >
-            Start a project
-          </Link>
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line md:hidden"
-            aria-label="Menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
       </div>
-
-      {open && (
-        <div className="border-t border-line bg-white px-4 py-4 md:hidden">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="block py-2.5 text-sm font-semibold"
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <Link
-            to="/contact"
-            className="mt-3 flex justify-center rounded-md bg-ink py-3 text-sm font-bold text-white"
-            onClick={() => setOpen(false)}
-          >
-            Start a project
-          </Link>
-        </div>
-      )}
     </header>
   )
 }

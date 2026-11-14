@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { HomePage } from './pages/HomePage'
 import { AboutPage } from './pages/AboutPage'
@@ -15,7 +15,6 @@ export default function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="terms" element={<TermsPage />} />
-          <Route path="solutions/*" element={<Navigate to="/#work" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

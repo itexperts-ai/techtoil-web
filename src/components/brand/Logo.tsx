@@ -1,39 +1,39 @@
 import { Link } from 'react-router-dom'
 
-type Props = { size?: 'sm' | 'md' | 'lg'; to?: string | null; className?: string }
+type Props = {
+  tone?: 'light' | 'dark'
+  to?: string | null
+  className?: string
+}
 
-const mark = { sm: 28, md: 36, lg: 52 }
-const text = { sm: 'text-lg', md: 'text-xl', lg: 'text-[1.75rem]' }
-
-export function Logo({ size = 'md', to = '/', className = '' }: Props) {
-  const content = (
+export function Logo({ tone = 'dark', to = '/', className = '' }: Props) {
+  const mark = (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <svg
-        width={mark[size]}
-        height={mark[size]}
-        viewBox="0 0 64 64"
-        fill="none"
-        aria-hidden
-      >
-        <rect width="64" height="64" rx="12" fill="#101418" />
-        <path d="M12 28 32 15l20 13v6.5L32 22.2 12 34.5V28Z" fill="#0C5EF0" />
-        <path d="M42 27 52 33.2V48L32 60.5V54l14-8.8V27Z" fill="#6B7582" />
-        <path d="M22 27v19.2L32 54v6.5L12 48V33.2L22 27Z" fill="#0846B5" />
-        <path d="M32 31 40.5 36v10.5L32 51.5 23.5 46.5V36L32 31Z" fill="#0C5EF0" opacity=".35" />
+      <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden>
+        <rect
+          width="64"
+          height="64"
+          rx="11"
+          fill={tone === 'light' ? 'rgba(255,255,255,0.12)' : '#12151A'}
+        />
+        <path d="M11 29 32 15.5 53 29v6.2L32 22.4 11 35.2V29Z" fill="#155EEF" />
+        <path d="M43 27.5 53 34v15.5L32 61.5V54.8l15-9.5V27.5Z" fill="#7A8490" />
+        <path d="M21 27.5v17.8L32 54.8v6.7L11 49.5V34l10-6.5Z" fill="#0B3DB8" />
       </svg>
-      <span className={`font-display font-extrabold tracking-tight leading-none ${text[size]}`}>
-        Tech<span className="text-signal">toil</span>
+      <span
+        className={`font-display text-[1.35rem] font-extrabold tracking-[-0.04em] leading-none ${
+          tone === 'light' ? 'text-white' : 'text-ink'
+        }`}
+      >
+        Tech<span className="text-accent">toil</span>
       </span>
     </span>
   )
-  if (to === null) return content
+
+  if (to === null) return mark
   return (
-    <Link
-      to={to ?? '/'}
-      aria-label="Techtoil home"
-      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-signal/40"
-    >
-      {content}
+    <Link to={to ?? '/'} aria-label="Techtoil" className="outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded-sm">
+      {mark}
     </Link>
   )
 }

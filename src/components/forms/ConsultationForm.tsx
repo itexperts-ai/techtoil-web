@@ -25,11 +25,11 @@ export function ConsultationForm() {
 
   if (status === 'ready') {
     return (
-      <div className="rounded-xl border border-signal/25 bg-signal/5 p-5 text-sm">
-        <p className="font-bold">Thanks — your note is ready to send.</p>
-        <p className="mt-2 text-ink-soft">
-          Wire this form to your backend when ready. For now, email{' '}
-          <a className="font-semibold text-signal" href="mailto:hello@techtoil.com">
+      <div className="rounded-xl border border-accent/20 bg-accent/5 p-6 text-sm">
+        <p className="font-bold text-ink">Message ready.</p>
+        <p className="mt-2 text-mute">
+          Connect your backend when ready, or email{' '}
+          <a href="mailto:hello@techtoil.com" className="font-semibold text-accent">
             hello@techtoil.com
           </a>
           .
@@ -39,43 +39,46 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-3 rounded-xl border border-line bg-white p-5">
-      <label className="grid gap-1 text-xs font-bold uppercase tracking-wide text-steel">
+    <form
+      onSubmit={onSubmit}
+      className="space-y-4 rounded-2xl border border-line bg-white p-6 shadow-[0_20px_60px_rgba(18,21,26,0.04)]"
+    >
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Name
         <input name="name" required className="field" placeholder="Your name" />
       </label>
-      <label className="grid gap-1 text-xs font-bold uppercase tracking-wide text-steel">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Email
         <input name="email" type="email" required className="field" placeholder="you@company.com" />
       </label>
-      <label className="grid gap-1 text-xs font-bold uppercase tracking-wide text-steel">
-        What are you working on?
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
+        Brief
         <textarea
           name="message"
           required
-          className="field min-h-28"
-          placeholder="A short brief is enough."
+          className="field min-h-32"
+          placeholder="What are you trying to achieve?"
         />
       </label>
       {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
       <button
         type="submit"
-        className="w-full rounded-md bg-signal py-3 text-sm font-bold text-white hover:bg-signal-deep"
+        className="w-full rounded-md bg-accent py-3.5 text-sm font-bold text-white hover:bg-accent-2"
       >
         Send message
       </button>
       <style>{`
         .field {
           width: 100%;
-          border-radius: 0.375rem;
-          border: 1px solid rgba(16,20,24,0.12);
-          background: #f7f8fa;
-          padding: 0.7rem 0.8rem;
-          color: #101418;
+          border-radius: 0.5rem;
+          border: 1px solid rgba(18,21,26,0.12);
+          background: #f4f6f8;
+          padding: 0.8rem 0.9rem;
+          color: #12151a;
           font: inherit;
           outline: none;
         }
-        .field:focus { border-color: #0C5EF0; background: #fff; }
+        .field:focus { border-color: #155EEF; background: #fff; }
       `}</style>
     </form>
   )

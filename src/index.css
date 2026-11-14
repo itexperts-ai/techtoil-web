@@ -1,17 +1,17 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-bg: #fafafa;
-  --color-ink: #0a0a0a;
-  --color-soft: #5c5c5c;
-  --color-dim: #8a8a8a;
-  --color-line: rgba(10, 10, 10, 0.08);
-  --color-panel: #ffffff;
-  --color-signal: #0055ff;
-  --color-signal-dark: #003fcc;
-  --color-deep: #0a0a0a;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-sans: 'Manrope', sans-serif;
+  --color-navy: #0b0f1a;
+  --color-navy-2: #121826;
+  --color-ice: #f5f7fa;
+  --color-white: #ffffff;
+  --color-mute: #9aa3b2;
+  --color-ink: #e8ecf3;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-gold: #e8be4a;
+  --color-gold-dark: #c9a230;
+  --color-mint: #5ee09a;
+  --font-sans: 'Sora', sans-serif;
 }
 
 @layer base {
@@ -22,7 +22,7 @@
   body {
     margin: 0;
     min-width: 320px;
-    background: var(--color-bg);
+    background: var(--color-navy);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 16px;
@@ -35,13 +35,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-signal) 25%, white);
-  }
-}
-
-@layer utilities {
-  .font-display {
-    font-family: var(--font-display);
+    background: color-mix(in oklab, var(--color-gold) 35%, transparent);
   }
 }
 

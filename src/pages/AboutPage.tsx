@@ -1,29 +1,30 @@
 import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
 
 export function AboutPage() {
   return (
-    <div className="bg-bg px-5 pb-24 pt-32 md:px-6 md:pt-40">
+    <div className="bg-navy px-4 pb-24 pt-32 text-ink md:px-6 md:pt-40">
       <div className="mx-auto max-w-3xl">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-signal">About</p>
-        <h1 className="mt-4 font-display text-4xl font-bold tracking-[-0.04em] md:text-5xl">
-          A studio for teams who want one clear path.
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">About</p>
+        <h1 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-white md:text-5xl">
+          A studio for the full business journey.
         </h1>
-        <div className="mt-8 space-y-5 text-lg leading-relaxed text-soft">
+        <div className="mt-8 space-y-5 text-lg leading-relaxed text-mute">
           <p>
-            Techtoil helps founders and operators move from vision to a business
-            that runs — through design, product, growth, guidance, intelligent
-            operations, and talent.
+            Techtoil partners with founders and operators who want design,
+            product, growth, guidance, AI operations, and hiring in one coherent
+            path — mapped to where the business actually is.
           </p>
           <p>
-            We do not treat those as separate shops. We keep them in one
-            conversation so strategy and execution stay connected.
+            We organize around Launch, Scale, Automate, and Strengthen so you get
+            outcomes, not an endless services menu.
           </p>
         </div>
         <Link
           to="/contact"
-          className="mt-10 inline-flex rounded-md bg-ink px-6 py-3.5 text-sm font-bold text-white hover:bg-signal"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3.5 text-sm font-bold text-navy hover:bg-gold-dark"
         >
-          Work with us
+          Work with us <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
     </div>

@@ -3,33 +3,28 @@ import { Logo } from '../brand/Logo'
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-navy-2">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6">
-        <div>
-          <Logo />
-          <p className="mt-3 max-w-xs text-sm text-mute">
-            One studio for the journey from idea to a business that runs.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-5 text-sm text-mute">
-          <a href="/#paths" className="hover:text-white">
-            Paths
+    <footer className="border-t border-line bg-mist">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 md:flex-row md:items-center md:justify-between md:px-6">
+        <Logo />
+        <div className="flex flex-wrap gap-5 text-sm font-medium text-soft">
+          <a href="/#spine" className="hover:text-ink">
+            Story
           </a>
-          <Link to="/about" className="hover:text-white">
+          <Link to="/about" className="hover:text-ink">
             About
           </Link>
-          <Link to="/contact" className="hover:text-white">
+          <Link to="/contact" className="hover:text-ink">
             Contact
           </Link>
-          <a href="mailto:hello@techtoil.com" className="hover:text-white">
+          <a href="mailto:hello@techtoil.com" className="hover:text-ink">
             hello@techtoil.com
           </a>
         </div>
       </div>
-      <div className="border-t border-line px-4 py-4 text-xs text-mute/70 md:px-6">
-        <div className="mx-auto flex max-w-6xl justify-between gap-2">
+      <div className="border-t border-line px-4 py-3 text-xs text-faint md:px-6">
+        <div className="mx-auto flex max-w-6xl justify-between">
           <span>© {new Date().getFullYear()} Techtoil</span>
-          <span>Build with clarity</span>
+          <span>Idea → Working business</span>
         </div>
       </div>
     </footer>

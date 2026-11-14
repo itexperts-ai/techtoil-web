@@ -1,99 +1,126 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 import { Logo } from '../components/brand/Logo'
-import { paths, process, toolbox } from '../data/paths'
+
+const spine = [
+  {
+    side: 'left',
+    kicker: 'The problem',
+    title: 'Ambition gets scattered.',
+    body: 'Design in one room. Build in another. Marketing somewhere else. Ops and hiring last. The idea loses its thread.',
+  },
+  {
+    side: 'right',
+    kicker: 'Our aim',
+    title: 'One studio. One thread.',
+    body: 'Techtoil keeps strategy and execution together — so you move from vision to a business customers can feel.',
+  },
+  {
+    side: 'left',
+    kicker: 'How we show up',
+    title: 'Meet you at the chapter you are in.',
+    body: 'Whether you need to shape a product, find demand, automate operations, or strengthen the team — we start from the outcome, then bring the right craft.',
+  },
+  {
+    side: 'right',
+    kicker: 'What you get',
+    title: 'Progress you can point to.',
+    body: 'Not slide decks that die in a folder. Designs, products, growth systems, automations, and hiring motions that keep working.',
+  },
+]
+
+const craftLine =
+  'Product design · Product development · Marketing & growth · Startup consultancy · Funding readiness · AI operations · Hiring support'
 
 export function HomePage() {
   return (
-    <div className="bg-navy text-ink">
-      {/* Hero — outcome-led, full-bleed visual plane */}
-      <section className="relative min-h-[100svh] overflow-hidden">
-        <img src="/media/forge.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-navy/75" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-navy/50" />
-
-        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 md:px-6 md:pb-20">
+    <div>
+      {/* COVER — white typographic hero (not dark overlay theme) */}
+      <section className="px-4 pb-12 pt-28 md:px-6 md:pb-16 md:pt-36">
+        <div className="mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75 }}
-            className="max-w-3xl"
+            transition={{ duration: 0.7 }}
           >
             <Logo to={null} size="lg" />
-            <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
-              Growth studio for builders
-            </p>
-            <h1 className="mt-4 text-[clamp(2.6rem,6.5vw,4.8rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-white">
-              Build the business
+            <h1 className="mt-12 max-w-4xl font-display text-[clamp(3.2rem,10vw,7rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.02em]">
+              From spark
               <br />
-              you meant to build.
+              to something
+              <br />
+              <span className="text-ember">that runs.</span>
             </h1>
-            <p className="mt-5 max-w-xl text-base text-mute md:text-lg">
-              Techtoil helps you move from idea to product, demand, intelligent
-              operations, and a stronger team — as one partner, not five vendors.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex max-w-2xl flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <p className="max-w-md text-lg text-soft">
+                Techtoil is the partner between idea and operating business —
+                design, build, grow, and strengthen without losing the plot.
+              </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3.5 text-sm font-bold text-navy hover:bg-gold-dark"
+                className="inline-flex shrink-0 items-center justify-center bg-ember px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-ember-dark"
               >
-                Book a strategy call <ArrowUpRight className="h-4 w-4" />
+                Start a project
               </Link>
-              <a
-                href="#paths"
-                className="inline-flex items-center rounded-full border border-line px-5 py-3.5 text-sm font-bold text-white hover:border-gold/40"
-              >
-                Explore paths
-              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Maturity paths — primary structure */}
-      <section id="paths" className="border-t border-line px-4 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-              Where you are
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white md:text-4xl">
-              Four paths. Pick the chapter — not a shopping list.
-            </h2>
-            <p className="mt-4 text-mute md:text-lg">
-              Inspired by how the best studios productize help: by stage of the
-              business, then by craft.
-            </p>
-          </div>
+      {/* Full-bleed image strip — visual only, no text overlay */}
+      <section className="w-full">
+        <img
+          src="/media/ember.jpg"
+          alt=""
+          className="h-[42vh] w-full object-cover md:h-[52vh]"
+        />
+      </section>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
-            {paths.map((p, i) => (
+      {/* SPINE — magazine alternating story (new layout structure) */}
+      <section id="spine" className="relative px-4 py-20 md:px-6 md:py-28">
+        <div className="pointer-events-none absolute bottom-20 left-1/2 top-20 hidden w-px -translate-x-1/2 bg-line md:block" />
+        <div className="pointer-events-none absolute left-1/2 top-20 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-ember md:block" />
+
+        <div className="mx-auto max-w-6xl">
+          <p className="text-center text-xs font-bold uppercase tracking-[0.25em] text-ember">
+            The story
+          </p>
+
+          <div className="mt-14 space-y-16 md:space-y-24">
+            {spine.map((beat, i) => (
               <motion.article
-                key={p.id}
-                className="rounded-3xl border border-line bg-navy-2 p-6 md:p-8"
-                initial={{ opacity: 0, y: 16 }}
+                key={beat.title}
+                className={`relative grid gap-4 md:grid-cols-2 md:gap-16 ${
+                  beat.side === 'right' ? 'md:text-right' : ''
+                }`}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ delay: 0.05 }}
               >
-                <div className="flex items-center justify-between gap-3">
-                  <span className="rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-gold">
-                    {p.label}
+                <div
+                  className={`relative ${
+                    beat.side === 'right' ? 'md:col-start-2' : 'md:col-start-1'
+                  }`}
+                >
+                  <span className="absolute -top-3 left-0 font-display text-6xl font-extrabold text-mist md:text-7xl">
+                    0{i + 1}
                   </span>
-                  <span className="text-sm font-bold text-mute">0{i + 1}</span>
-                </div>
-                <h3 className="mt-5 text-xl font-bold text-white md:text-2xl">{p.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-mute md:text-base">{p.promise}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {p.draws.map((d) => (
-                    <span
-                      key={d}
-                      className="rounded-full border border-line px-2.5 py-1 text-[11px] font-medium text-mute"
+                  <div className="relative pt-8">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">
+                      {beat.kicker}
+                    </p>
+                    <h2 className="mt-3 font-display text-3xl font-bold uppercase leading-none tracking-[-0.02em] md:text-4xl">
+                      {beat.title}
+                    </h2>
+                    <p
+                      className={`mt-4 text-soft md:text-lg ${
+                        beat.side === 'right' ? 'md:ml-auto' : ''
+                      } max-w-md`}
                     >
-                      {d}
-                    </span>
-                  ))}
+                      {beat.body}
+                    </p>
+                  </div>
                 </div>
               </motion.article>
             ))}
@@ -101,96 +128,38 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Bento studio module */}
-      <section id="studio" className="border-t border-line bg-navy-2 px-4 py-20 md:px-6 md:py-28">
+      {/* Single dark band — only contrast section */}
+      <section className="bg-char px-4 py-20 text-white md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-mint">
-            The studio
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">
+            Craft we draw from
           </p>
-          <h2 className="mt-3 max-w-xl text-3xl font-bold tracking-[-0.03em] text-white md:text-4xl">
-            Aim, process, and craft — in one system.
-          </h2>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-6 md:grid-rows-2">
-            <div className="rounded-3xl border border-line bg-navy p-6 md:col-span-4 md:row-span-2 md:p-8">
-              <h3 className="text-lg font-bold text-white">Our aim</h3>
-              <p className="mt-4 text-2xl font-semibold leading-snug tracking-[-0.02em] text-white md:text-3xl">
-                Shorten the distance between vision and a business that actually
-                runs — without losing the thread between strategy and shipping.
-              </p>
-              <p className="mt-6 max-w-xl text-mute">
-                Design, engineering, growth, guidance, automation, and hiring stay
-                in one conversation so nothing important falls between vendors.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-line bg-navy p-6 md:col-span-2">
-              <h3 className="text-sm font-bold uppercase tracking-wide text-gold">Process</h3>
-              <ul className="mt-4 space-y-3">
-                {process.map((step, i) => (
-                  <li key={step.t} className="text-sm">
-                    <span className="font-bold text-white">
-                      0{i + 1} {step.t}
-                    </span>
-                    <span className="mt-0.5 block text-mute">{step.d}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border border-line bg-navy p-6 md:col-span-2">
-              <h3 className="text-sm font-bold uppercase tracking-wide text-mint">Toolbox</h3>
-              <p className="mt-3 text-sm text-mute">
-                Craft we draw from when a path needs it — never the whole homepage.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {toolbox.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] font-medium text-ink"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Light contrast band */}
-      <section className="bg-ice px-4 py-20 text-navy md:px-6 md:py-24">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-dark">
-              How it feels
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] md:text-4xl">
-              Calm process. Serious craft. Clear next steps.
-            </h2>
-          </div>
-          <p className="max-w-md text-navy/65 md:text-lg">
-            No theatre. Tangible progress — products, pipelines, automations, and
-            teams you can keep running after we step back.
+          <p className="mt-6 max-w-4xl font-display text-2xl font-bold uppercase leading-tight tracking-[-0.02em] md:text-4xl">
+            {craftLine}
+          </p>
+          <p className="mt-6 max-w-xl text-white/60">
+            These sit behind the work — tools for the chapter you are in, not a
+            menu that replaces your goal.
           </p>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Closing */}
       <section className="px-4 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-6xl rounded-[2rem] border border-line bg-navy-2 px-6 py-12 md:px-12 md:py-16">
-          <h2 className="max-w-xl text-3xl font-bold tracking-[-0.03em] text-white md:text-4xl">
-            Tell us which chapter you are in.
+        <div className="mx-auto max-w-6xl border-t border-line pt-14">
+          <h2 className="font-display text-4xl font-extrabold uppercase leading-none tracking-[-0.02em] md:text-6xl">
+            Tell us the
+            <br />
+            <span className="text-ember">next chapter.</span>
           </h2>
-          <p className="mt-4 max-w-lg text-mute md:text-lg">
-            Launch, scale, automate, or strengthen — we will answer with a
-            practical plan, not a generic pitch deck.
+          <p className="mt-6 max-w-md text-soft md:text-lg">
+            A short note is enough. We will come back with a clear next step.
           </p>
           <Link
             to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3.5 text-sm font-bold text-navy hover:bg-gold-dark"
+            className="mt-8 inline-flex bg-ember px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-ember-dark"
           >
-            Start a conversation <ArrowUpRight className="h-4 w-4" />
+            Talk to Techtoil
           </Link>
         </div>
       </section>

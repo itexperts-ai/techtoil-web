@@ -2,21 +2,18 @@ import { ConsultationForm } from '../components/forms/ConsultationForm'
 
 export function ContactPage() {
   return (
-    <div className="bg-navy px-4 pb-24 pt-32 text-ink md:px-6 md:pt-40">
+    <div className="px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-            Contact
-          </p>
-          <h1 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-white md:text-5xl">
-            Book a strategy call.
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">Contact</p>
+          <h1 className="mt-4 font-display text-5xl font-extrabold uppercase leading-none tracking-[-0.02em]">
+            Start here.
           </h1>
-          <p className="mt-5 text-mute leading-relaxed">
-            Share where you are — Launch, Scale, Automate, or Strengthen — and
-            what you want next.
+          <p className="mt-5 max-w-md text-soft">
+            Tell us what you are building. We reply with a practical next step.
           </p>
           <p className="mt-8">
-            <a className="font-bold text-gold" href="mailto:hello@techtoil.com">
+            <a className="font-bold text-ember" href="mailto:hello@techtoil.com">
               hello@techtoil.com
             </a>
           </p>

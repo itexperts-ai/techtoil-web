@@ -1,30 +1,28 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
 
 export function AboutPage() {
   return (
-    <div className="bg-navy px-4 pb-24 pt-32 text-ink md:px-6 md:pt-40">
+    <div className="px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto max-w-3xl">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">About</p>
-        <h1 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-white md:text-5xl">
-          A studio for the full business journey.
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">About</p>
+        <h1 className="mt-4 font-display text-5xl font-extrabold uppercase leading-none tracking-[-0.02em] md:text-6xl">
+          We keep the thread intact.
         </h1>
-        <div className="mt-8 space-y-5 text-lg leading-relaxed text-mute">
+        <div className="mt-8 space-y-5 text-lg text-soft">
           <p>
-            Techtoil partners with founders and operators who want design,
-            product, growth, guidance, AI operations, and hiring in one coherent
-            path — mapped to where the business actually is.
+            Techtoil helps teams move from idea to a business that runs — through
+            design, product, growth, guidance, intelligent operations, and hiring.
           </p>
           <p>
-            We organize around Launch, Scale, Automate, and Strengthen so you get
-            outcomes, not an endless services menu.
+            We organize around your chapter and outcome first. Craft comes second —
+            always in service of where you need to go.
           </p>
         </div>
         <Link
           to="/contact"
-          className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3.5 text-sm font-bold text-navy hover:bg-gold-dark"
+          className="mt-10 inline-flex bg-ink px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-ember"
         >
-          Work with us <ArrowUpRight className="h-4 w-4" />
+          Work with us
         </Link>
       </div>
     </div>

@@ -1,56 +1,37 @@
 import { Link } from 'react-router-dom'
 
-type LogoProps = {
-  to?: string
-  size?: 'sm' | 'md' | 'lg'
-  markOnly?: boolean
-  className?: string
-}
+type Props = { size?: 'sm' | 'md' | 'lg'; to?: string | null; className?: string }
 
-const sizes = {
-  sm: { mark: 28, text: 'text-lg' },
-  md: { mark: 36, text: 'text-xl' },
-  lg: { mark: 48, text: 'text-3xl' },
-}
+const mark = { sm: 28, md: 36, lg: 52 }
+const text = { sm: 'text-lg', md: 'text-xl', lg: 'text-[1.75rem]' }
 
-/** Crafted SVG lockup — geometric triad mark + wordmark typography. */
-export function Logo({ to = '/', size = 'md', markOnly = false, className = '' }: LogoProps) {
-  const s = sizes[size]
+export function Logo({ size = 'md', to = '/', className = '' }: Props) {
   const content = (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <svg
-        width={s.mark}
-        height={s.mark}
+        width={mark[size]}
+        height={mark[size]}
         viewBox="0 0 64 64"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
         aria-hidden
       >
-        <rect width="64" height="64" rx="14" fill="#111A2E" />
-        <path d="M12 28 32 15l20 13v7L32 23 12 35v-7Z" fill="#356DFF" />
-        <path d="M42 27.5 52 34v16L32 62.5V55l14-9V27.5Z" fill="#6B7785" />
-        <path d="M22 27.5v18.5L32 55v7.5L12 50V34l10-6.5Z" fill="#1E4FD6" />
-        <path
-          d="M32 30.5 41 36v11.5L32 53l-9-5.5V36l9-5.5Z"
-          fill="#38D9F5"
-          opacity="0.4"
-        />
+        <rect width="64" height="64" rx="12" fill="#101418" />
+        <path d="M12 28 32 15l20 13v6.5L32 22.2 12 34.5V28Z" fill="#0C5EF0" />
+        <path d="M42 27 52 33.2V48L32 60.5V54l14-8.8V27Z" fill="#6B7582" />
+        <path d="M22 27v19.2L32 54v6.5L12 48V33.2L22 27Z" fill="#0846B5" />
+        <path d="M32 31 40.5 36v10.5L32 51.5 23.5 46.5V36L32 31Z" fill="#0C5EF0" opacity=".35" />
       </svg>
-      {!markOnly && (
-        <span className={`font-display font-bold tracking-tight leading-none ${s.text}`}>
-          <span className="text-white">Tech</span>
-          <span className="text-electric">toil</span>
-        </span>
-      )}
+      <span className={`font-display font-extrabold tracking-tight leading-none ${text[size]}`}>
+        Tech<span className="text-signal">toil</span>
+      </span>
     </span>
   )
-
-  if (!to) return content
+  if (to === null) return content
   return (
     <Link
-      to={to}
-      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-cyan/60"
+      to={to ?? '/'}
       aria-label="Techtoil home"
+      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-signal/40"
     >
       {content}
     </Link>

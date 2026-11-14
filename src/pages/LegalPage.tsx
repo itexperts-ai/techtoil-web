@@ -2,7 +2,7 @@ export function PrivacyPage() {
   return (
     <Legal
       title="Privacy Policy"
-      body="Placeholder privacy policy. Replace with your legal counsel’s approved text covering data collection, cookies, and contact handling."
+      body="Placeholder privacy policy. Replace with counsel-approved text for how Techtoil handles inquiries and site data."
     />
   )
 }
@@ -10,18 +10,18 @@ export function PrivacyPage() {
 export function TermsPage() {
   return (
     <Legal
-      title="Terms & Conditions"
-      body="Placeholder terms. Replace with your approved terms of use for the Techtoil website and services."
+      title="Terms"
+      body="Placeholder terms of use. Replace with your approved terms for the Techtoil website."
     />
   )
 }
 
 function Legal({ title, body }: { title: string; body: string }) {
   return (
-    <div className="px-4 py-14 md:px-6">
+    <div className="px-4 py-16 md:px-6">
       <div className="mx-auto max-w-3xl">
-        <h1 className="font-display text-3xl font-bold">{title}</h1>
-        <p className="mt-4 text-muted leading-relaxed">{body}</p>
+        <h1 className="font-display text-3xl font-extrabold">{title}</h1>
+        <p className="mt-4 leading-relaxed text-ink-soft">{body}</p>
       </div>
     </div>
   )
@@ -30,9 +30,8 @@ function Legal({ title, body }: { title: string; body: string }) {
 export function NotFoundPage() {
   return (
     <div className="px-4 py-24 text-center">
-      <h1 className="font-display text-4xl font-bold">404</h1>
-      <p className="mt-2 text-muted">This page is not part of the growth ecosystem.</p>
-      <a href="/" className="mt-6 inline-block text-cyan font-bold">
+      <h1 className="font-display text-4xl font-extrabold">Page not found</h1>
+      <a href="/" className="mt-6 inline-block font-bold text-signal">
         Back home
       </a>
     </div>

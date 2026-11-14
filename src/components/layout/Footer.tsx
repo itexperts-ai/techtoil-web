@@ -1,73 +1,40 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '../brand/Logo'
-import { services } from '../../data/services'
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-midnight">
-      <div className="mx-auto max-w-6xl px-4 md:px-6 py-12 grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+    <footer className="border-t border-line bg-ink text-white">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:items-end md:justify-between md:px-6">
         <div>
-          <Logo size="sm" />
-          <p className="mt-4 max-w-sm text-sm text-muted leading-relaxed">
-            Techtoil is an AI-powered business growth partner — product, technology,
-            marketing, capital readiness, automation, and talent in one ecosystem.
+          <Logo size="sm" className="[&_span]:text-white [&_.text-signal]:text-[#6ea0ff]" />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
+            A partner for teams who want to design, build, launch, and scale —
+            without stitching five agencies together.
           </p>
         </div>
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan mb-3">
-            Solutions
-          </p>
-          <ul className="space-y-2">
-            {services.map((s) => (
-              <li key={s.id}>
-                <Link to={s.path} className="text-sm text-muted hover:text-white transition">
-                  {s.num} · {s.short}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan mb-3">
-            Company
-          </p>
-          <ul className="space-y-2 text-sm text-muted">
-            <li>
-              <Link to="/about" className="hover:text-white">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/how-we-work" className="hover:text-white">
-                How We Work
-              </Link>
-            </li>
-            <li>
-              <Link to="/industries" className="hover:text-white">
-                Industries
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-white">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link to="/privacy" className="hover:text-white">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/terms" className="hover:text-white">
-                Terms
-              </Link>
-            </li>
-          </ul>
+        <div className="flex flex-wrap gap-5 text-sm text-white/65">
+          <Link to="/#aim" className="hover:text-white">
+            Our aim
+          </Link>
+          <Link to="/#work" className="hover:text-white">
+            What we do
+          </Link>
+          <Link to="/about" className="hover:text-white">
+            About
+          </Link>
+          <Link to="/contact" className="hover:text-white">
+            Contact
+          </Link>
+          <Link to="/privacy" className="hover:text-white">
+            Privacy
+          </Link>
         </div>
       </div>
-      <div className="border-t border-line px-4 md:px-6 py-4 text-xs text-muted flex flex-wrap justify-between gap-2 max-w-6xl mx-auto">
-        <span>© {new Date().getFullYear()} Techtoil. All rights reserved.</span>
-        <span>From Vision to Execution. From Startup to Scale.</span>
+      <div className="border-t border-white/10 px-4 py-4 text-xs text-white/45 md:px-6">
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2">
+          <span>© {new Date().getFullYear()} Techtoil</span>
+          <span>Build what comes next.</span>
+        </div>
       </div>
     </footer>
   )

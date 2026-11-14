@@ -1,23 +1,24 @@
-import { AiBand } from './components/AiBand'
-import { Contact } from './components/Contact'
-import { Footer } from './components/Footer'
+import { CloseCTA } from './components/CloseCTA'
 import { Hero } from './components/Hero'
-import { Nav } from './components/Nav'
-import { Process } from './components/Process'
-import { Services } from './components/Services'
+import { Pillars } from './components/Pillars'
+import { ServiceChapters } from './components/ServiceChapters'
+import { SiteFooter } from './components/SiteFooter'
+import { SiteHeader } from './components/SiteHeader'
+import { useActiveService } from './hooks/useActiveService'
 
 export default function App() {
+  const activeId = useActiveService()
+
   return (
-    <div className="site">
-      <Nav />
+    <div className="shell">
+      <SiteHeader activeId={activeId} />
       <main>
         <Hero />
-        <Services />
-        <AiBand />
-        <Process />
-        <Contact />
+        <Pillars />
+        <ServiceChapters activeId={activeId} />
+        <CloseCTA />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   )
 }

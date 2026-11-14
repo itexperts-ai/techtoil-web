@@ -1,74 +1,83 @@
 export type Service = {
   id: string
-  number: string
+  num: string
   title: string
-  tag: string
-  description: string
-  points: string[]
+  subtitle: string
+  summary: string
+  focus: string[]
+  outcome: string
 }
 
+/** Exact service pillars — each rendered as its own full chapter. */
 export const services: Service[] = [
   {
-    id: 'design',
-    number: '01',
+    id: 'product-design',
+    num: '01',
     title: 'Product Design',
-    tag: 'Experience',
-    description:
-      'Research-led UX and sharp UI systems that turn ideas into products people trust and love to use.',
-    points: ['User research & flows', 'Design systems', 'Prototypes & usability'],
+    subtitle: 'Experience systems that feel inevitable',
+    summary:
+      'We shape product strategy, UX flows, and interface systems so every screen earns trust and every journey converts intent into action.',
+    focus: ['Discovery & research', 'UX architecture', 'UI systems & prototypes', 'Usability validation'],
+    outcome: 'A clear product narrative and design system your team can ship against.',
   },
   {
-    id: 'development',
-    number: '02',
+    id: 'product-development',
+    num: '02',
     title: 'Product Development',
-    tag: 'Engineering',
-    description:
-      'End-to-end builds — web, mobile, and platforms — shipped with clean architecture and measurable outcomes.',
-    points: ['Web & mobile apps', 'APIs & platforms', 'MVP to scale'],
+    subtitle: 'Engineering from MVP to durable platforms',
+    summary:
+      'Full-cycle product engineering — web, mobile, and backend — built for speed without painting you into a corner as you scale.',
+    focus: ['Web & mobile apps', 'APIs & platforms', 'MVP launches', 'Performance & reliability'],
+    outcome: 'Working product in market, with architecture ready for the next stage.',
   },
   {
-    id: 'marketing',
-    number: '03',
-    title: 'Marketing Solutions',
-    tag: 'SEO · SMO · LeadGen',
-    description:
-      'Growth engines that compound: search visibility, social presence, and pipelines that actually convert.',
-    points: ['SEO & content', 'Social & brand', 'Lead generation'],
+    id: 'marketing-solution',
+    num: '03',
+    title: 'Marketing Solution — SEO / SMO / LeadGen',
+    subtitle: 'Visibility that compounds into pipeline',
+    summary:
+      'Search, social, and lead generation working as one system — so your brand is found, remembered, and chosen.',
+    focus: ['SEO & content engines', 'SMO & brand presence', 'Lead generation funnels', 'Campaign analytics'],
+    outcome: 'Qualified demand you can measure, not vanity metrics.',
   },
   {
-    id: 'consultancy',
-    number: '04',
+    id: 'startup-consultancy',
+    num: '04',
     title: 'Startup Consultancy',
-    tag: 'Strategy',
-    description:
-      'Hands-on guidance for founders — from positioning and GTM to operating models that survive growth.',
-    points: ['GTM strategy', 'Product-market fit', 'Operating playbooks'],
+    subtitle: 'Operator clarity for founding teams',
+    summary:
+      'Hands-on counsel for positioning, GTM, pricing, and operating rhythm — the decisions that decide whether a startup survives growth.',
+    focus: ['Positioning & GTM', 'Product-market fit loops', 'Operating models', 'Founder decision support'],
+    outcome: 'A sharper plan and a calmer execution cadence.',
   },
   {
-    id: 'funding',
-    number: '05',
-    title: 'Funding Support',
-    tag: 'Capital',
-    description:
-      'Pitch readiness, investor materials, and introductions that help startups raise with clarity and confidence.',
-    points: ['Pitch decks', 'Financial narratives', 'Investor readiness'],
+    id: 'funding-support',
+    num: '05',
+    title: 'Funding Support for Startups',
+    subtitle: 'Raise with a story investors can underwrite',
+    summary:
+      'Pitch craft, financial narrative, and readiness coaching so you walk into investor rooms with precision — not hope.',
+    focus: ['Pitch decks & narrative', 'Metrics & financial story', 'Investor readiness', 'Round preparation'],
+    outcome: 'Materials and confidence that match the round you want.',
   },
   {
-    id: 'automation',
-    number: '06',
-    title: 'AI Operations Automation',
-    tag: 'Intelligence',
-    description:
-      'Automate repetitive ops with AI agents, workflows, and intelligent systems so teams move faster with less friction.',
-    points: ['Process automation', 'AI agents & copilots', 'Ops dashboards'],
+    id: 'ai-operations',
+    num: '06',
+    title: 'Operations Automation through Artificial Intelligence',
+    subtitle: 'AI that removes friction from the business',
+    summary:
+      'We design and deploy AI workflows, agents, and ops automations so repetitive work disappears and judgment stays with your people.',
+    focus: ['Process mapping', 'AI agents & copilots', 'Workflow automation', 'Ops dashboards'],
+    outcome: 'Hours returned to the team every week — with controls you can trust.',
   },
   {
-    id: 'hr',
-    number: '07',
-    title: 'HR Hiring Support',
-    tag: 'OnRole · OffRole',
-    description:
-      'Find and place the right talent — full-time on-role and flexible off-role — matched to your culture and pace.',
-    points: ['On-role hiring', 'Off-role / contract', 'Team scaling'],
+    id: 'hr-hiring',
+    num: '07',
+    title: 'HR Hiring Support — OnRole / Off Role',
+    subtitle: 'Talent matched to how you actually build',
+    summary:
+      'On-role permanent hires and off-role flexible talent — sourced, screened, and aligned to your culture and velocity.',
+    focus: ['On-role hiring', 'Off-role / contract talent', 'Role design & screening', 'Team scaling plans'],
+    outcome: 'The right people in the right seats — without the hiring drag.',
   },
 ]

@@ -111,6 +111,9 @@ if [[ ! -f "${APP_DIR}/dist/index.html" ]]; then
   exit 1
 fi
 
+# nginx (www-data) must be able to traverse/read dist
+chmod -R a+rX "${APP_DIR}/dist"
+
 log "Configuring nginx for ${DOMAIN}…"
 sed "s/techtoil.itexperts.org.in/${DOMAIN}/g" "${NGINX_SRC}" > "${NGINX_AVAIL}"
 ln -sfn "${NGINX_AVAIL}" "${NGINX_ENABLED}"

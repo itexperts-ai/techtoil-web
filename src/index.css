@@ -1,16 +1,17 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-void: #07090d;
-  --color-ink: #12151a;
-  --color-mute: #5c6570;
-  --color-paper: #f4f6f8;
-  --color-snow: #fbfcfd;
-  --color-line: rgba(18, 21, 26, 0.1);
-  --color-accent: #155eef;
-  --color-accent-2: #0b3db8;
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-sans: 'Onest', sans-serif;
+  --color-void: #06080c;
+  --color-ink: #0f1318;
+  --color-mute: #5a6572;
+  --color-paper: #eef1f5;
+  --color-snow: #f7f9fb;
+  --color-line: rgba(15, 19, 24, 0.1);
+  --color-accent: #1a6bff;
+  --color-accent-2: #0d4ed1;
+  --font-display: 'Unbounded', sans-serif;
+  --font-sans: 'Figtree', sans-serif;
+  --font-story: 'Fraunces', Georgia, serif;
 }
 
 @layer base {
@@ -24,6 +25,8 @@
     background: var(--color-snow);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -32,13 +35,17 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent) 30%, white);
+    background: color-mix(in oklab, var(--color-accent) 28%, white);
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+  }
+
+  .font-story {
+    font-family: var(--font-story);
   }
 }
 

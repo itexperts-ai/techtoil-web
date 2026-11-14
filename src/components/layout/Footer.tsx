@@ -8,10 +8,14 @@ export function Footer() {
         <div className="max-w-sm">
           <Logo tone="light" />
           <p className="mt-5 text-sm leading-relaxed text-white/55">
-            A studio for teams who want to design, build, and grow with one clear partner.
+            From first spark to something that runs — a studio for teams who want
+            clarity with their ambition.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/55">
+          <a href="/#story" className="hover:text-white">
+            Story
+          </a>
           <Link to="/about" className="hover:text-white">
             About
           </Link>
@@ -21,9 +25,6 @@ export function Footer() {
           <Link to="/privacy" className="hover:text-white">
             Privacy
           </Link>
-          <Link to="/terms" className="hover:text-white">
-            Terms
-          </Link>
           <a href="mailto:hello@techtoil.com" className="hover:text-white">
             hello@techtoil.com
           </a>
@@ -32,7 +33,7 @@ export function Footer() {
       <div className="border-t border-white/10 px-4 py-4 text-xs text-white/35 md:px-6">
         <div className="mx-auto flex max-w-6xl justify-between gap-3">
           <span>© {new Date().getFullYear()} Techtoil</span>
-          <span>Clarity in every build.</span>
+          <span>Clarity for ambitious builds.</span>
         </div>
       </div>
     </footer>

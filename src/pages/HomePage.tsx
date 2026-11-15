@@ -35,26 +35,27 @@ export function HomePage() {
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent" />
         </motion.div>
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-end px-4 pb-14 pt-28 md:items-center md:px-6 md:pb-20">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-end px-4 pb-16 pt-28 md:items-center md:px-6 md:pb-24">
           <motion.div
-            className="w-full max-w-xl border border-white/15 bg-white/10 p-7 shadow-2xl shadow-ink/20 backdrop-blur-xl md:p-10"
+            className="w-full max-w-lg border border-white/20 bg-ink/55 p-6 shadow-2xl shadow-ink/30 backdrop-blur-2xl sm:p-8 md:max-w-xl md:p-10"
             style={{ y: panelY }}
             initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Logo to={null} size="hero" tone="light" />
-            <div className="mt-7 flex items-center gap-3">
+            <Logo to={null} size="lg" tone="light" className="md:hidden" />
+            <Logo to={null} size="hero" tone="light" className="hidden md:inline-flex" />
+            <div className="mt-6 flex items-center gap-3 md:mt-8">
               <span className="h-px w-10 bg-cyan" />
               <span className="eyebrow text-cyan">Vision → Execution</span>
             </div>
-            <h1 className="display mt-5 text-white">
+            <h1 className="display mt-4 text-white md:mt-5">
               From vision to a business that runs.
             </h1>
-            <p className="lede mt-5 text-white/75">
+            <p className="lede mt-4 text-white/80 md:mt-5">
               Design, build, grow, fund, automate, and hire — with AI in the loop.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
               <a
                 href="#services"
                 className="inline-flex items-center gap-2 bg-azure px-5 py-3.5 text-sm font-semibold text-white hover:bg-azure-deep"
@@ -63,7 +64,7 @@ export function HomePage() {
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center border border-white/35 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white hover:bg-white/20"
+                className="inline-flex items-center border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white hover:bg-white/20"
               >
                 Contact us
               </Link>

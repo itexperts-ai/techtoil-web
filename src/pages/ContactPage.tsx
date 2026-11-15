@@ -8,9 +8,10 @@ export function ContactPage() {
       <section className="border-b border-line bg-paper px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow text-accent">Contact & location</p>
-          <h1 className="display mt-4 max-w-2xl">Let’s talk.</h1>
+          <h1 className="display mt-4 max-w-2xl">Let’s plan your solutions.</h1>
           <p className="lede mt-5 max-w-xl text-mute">
-            Reach {company.legalName} — form, phone, email, and map together.
+            Technical, growth, management, AIM, or hiring — tell {company.brandName} what you
+            need. Form, phone, email, and map together.
           </p>
         </div>
       </section>

@@ -19,7 +19,7 @@ export function TopNav() {
           <Link to="/" className="px-3.5 py-2 text-sm font-medium text-ink/80 hover:text-accent">
             Home
           </Link>
-          <a href="/#services" className="px-3.5 py-2 text-sm font-medium text-ink/80 hover:text-accent">
+          <a href="/#solutions" className="px-3.5 py-2 text-sm font-medium text-ink/80 hover:text-accent">
             Services
           </a>
           <Link to="/about" className="px-3.5 py-2 text-sm font-medium text-ink/80 hover:text-accent">
@@ -46,7 +46,7 @@ export function TopNav() {
           <Link to="/" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             Home
           </Link>
-          <a href="/#services" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
+          <a href="/#solutions" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             Services
           </a>
           {services.map((s) => (

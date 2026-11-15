@@ -1,17 +1,18 @@
 @import 'tailwindcss';
 
+/* Verdant Atelier — light forest premium (distinct from prior navy themes) */
 @theme {
-  --color-fog: #e7ebf2;
-  --color-snow: #f5f7fb;
-  --color-ink: #0b1426;
-  --color-mute: #526074;
-  --color-dim: #8b96a8;
-  --color-rule: rgba(11, 20, 38, 0.1);
-  --color-volt: #2b5cff;
-  --color-volt-deep: #1f46d6;
-  --color-sea: #0f766e;
-  --color-void: #0b1426;
-  --font-sans: 'Outfit', sans-serif;
+  --color-sand: #f3f5f2;
+  --color-ivory: #fbfcfb;
+  --color-leaf: #1b4332;
+  --color-moss: #2d6a4f;
+  --color-fern: #40916c;
+  --color-ink: #14201a;
+  --color-soft: #5c6b62;
+  --color-mist: #9aab9f;
+  --color-line: rgba(20, 32, 26, 0.1);
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Figtree', sans-serif;
 }
 
 @layer base {
@@ -22,12 +23,12 @@
   body {
     margin: 0;
     min-width: 320px;
-    background: var(--color-fog);
+    background: var(--color-sand);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.65;
-    letter-spacing: -0.018em;
+    letter-spacing: -0.014em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -36,57 +37,46 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-volt) 24%, white);
+    background: color-mix(in oklab, var(--color-fern) 28%, white);
   }
 }
 
 @layer utilities {
-  .scrim {
-    background:
-      linear-gradient(
-        102deg,
-        rgba(11, 20, 38, 0.9) 0%,
-        rgba(11, 20, 38, 0.62) 38%,
-        rgba(11, 20, 38, 0.2) 64%,
-        transparent 84%
-      ),
-      linear-gradient(
-        to top,
-        rgba(231, 235, 242, 1) 0%,
-        rgba(231, 235, 242, 0.5) 12%,
-        transparent 32%
-      );
+  .font-display {
+    font-family: var(--font-display);
   }
 
-  .void-band {
+  .forest {
     background:
-      radial-gradient(ellipse 70% 80% at 0% 0%, rgba(43, 92, 255, 0.22), transparent 55%),
-      #0b1426;
+      radial-gradient(ellipse 60% 70% at 100% 0%, rgba(64, 145, 108, 0.18), transparent 50%),
+      #1b4332;
   }
 
-  .label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
   .display {
-    font-size: clamp(2.15rem, 5.2vw, 3.75rem);
-    font-weight: 600;
-    letter-spacing: -0.045em;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
     line-height: 1.05;
   }
 
-  .headline {
-    font-size: clamp(1.6rem, 3.1vw, 2.45rem);
-    font-weight: 600;
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+    font-weight: 700;
     letter-spacing: -0.035em;
     line-height: 1.12;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.3vw, 1.15rem);
+    font-size: clamp(1.05rem, 1.35vw, 1.15rem);
     line-height: 1.7;
   }
 }

@@ -5,10 +5,9 @@ import { company, mapsEmbedUrl, mapsOpenUrl } from '../data/company'
 export function ContactPage() {
   return (
     <div className="bg-bg">
-      {/* LIGHT header zone — nav always visible */}
       <section className="border-b border-line bg-surface px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow text-rose">Contact & location</p>
+          <p className="eyebrow text-azure">Contact & location</p>
           <h1 className="display mt-4 max-w-2xl">Let’s talk.</h1>
           <p className="lede mt-5 max-w-xl text-mute">
             Reach {company.legalName} — form, phone, email, and map together.
@@ -21,10 +20,10 @@ export function ContactPage() {
           <div className="space-y-5">
             <a
               href={`mailto:${company.email}`}
-              className="flex gap-4 border border-line bg-surface p-5 transition hover:border-rose/40"
+              className="flex gap-4 border border-line bg-surface p-5 transition hover:border-azure/40"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-rose/10">
-                <Mail className="h-5 w-5 text-rose" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-azure/10">
+                <Mail className="h-5 w-5 text-azure" />
               </span>
               <span>
                 <span className="block text-xs font-bold uppercase tracking-wide text-faint">
@@ -35,15 +34,15 @@ export function ContactPage() {
             </a>
 
             <div className="flex gap-4 border border-line bg-surface p-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-rose/10">
-                <Phone className="h-5 w-5 text-rose" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-azure/10">
+                <Phone className="h-5 w-5 text-azure" />
               </span>
               <div>
                 <p className="text-xs font-bold uppercase tracking-wide text-faint">Phone</p>
                 <ul className="mt-1 space-y-1">
                   {company.phones.map((p) => (
                     <li key={p.href}>
-                      <a href={p.href} className="font-semibold hover:text-rose">
+                      <a href={p.href} className="font-semibold hover:text-azure">
                         {p.display}
                       </a>
                     </li>
@@ -54,14 +53,14 @@ export function ContactPage() {
 
             <div className="border border-line bg-surface p-5 md:p-6">
               <div className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-rose/10">
-                  <MapPin className="h-5 w-5 text-rose" />
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-azure/10">
+                  <MapPin className="h-5 w-5 text-azure" />
                 </span>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wide text-faint">
                     {company.registeredOffice.label}
                   </p>
-                  <p className="mt-2 font-display text-lg font-semibold tracking-[-0.02em]">
+                  <p className="mt-2 font-display text-lg font-semibold tracking-[-0.03em]">
                     {company.legalName}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-mute">
@@ -77,7 +76,7 @@ export function ContactPage() {
             </div>
 
             <div className="border border-line bg-surface p-5 md:p-6">
-              <p className="eyebrow text-rose">{company.operationsOffice.label}</p>
+              <p className="eyebrow text-azure">{company.operationsOffice.label}</p>
               <p className="mt-3 text-sm leading-relaxed text-mute">
                 {company.operationsOffice.lines.map((line) => (
                   <span key={line} className="block">
@@ -89,7 +88,7 @@ export function ContactPage() {
           </div>
 
           <div>
-            <p className="eyebrow text-rose">Send a brief</p>
+            <p className="eyebrow text-azure">Send a brief</p>
             <h2 className="title mt-3">How can we help?</h2>
             <div className="mt-6">
               <ConsultationForm />
@@ -101,7 +100,7 @@ export function ContactPage() {
       <section className="border-t border-line bg-surface">
         <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-4 px-4 py-8 md:px-6">
           <div>
-            <p className="eyebrow text-rose">Map</p>
+            <p className="eyebrow text-azure">Map</p>
             <h2 className="title mt-2">Find our offices</h2>
           </div>
           <div className="flex flex-wrap gap-4 text-sm font-semibold">
@@ -109,7 +108,7 @@ export function ContactPage() {
               href={mapsOpenUrl(company.registeredOffice.mapsQuery)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-rose hover:text-rose-deep"
+              className="inline-flex items-center gap-1 text-azure hover:text-azure-deep"
             >
               Delhi map <ArrowUpRight className="h-4 w-4" />
             </a>
@@ -117,7 +116,7 @@ export function ContactPage() {
               href={mapsOpenUrl(company.operationsOffice.mapsQuery)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-rose hover:text-rose-deep"
+              className="inline-flex items-center gap-1 text-azure hover:text-azure-deep"
             >
               Noida map <ArrowUpRight className="h-4 w-4" />
             </a>

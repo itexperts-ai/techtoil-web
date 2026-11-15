@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { ArrowUpRight, Check } from 'lucide-react'
 import { Logo } from '../components/brand/Logo'
 import { aiHighlights, services } from '../data/services'
@@ -12,64 +13,69 @@ const fade = {
 }
 
 export function HomePage() {
+  const heroRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
+  const panelY = useTransform(scrollYProgress, [0, 1], ['0%', '6%'])
+
   return (
     <div>
-      {/* Unique hero: content slab + clipped cinematic image */}
-      <section className="relative min-h-[100svh] overflow-hidden bg-bg pt-[4.25rem]">
-        <div className="absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+      {/* NEW top section — full-bleed image + floating content panel */}
+      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: imgY }}>
           <img
             src="/media/hero.jpg"
             alt=""
-            className="hero-clip h-full w-full object-cover object-center"
+            className="h-[120%] w-full object-cover object-[center_40%]"
           />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/45 to-ink/10" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent" />
+        </motion.div>
 
-        <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4.25rem)] max-w-6xl lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-end px-4 pb-14 pt-28 md:items-center md:px-6 md:pb-20">
           <motion.div
-            className="flex flex-col justify-center px-4 py-14 md:px-6 lg:py-20"
-            initial={{ opacity: 0, y: 28 }}
+            className="w-full max-w-xl border border-white/15 bg-white/10 p-7 shadow-2xl shadow-ink/20 backdrop-blur-xl md:p-10"
+            style={{ y: panelY }}
+            initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75 }}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Logo to={null} size="hero" />
-            <div className="mt-8 h-1 w-16 bg-rose" />
-            <h1 className="display mt-7 max-w-xl text-ink">
+            <Logo to={null} size="hero" tone="light" />
+            <div className="mt-7 flex items-center gap-3">
+              <span className="h-px w-10 bg-cyan" />
+              <span className="eyebrow text-cyan">Vision → Execution</span>
+            </div>
+            <h1 className="display mt-5 text-white">
               From vision to a business that runs.
             </h1>
-            <p className="lede mt-5 max-w-md text-mute">
+            <p className="lede mt-5 text-white/75">
               Design, build, grow, fund, automate, and hire — with AI in the loop.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 bg-rose px-5 py-3.5 text-sm font-semibold text-white hover:bg-rose-deep"
+                className="inline-flex items-center gap-2 bg-azure px-5 py-3.5 text-sm font-semibold text-white hover:bg-azure-deep"
               >
                 View services <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center border border-line bg-surface px-5 py-3.5 text-sm font-semibold text-ink hover:border-ink/30"
+                className="inline-flex items-center border border-white/35 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white hover:bg-white/20"
               >
                 Contact us
               </Link>
             </div>
           </motion.div>
-
-          {/* Mobile / tablet image */}
-          <div className="px-4 pb-10 md:px-6 lg:hidden">
-            <img
-              src="/media/hero.jpg"
-              alt=""
-              className="aspect-[16/11] w-full object-cover"
-            />
-          </div>
         </div>
       </section>
 
-      <section className="band-graphite px-4 py-20 text-white md:px-6 md:py-24">
+      <section className="ink-band px-4 py-20 text-white md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fade}>
-            <p className="eyebrow text-rose">Our direction</p>
+            <p className="eyebrow text-cyan">Our direction</p>
             <h2 className="title mt-4 max-w-2xl">
               Strategy, product, growth, and intelligence on one path.
             </h2>
@@ -106,7 +112,7 @@ export function HomePage() {
       <section className="bg-surface px-4 py-20 md:px-6 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div {...fade}>
-            <p className="eyebrow text-rose">Intelligence</p>
+            <p className="eyebrow text-azure">Intelligence</p>
             <h2 className="title mt-4">AI built into operations.</h2>
             <p className="lede mt-4 text-mute">
               Agents, workflows, and automation that remove friction — without giving up
@@ -115,7 +121,7 @@ export function HomePage() {
             <ul className="mt-8 space-y-5">
               {aiHighlights.map((h) => (
                 <li key={h.title} className="flex gap-3">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-rose" strokeWidth={2.25} />
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-azure" strokeWidth={2.25} />
                   <div>
                     <p className="font-semibold">{h.title}</p>
                     <p className="mt-1 text-sm text-mute">{h.body}</p>
@@ -151,7 +157,7 @@ export function HomePage() {
                 }`}
               >
                 <motion.div {...fade}>
-                  <p className="eyebrow text-rose">
+                  <p className="eyebrow text-azure">
                     {s.num} · Service
                   </p>
                   <h2 className="title mt-3">{s.title}</h2>
@@ -164,7 +170,7 @@ export function HomePage() {
                         className="flex items-start gap-2 border border-line bg-surface px-3.5 py-3 text-sm font-medium"
                       >
                         <Check
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-rose"
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-azure"
                           strokeWidth={2.25}
                         />
                         {d}
@@ -173,7 +179,7 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 bg-graphite px-5 py-3.5 text-sm font-semibold text-white hover:bg-rose"
+                    className="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3.5 text-sm font-semibold text-white hover:bg-azure"
                   >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
@@ -193,7 +199,7 @@ export function HomePage() {
       </div>
 
       <section className="px-4 py-20 md:px-6 md:py-24">
-        <motion.div className="band-graphite mx-auto max-w-6xl px-6 py-14 text-white md:px-12" {...fade}>
+        <motion.div className="ink-band mx-auto max-w-6xl px-6 py-14 text-white md:px-12" {...fade}>
           <h2 className="title max-w-2xl">Ready for a clear next step?</h2>
           <p className="lede mt-4 max-w-xl text-white/60">
             Tell us your stage. We map design, build, growth, funding, automation, and
@@ -201,7 +207,7 @@ export function HomePage() {
           </p>
           <Link
             to="/contact"
-            className="mt-8 inline-flex items-center gap-2 bg-rose px-5 py-3.5 text-sm font-semibold text-white hover:bg-rose-deep"
+            className="mt-8 inline-flex items-center gap-2 bg-azure px-5 py-3.5 text-sm font-semibold text-white hover:bg-azure-deep"
           >
             Start a conversation <ArrowUpRight className="h-4 w-4" />
           </Link>

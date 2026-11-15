@@ -7,16 +7,20 @@ export function TopNav() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
+  const onHome = pathname === '/'
+  const overDarkHero = onHome && !solid && !open
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 16)
+    const onScroll = () => setSolid(window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  // Always readable: solid bar on inner pages / after scroll / when menu open
-  const bar = solid || open || pathname !== '/'
+  const bar = solid || open || !onHome
+  const link = overDarkHero
+    ? 'px-3 py-2 text-sm font-medium text-white/80 hover:text-white'
+    : 'px-3 py-2 text-sm font-medium text-mute hover:text-ink'
 
   return (
     <header
@@ -27,20 +31,24 @@ export function TopNav() {
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
-        <Logo tone="dark" />
+        <Logo tone={overDarkHero ? 'light' : 'dark'} />
         <nav className="hidden items-center md:flex">
-          <Link to="/" className="px-3 py-2 text-sm font-medium text-mute hover:text-ink">
+          <Link to="/" className={link}>
             Home
           </Link>
-          <a href="/#services" className="px-3 py-2 text-sm font-medium text-mute hover:text-ink">
+          <a href="/#services" className={link}>
             Services
           </a>
-          <Link to="/about" className="px-3 py-2 text-sm font-medium text-mute hover:text-ink">
+          <Link to="/about" className={link}>
             About
           </Link>
           <Link
             to="/contact"
-            className="ml-3 bg-rose px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-rose-deep"
+            className={`ml-3 px-4 py-2.5 text-sm font-semibold transition ${
+              overDarkHero
+                ? 'bg-white text-ink hover:bg-bg'
+                : 'bg-azure px-4 text-white hover:bg-azure-deep'
+            }`}
           >
             Contact
           </Link>
@@ -48,7 +56,9 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className="border border-line px-3 py-1.5 text-sm font-semibold text-ink md:hidden"
+          className={`border px-3 py-1.5 text-sm font-semibold md:hidden ${
+            overDarkHero ? 'border-white/35 text-white' : 'border-line text-ink'
+          }`}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
@@ -77,7 +87,7 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-rose py-3 text-sm font-semibold text-white"
+            className="mt-3 flex justify-center bg-azure py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

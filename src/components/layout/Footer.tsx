@@ -22,7 +22,7 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <a href="/#solutions" className="hover:text-white">
+              <a href="/#catalog" className="hover:text-white">
                 Services
               </a>
             </li>

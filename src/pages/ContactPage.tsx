@@ -3,15 +3,15 @@ import { services } from '../data/services'
 
 export function ContactPage() {
   return (
-    <div className="bg-bg px-4 pb-24 pt-32 md:px-6 md:pt-40">
+    <div className="bg-canvas px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
         <div>
-          <p className="eyebrow text-accent">Contact</p>
-          <h1 className="title mt-4">Tell us what you need.</h1>
-          <p className="body-lg mt-5 text-muted">
-            AIM, AI, or any of the seven services — send a short brief.
+          <p className="kicker text-brand">Contact</p>
+          <h1 className="h-section mt-4">Tell us what you need.</h1>
+          <p className="copy mt-5 text-steel">
+            Any of the seven services — send a short brief.
           </p>
-          <ul className="mt-6 space-y-1.5 text-sm text-muted">
+          <ul className="mt-6 space-y-1.5 text-sm text-steel">
             {services.map((s) => (
               <li key={s.id}>
                 {s.num} · {s.title}
@@ -19,7 +19,7 @@ export function ContactPage() {
             ))}
           </ul>
           <p className="mt-8">
-            <a className="font-semibold text-accent" href="mailto:hello@techtoil.com">
+            <a className="font-semibold text-brand" href="mailto:hello@techtoil.com">
               hello@techtoil.com
             </a>
           </p>

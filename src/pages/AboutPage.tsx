@@ -3,13 +3,13 @@ import { ArrowUpRight } from 'lucide-react'
 
 export function AboutPage() {
   return (
-    <div className="bg-bg px-4 pb-24 pt-32 md:px-6 md:pt-40">
+    <div className="bg-canvas px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto max-w-2xl">
-        <p className="eyebrow text-accent">About</p>
-        <h1 className="title mt-4">
-          A professional studio for businesses that need to move.
+        <p className="kicker text-brand">About</p>
+        <h1 className="h-section mt-4">
+          A premium studio for businesses that need to move.
         </h1>
-        <div className="body-lg mt-8 space-y-5 text-muted">
+        <div className="copy mt-8 space-y-5 text-steel">
           <p>
             Techtoil helps organizations go from vision to execution with product
             design, development, marketing, consultancy, funding readiness, AI
@@ -22,7 +22,7 @@ export function AboutPage() {
         </div>
         <Link
           to="/contact"
-          className="mt-10 inline-flex items-center gap-2 bg-deep px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
+          className="mt-10 inline-flex items-center gap-2 bg-night px-5 py-3.5 text-sm font-semibold text-white hover:bg-brand"
         >
           Work with us <ArrowUpRight className="h-4 w-4" />
         </Link>

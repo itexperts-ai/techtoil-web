@@ -7,36 +7,40 @@ type Props = {
   className?: string
 }
 
-/** Precision mark: geometric T with teal baseline */
 function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
-  const bg = tone === 'light' ? '#ffffff' : '#0c1222'
-  const t = '#2563eb'
-  const bar = '#0d9488'
+  const bg = tone === 'light' ? '#ffffff' : '#0a0f1a'
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden className="shrink-0">
-      <rect width="64" height="64" rx="13" fill={bg} />
-      <path d="M15 19h34v6.8H36.2V43h-8.4V25.8H15V19Z" fill={t} />
-      <rect x="20" y="47" width="24" height="3.2" rx="1.6" fill={bar} />
+      <rect width="64" height="64" rx="16" fill={bg} />
+      <circle cx="32" cy="20" r="5" fill="#1d4ed8" />
+      <circle cx="18" cy="42" r="5" fill="#0f766e" />
+      <circle cx="46" cy="42" r="5" fill={tone === 'light' ? '#3b82f6' : '#60a5fa'} />
+      <path
+        d="M32 25v8M28.5 36.5 20.5 41M35.5 36.5 43.5 41"
+        stroke={tone === 'light' ? '#64748b' : '#94a3b8'}
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
     </svg>
   )
 }
 
 export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: Props) {
-  const mark = size === 'hero' ? 56 : size === 'lg' ? 40 : 30
+  const mark = size === 'hero' ? 58 : size === 'lg' ? 42 : 32
   const text =
     size === 'hero'
-      ? 'text-[clamp(2.6rem,7vw,4.5rem)]'
+      ? 'text-[clamp(2.7rem,7.5vw,4.6rem)]'
       : size === 'lg'
-        ? 'text-[1.7rem]'
-        : 'text-[1.15rem]'
+        ? 'text-[1.75rem]'
+        : 'text-[1.2rem]'
   const ink = tone === 'light' ? 'text-white' : 'text-ink'
-  const soft = tone === 'light' ? 'text-white/50' : 'text-muted'
+  const soft = tone === 'light' ? 'text-white/45' : 'text-steel'
 
   const node = (
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <Mark size={mark} tone={tone} />
-      <span className={`font-sans font-bold leading-none tracking-[-0.04em] ${ink} ${text}`}>
-        Tech<span className={`font-semibold ${soft}`}>toil</span>
+      <span className={`font-sans font-semibold leading-none tracking-[-0.045em] ${ink} ${text}`}>
+        Tech<span className={`font-medium ${soft}`}>toil</span>
       </span>
     </span>
   )
@@ -46,7 +50,7 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
     <Link
       to={to ?? '/'}
       aria-label="Techtoil"
-      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
     >
       {node}
     </Link>

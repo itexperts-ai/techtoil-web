@@ -27,8 +27,8 @@ export function ConsultationForm() {
 
   if (status === 'ready') {
     return (
-      <div className="border border-line bg-paper p-6 text-sm md:p-8">
-        <p className="font-display font-semibold tracking-[-0.02em]">Message ready.</p>
+      <div className="rounded-3xl bg-surface p-6 text-sm ring-1 ring-ink/5 md:p-8">
+        <p className="font-semibold">Message ready.</p>
         <p className="mt-2 text-mute">
           Email{' '}
           <a href={`mailto:${company.email}`} className="font-semibold text-accent">
@@ -41,16 +41,19 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 border border-line bg-paper p-6 md:p-8">
-      <label className="grid gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.14em] text-mute">
+    <form
+      onSubmit={onSubmit}
+      className="space-y-4 rounded-3xl bg-surface p-6 shadow-[0_20px_50px_-30px_rgba(16,19,26,0.35)] ring-1 ring-ink/5 md:p-8"
+    >
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Name
         <input name="name" required className="field" placeholder="Your name" />
       </label>
-      <label className="grid gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.14em] text-mute">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Email
         <input name="email" type="email" required className="field" placeholder="you@company.com" />
       </label>
-      <label className="grid gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.14em] text-mute">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Interest
         <select name="interest" className="field" defaultValue={services[0].id}>
           {services.map((s) => (
@@ -60,7 +63,7 @@ export function ConsultationForm() {
           ))}
         </select>
       </label>
-      <label className="grid gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.14em] text-mute">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Brief
         <textarea
           name="message"
@@ -69,26 +72,23 @@ export function ConsultationForm() {
           placeholder="What are you building?"
         />
       </label>
-      {status === 'error' && <p className="text-sm text-red-700">{error}</p>}
-      <button
-        type="submit"
-        className="w-full bg-accent py-3.5 font-display text-sm font-semibold text-white hover:bg-accent-deep"
-      >
+      {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
+      <button type="submit" className="btn-primary w-full justify-center">
         Send message
       </button>
       <style>{`
         .field {
           width: 100%;
-          border: 1px solid rgba(20, 24, 21, 0.12);
-          background: #e6e8e4;
+          border: 1px solid rgba(16, 19, 26, 0.08);
+          border-radius: 1rem;
+          background: #eef1f6;
           padding: 0.85rem 1rem;
-          font-family: 'Newsreader', Georgia, serif;
-          font-size: 1rem;
+          font: inherit;
           outline: none;
         }
         .field:focus {
-          border-color: #1c3d5a;
-          background: #f4f5f2;
+          border-color: #e11d48;
+          background: #ffffff;
         }
       `}</style>
     </form>

@@ -5,7 +5,7 @@ import { company, mapsEmbedUrl, mapsOpenUrl } from '../data/company'
 export function ContactPage() {
   return (
     <div className="bg-bg">
-      <section className="border-b border-line bg-paper px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
+      <section className="band-soft px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow text-accent">Contact & location</p>
           <h1 className="display mt-4 max-w-2xl">Let’s talk.</h1>
@@ -17,39 +17,32 @@ export function ContactPage() {
 
       <section className="px-4 py-14 md:px-6 md:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="space-y-0 border-t border-line">
+          <div className="space-y-4">
             <a
               href={`mailto:${company.email}`}
-              className="flex gap-4 border-b border-line py-5 transition hover:bg-paper/60"
+              className="flex gap-4 rounded-3xl bg-surface p-5 ring-1 ring-ink/5 transition hover:ring-accent/30"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent text-white">
-                <Mail className="h-5 w-5" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+                <Mail className="h-5 w-5 text-accent" />
               </span>
               <span>
-                <span className="block font-display text-xs font-semibold uppercase tracking-[0.14em] text-faint">
+                <span className="block text-xs font-bold uppercase tracking-wide text-faint">
                   Email
                 </span>
-                <span className="mt-1 block font-display font-semibold break-all tracking-[-0.02em]">
-                  {company.email}
-                </span>
+                <span className="mt-1 block font-semibold break-all">{company.email}</span>
               </span>
             </a>
 
-            <div className="flex gap-4 border-b border-line py-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent text-white">
-                <Phone className="h-5 w-5" />
+            <div className="flex gap-4 rounded-3xl bg-surface p-5 ring-1 ring-ink/5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+                <Phone className="h-5 w-5 text-accent" />
               </span>
               <div>
-                <p className="font-display text-xs font-semibold uppercase tracking-[0.14em] text-faint">
-                  Phone
-                </p>
+                <p className="text-xs font-bold uppercase tracking-wide text-faint">Phone</p>
                 <ul className="mt-1 space-y-1">
                   {company.phones.map((p) => (
                     <li key={p.href}>
-                      <a
-                        href={p.href}
-                        className="font-display font-semibold tracking-[-0.02em] hover:text-accent"
-                      >
+                      <a href={p.href} className="font-semibold hover:text-accent">
                         {p.display}
                       </a>
                     </li>
@@ -58,18 +51,16 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="border-b border-line py-6">
+            <div className="rounded-3xl bg-surface p-5 ring-1 ring-ink/5 md:p-6">
               <div className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent text-white">
-                  <MapPin className="h-5 w-5" />
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+                  <MapPin className="h-5 w-5 text-accent" />
                 </span>
                 <div>
-                  <p className="font-display text-xs font-semibold uppercase tracking-[0.14em] text-faint">
+                  <p className="text-xs font-bold uppercase tracking-wide text-faint">
                     {company.registeredOffice.label}
                   </p>
-                  <p className="mt-2 font-display text-lg font-bold tracking-[-0.03em]">
-                    {company.legalName}
-                  </p>
+                  <p className="mt-2 text-lg font-bold tracking-[-0.03em]">{company.legalName}</p>
                   <p className="mt-2 text-sm leading-relaxed text-mute">
                     {company.registeredOffice.lines.map((line) => (
                       <span key={line} className="block">
@@ -77,14 +68,12 @@ export function ContactPage() {
                       </span>
                     ))}
                   </p>
-                  <p className="mt-3 font-display text-xs tracking-[0.1em] text-faint">
-                    CIN {company.cin}
-                  </p>
+                  <p className="mt-3 text-xs text-faint">CIN: {company.cin}</p>
                 </div>
               </div>
             </div>
 
-            <div className="py-6">
+            <div className="rounded-3xl bg-surface p-5 ring-1 ring-ink/5 md:p-6">
               <p className="eyebrow text-accent">{company.operationsOffice.label}</p>
               <p className="mt-3 text-sm leading-relaxed text-mute">
                 {company.operationsOffice.lines.map((line) => (
@@ -112,7 +101,7 @@ export function ContactPage() {
             <p className="eyebrow text-accent">Map</p>
             <h2 className="title mt-2">Find our offices</h2>
           </div>
-          <div className="flex flex-wrap gap-4 font-display text-sm font-semibold">
+          <div className="flex flex-wrap gap-4 text-sm font-semibold">
             <a
               href={mapsOpenUrl(company.registeredOffice.mapsQuery)}
               target="_blank"

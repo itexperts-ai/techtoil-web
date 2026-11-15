@@ -39,7 +39,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-white/35">Disciplines</p>
+          <p className="eyebrow text-white/35">Services</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             {services.map((s) => (
               <li key={s.id}>
@@ -51,7 +51,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-white/35">Colophon</p>
+          <p className="eyebrow text-white/35">Contact</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             <li>
               <a href={`mailto:${company.email}`} className="hover:text-white">

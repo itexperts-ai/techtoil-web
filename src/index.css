@@ -1,19 +1,18 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-bg: #eceff4;
-  --color-surface: #f5f7fa;
-  --color-panel: #dde3ec;
-  --color-ink: #101828;
-  --color-soft: #4a5568;
-  --color-faint: #8a95a8;
-  --color-line: rgba(16, 24, 40, 0.09);
-  --color-blue: #1a56db;
-  --color-blue-deep: #1341b0;
-  --color-teal: #0f766e;
-  --color-slate: #152033;
-  --color-mist: #c8d0dc;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --color-bg: #eef1f5;
+  --color-surface: #f8f9fb;
+  --color-wash: #e4e9f0;
+  --color-ink: #0c1222;
+  --color-muted: #5b6578;
+  --color-subtle: #8b95a7;
+  --color-line: rgba(12, 18, 34, 0.08);
+  --color-accent: #2563eb;
+  --color-accent-deep: #1d4ed8;
+  --color-signal: #0d9488;
+  --color-deep: #0c1222;
+  --font-sans: 'Manrope', sans-serif;
 }
 
 @layer base {
@@ -29,7 +28,7 @@
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.65;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -38,40 +37,57 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-blue) 22%, white);
+    background: color-mix(in oklab, var(--color-accent) 22%, white);
   }
 }
 
 @layer utilities {
-  .hero-veil {
+  .veil {
     background:
-      linear-gradient(108deg, rgba(16, 24, 40, 0.78) 0%, rgba(16, 24, 40, 0.48) 40%, rgba(16, 24, 40, 0.14) 65%, transparent 82%),
-      linear-gradient(to top, rgba(236, 239, 244, 0.98) 0%, rgba(236, 239, 244, 0.35) 14%, transparent 34%);
+      linear-gradient(
+        100deg,
+        rgba(12, 18, 34, 0.82) 0%,
+        rgba(12, 18, 34, 0.55) 42%,
+        rgba(12, 18, 34, 0.2) 68%,
+        transparent 88%
+      ),
+      linear-gradient(
+        to top,
+        rgba(238, 241, 245, 1) 0%,
+        rgba(238, 241, 245, 0.4) 12%,
+        transparent 30%
+      );
   }
 
-  .band-slate {
+  .deep-panel {
     background:
-      radial-gradient(ellipse 60% 70% at 0% 10%, rgba(26, 86, 219, 0.18), transparent 55%),
-      radial-gradient(ellipse 50% 50% at 100% 90%, rgba(15, 118, 110, 0.12), transparent 50%),
-      #152033;
+      radial-gradient(ellipse 70% 80% at 0% 0%, rgba(37, 99, 235, 0.2), transparent 55%),
+      #0c1222;
   }
 
-  .label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  .heading {
-    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
-    font-weight: 600;
+  .display {
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.15;
   }
 
-  .lead {
-    font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+  .body-lg {
+    font-size: clamp(1.05rem, 1.3vw, 1.125rem);
     line-height: 1.7;
   }
 }

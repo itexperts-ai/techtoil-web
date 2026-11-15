@@ -1,22 +1,24 @@
 @import 'tailwindcss';
 
 /*
-  Quartz Teal Elevated — preferred teal system, sharper studio craft
+  Jade Atelier — premium light studio identity
+  Architectural whitespace · jewel jade · expressive type
 */
 @theme {
-  --color-bg: #eef3f5;
-  --color-quartz: #f7fafb;
+  --color-bg: #eef2f1;
+  --color-mist: #f5f8f7;
   --color-surface: #ffffff;
-  --color-ink: #0b1215;
-  --color-mute: #5a6a73;
-  --color-faint: #8b9aa3;
-  --color-line: rgba(11, 18, 21, 0.1);
-  --color-teal: #0f766e;
-  --color-teal-bright: #14b8a6;
-  --color-teal-deep: #0d5c56;
-  --color-slate: #101820;
-  --font-display: 'Sora', sans-serif;
-  --font-sans: 'Outfit', sans-serif;
+  --color-ink: #07110f;
+  --color-mute: #5a6b66;
+  --color-faint: #8a9a94;
+  --color-line: rgba(7, 17, 15, 0.1);
+  --color-jade: #0b6b5c;
+  --color-jade-bright: #12a38a;
+  --color-jade-deep: #085246;
+  --color-obsidian: #0a1210;
+  --color-brass: #b08d57;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Figtree', sans-serif;
 }
 
 @layer base {
@@ -28,14 +30,14 @@
     margin: 0;
     min-width: 320px;
     background:
-      radial-gradient(ellipse 80% 45% at 0% 0%, rgba(20, 184, 166, 0.07), transparent 55%),
-      radial-gradient(ellipse 55% 40% at 100% 10%, rgba(15, 118, 110, 0.05), transparent 50%),
+      radial-gradient(ellipse 90% 50% at 0% -5%, rgba(18, 163, 138, 0.09), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(176, 141, 87, 0.06), transparent 50%),
       var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 17px;
     line-height: 1.65;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.018em;
     font-weight: 450;
     -webkit-font-smoothing: antialiased;
   }
@@ -45,7 +47,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-teal-bright) 30%, white);
+    background: color-mix(in oklab, var(--color-jade-bright) 28%, white);
   }
 }
 
@@ -54,35 +56,35 @@
     font-family: var(--font-display);
   }
 
-  .band-slate {
+  .band-obsidian {
     background:
-      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(20, 184, 166, 0.22), transparent 55%),
-      radial-gradient(ellipse 35% 45% at 0% 100%, rgba(255, 255, 255, 0.04), transparent 50%),
-      var(--color-slate);
+      radial-gradient(ellipse 55% 70% at 100% 0%, rgba(18, 163, 138, 0.22), transparent 55%),
+      radial-gradient(ellipse 40% 50% at 0% 100%, rgba(176, 141, 87, 0.1), transparent 45%),
+      var(--color-obsidian);
   }
 
   .eyebrow {
     font-family: var(--font-sans);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6.2vw, 4.5rem);
-    font-weight: 650;
-    letter-spacing: -0.045em;
-    line-height: 1.02;
+    font-size: clamp(2.6rem, 6.4vw, 4.75rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.0;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.85rem, 3.4vw, 2.85rem);
-    font-weight: 650;
+    font-size: clamp(1.95rem, 3.6vw, 3rem);
+    font-weight: 700;
     letter-spacing: -0.04em;
-    line-height: 1.1;
+    line-height: 1.08;
   }
 
   .lede {
@@ -94,11 +96,11 @@
   .hero-wash {
     background:
       linear-gradient(
-        105deg,
-        rgba(247, 250, 251, 0.97) 0%,
-        rgba(247, 250, 251, 0.9) 32%,
-        rgba(247, 250, 251, 0.45) 52%,
-        rgba(247, 250, 251, 0.08) 72%,
+        108deg,
+        rgba(245, 248, 247, 0.98) 0%,
+        rgba(245, 248, 247, 0.92) 30%,
+        rgba(245, 248, 247, 0.5) 50%,
+        rgba(245, 248, 247, 0.1) 70%,
         transparent 100%
       );
   }
@@ -108,16 +110,16 @@
       background:
         linear-gradient(
           180deg,
-          rgba(247, 250, 251, 0.96) 0%,
-          rgba(247, 250, 251, 0.88) 42%,
-          rgba(247, 250, 251, 0.35) 70%,
+          rgba(245, 248, 247, 0.97) 0%,
+          rgba(245, 248, 247, 0.9) 40%,
+          rgba(245, 248, 247, 0.4) 68%,
           transparent 100%
         );
     }
   }
 
-  .path-line {
-    background: linear-gradient(90deg, var(--color-teal), rgba(20, 184, 166, 0.25));
+  .rule-brass {
+    background: linear-gradient(90deg, var(--color-brass), transparent);
   }
 }
 

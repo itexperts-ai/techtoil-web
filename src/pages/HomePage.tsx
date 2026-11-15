@@ -41,7 +41,7 @@ export function HomePage() {
         <div className="hero-wash absolute inset-0" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-4 pb-16 pt-28 md:px-6">
-          <div className="max-w-xl">
+          <div className="hero-copy max-w-xl">
             <motion.span
               className="citron-label"
               initial={{ opacity: 0, y: 10 }}
@@ -67,7 +67,7 @@ export function HomePage() {
               </motion.span>
             </motion.h1>
             <motion.p
-              className="lede mt-5 max-w-md text-mute"
+              className="lede mt-5 max-w-md text-ink/75"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45 }}
@@ -82,7 +82,7 @@ export function HomePage() {
             >
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 border-b border-ink pb-1 text-sm font-semibold tracking-wide hover:text-mute"
+                className="inline-flex items-center gap-2 border-b-2 border-ink pb-1 text-sm font-semibold tracking-wide text-ink hover:opacity-70"
               >
                 Start a brief <ArrowUpRight className="h-4 w-4" />
               </Link>

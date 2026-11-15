@@ -92,11 +92,12 @@
 
   .hero-wash {
     background: linear-gradient(
-      100deg,
-      rgba(251, 249, 246, 0.92) 0%,
-      rgba(251, 249, 246, 0.78) 28%,
-      rgba(251, 249, 246, 0.28) 48%,
-      transparent 68%
+      105deg,
+      rgba(251, 249, 246, 0.98) 0%,
+      rgba(251, 249, 246, 0.95) 34%,
+      rgba(251, 249, 246, 0.72) 52%,
+      rgba(251, 249, 246, 0.2) 72%,
+      transparent 88%
     );
   }
 
@@ -104,12 +105,16 @@
     .hero-wash {
       background: linear-gradient(
         180deg,
-        rgba(251, 249, 246, 0.94) 0%,
-        rgba(251, 249, 246, 0.82) 40%,
-        rgba(251, 249, 246, 0.25) 68%,
+        rgba(251, 249, 246, 0.98) 0%,
+        rgba(251, 249, 246, 0.94) 48%,
+        rgba(251, 249, 246, 0.55) 72%,
         transparent 100%
       );
     }
+  }
+
+  .hero-copy {
+    text-shadow: 0 1px 0 rgba(251, 249, 246, 0.4);
   }
 
   .citron-label {

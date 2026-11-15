@@ -4,7 +4,7 @@ export const company = {
   legalName: 'Techtoil Infosol Private Limited',
   brandName: 'Techtoil',
   cin: 'U62013DL2023PTC413696',
-  email: 'contact@techtoil.com',
+  email: 'contact@techtoil.in',
   phones: [
     { label: 'Primary', display: '+91 80 772 795 65', href: 'tel:+918077279565' },
     { label: 'Alternate', display: '+91 79825 77818', href: 'tel:+917982577818' },

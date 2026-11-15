@@ -31,12 +31,21 @@ export function TopNav() {
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo tone={overHero ? 'light' : 'dark'} />
         <nav className="hidden items-center md:flex">
+          <Link to="/" className={link}>
+            Home
+          </Link>
           <a href="/#services" className={link}>
             Services
           </a>
           <Link to="/about" className={link}>
             About
           </Link>
+          <Link to="/contact" className={link}>
+            Contact
+          </Link>
+          <a href="/contact#location" className={link}>
+            Location
+          </a>
           <Link
             to="/contact"
             className={`ml-4 px-4 py-2.5 text-sm font-semibold transition ${
@@ -45,7 +54,7 @@ export function TopNav() {
                 : 'bg-night text-white hover:bg-brand'
             }`}
           >
-            Contact
+            Get in touch
           </Link>
         </nav>
         <button
@@ -61,6 +70,9 @@ export function TopNav() {
       </div>
       {open && (
         <div className="border-t border-edge bg-paper px-4 py-5 md:hidden">
+          <Link to="/" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
+            Home
+          </Link>
           <a
             href="/#services"
             className="block py-2.5 font-medium"
@@ -87,10 +99,24 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-night py-3 text-sm font-semibold text-white"
+            className="block py-2.5 font-medium"
             onClick={() => setOpen(false)}
           >
             Contact
+          </Link>
+          <a
+            href="/contact#location"
+            className="block py-2.5 font-medium"
+            onClick={() => setOpen(false)}
+          >
+            Location
+          </a>
+          <Link
+            to="/contact"
+            className="mt-3 flex justify-center bg-night py-3 text-sm font-semibold text-white"
+            onClick={() => setOpen(false)}
+          >
+            Get in touch
           </Link>
         </div>
       )}

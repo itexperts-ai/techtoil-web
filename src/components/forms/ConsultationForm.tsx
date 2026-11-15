@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { company } from '../../data/company'
 import { services } from '../../data/services'
 
 export function ConsultationForm() {
@@ -30,10 +31,10 @@ export function ConsultationForm() {
         <p className="font-semibold">Message ready.</p>
         <p className="mt-2 text-steel">
           Email{' '}
-          <a href="mailto:hello@techtoil.com" className="font-semibold text-brand">
-            hello@techtoil.com
+          <a href={`mailto:${company.email}`} className="font-semibold text-brand">
+            {company.email}
           </a>{' '}
-          or connect your backend.
+          or call {company.phones[0].display}.
         </p>
       </div>
     )

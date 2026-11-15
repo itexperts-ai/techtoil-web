@@ -1,17 +1,50 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '../brand/Logo'
+import { company } from '../../data/company'
 import { services } from '../../data/services'
 
 export function Footer() {
   return (
     <footer className="bg-night text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-3 md:px-6">
-        <div>
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 md:px-6">
+        <div className="lg:col-span-1">
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
-            Premium studio for product, growth, AI operations, and talent.
+            {company.legalName} — product, growth, AI operations, and talent.
           </p>
         </div>
+
+        <div>
+          <p className="kicker text-white/35">Explore</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+            <li>
+              <Link to="/" className="hover:text-white">
+                Home
+              </Link>
+            </li>
+            <li>
+              <a href="/#services" className="hover:text-white">
+                Services
+              </a>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-white">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-white">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <a href="/contact#location" className="hover:text-white">
+                Location
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <div>
           <p className="kicker text-white/35">Services</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/60">
@@ -24,31 +57,38 @@ export function Footer() {
             ))}
           </ul>
         </div>
+
         <div>
-          <p className="kicker text-white/35">Company</p>
-          <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+          <p className="kicker text-white/35">Contact</p>
+          <ul className="mt-4 space-y-3 text-sm text-white/60">
             <li>
-              <Link to="/about" className="hover:text-white">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-white">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <a href="mailto:hello@techtoil.com" className="hover:text-white">
-                hello@techtoil.com
+              <a href={`mailto:${company.email}`} className="hover:text-white">
+                {company.email}
               </a>
+            </li>
+            {company.phones.map((p) => (
+              <li key={p.href}>
+                <a href={p.href} className="hover:text-white">
+                  {p.display}
+                </a>
+              </li>
+            ))}
+            <li className="leading-relaxed text-white/50">
+              {company.registeredOffice.lines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-4 md:px-6">
-        <div className="mx-auto flex max-w-6xl justify-between text-xs text-white/35">
-          <span>© {new Date().getFullYear()} Techtoil</span>
-          <span>Vision → Execution</span>
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 text-xs text-white/35 sm:flex-row sm:justify-between">
+          <span>
+            © {new Date().getFullYear()} {company.legalName}
+          </span>
+          <span>CIN {company.cin}</span>
         </div>
       </div>
     </footer>

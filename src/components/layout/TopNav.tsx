@@ -4,50 +4,33 @@ import { Logo } from '../brand/Logo'
 import { services } from '../../data/services'
 
 export function TopNav() {
-  const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
-  const onHome = pathname === '/'
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 16)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    setOpen(false)
   }, [pathname])
 
-  // Always readable: frosted bar on home (even over hero) + solid elsewhere
-  const frosted = onHome || solid || open || !onHome
-  const elevated = solid || open || !onHome
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        elevated
-          ? 'border-b border-line bg-quartz/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
-          : frosted
-            ? 'border-b border-line/60 bg-quartz/80 backdrop-blur-xl'
-            : 'bg-transparent'
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-quartz/95 shadow-sm shadow-ink/5 backdrop-blur-xl">
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
         <nav className="hidden items-center md:flex">
           <Link
             to="/"
-            className="px-3 py-2 text-sm font-semibold text-ink/80 hover:text-ink"
+            className="px-3 py-2 text-sm font-semibold text-ink hover:text-teal"
           >
             Home
           </Link>
           <a
             href="/#services"
-            className="px-3 py-2 text-sm font-semibold text-ink/80 hover:text-ink"
+            className="px-3 py-2 text-sm font-semibold text-ink hover:text-teal"
           >
             Services
           </a>
           <Link
             to="/about"
-            className="px-3 py-2 text-sm font-semibold text-ink/80 hover:text-ink"
+            className="px-3 py-2 text-sm font-semibold text-ink hover:text-teal"
           >
             About
           </Link>

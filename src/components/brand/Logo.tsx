@@ -8,62 +8,40 @@ type Props = {
   className?: string
 }
 
-/** Atelier seal — octagon plate, jade T, brass node */
 function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
   const uid = useId().replace(/:/g, '')
-  const plate = tone === 'light' ? '#ffffff' : '#07110f'
-  const edge = tone === 'light' ? 'rgba(7,17,15,0.12)' : 'rgba(255,255,255,0.14)'
+  const plate = tone === 'light' ? '#ffffff' : '#0f1419'
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 68 68"
-      fill="none"
-      aria-hidden
-      className="shrink-0"
-    >
+    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden className="shrink-0">
       <defs>
-        <linearGradient id={`${uid}-j`} x1="14" y1="12" x2="54" y2="56" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#1ec9ab" />
-          <stop offset="0.55" stopColor="#0b6b5c" />
-          <stop offset="1" stopColor="#085246" />
+        <linearGradient id={`${uid}-g`} x1="12" y1="10" x2="52" y2="54" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#2dd4bf" />
+          <stop offset="1" stopColor="#0d9488" />
         </linearGradient>
       </defs>
-      {/* Soft octagon-like rounded plate */}
-      <rect width="68" height="68" rx="18" fill={plate} />
-      <rect x="3" y="3" width="62" height="62" rx="15" stroke={edge} fill="none" />
-      <path
-        d="M16 46c8 6 28 6 36-8"
-        stroke="#b08d57"
-        strokeWidth="2"
-        strokeLinecap="round"
-        fill="none"
-        opacity="0.7"
-      />
-      <path d="M20 22h28v8H41v18h-14V30H20V22Z" fill={`url(#${uid}-j)`} />
-      <circle cx="50" cy="44" r="4.5" fill="#b08d57" />
-      <circle cx="50" cy="44" r="2" fill={plate} />
+      <rect width="64" height="64" rx="14" fill={plate} />
+      <rect x="14" y="14" width="36" height="36" rx="4" stroke={`url(#${uid}-g)`} strokeWidth="3" fill="none" />
+      <path d="M24 24h16v6H34v16h-8V30h-2V24Z" fill={`url(#${uid}-g)`} />
     </svg>
   )
 }
 
 export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: Props) {
-  const mark = size === 'hero' ? 58 : size === 'lg' ? 42 : 32
+  const mark = size === 'hero' ? 52 : size === 'lg' ? 40 : 30
   const text =
     size === 'hero'
-      ? 'text-[clamp(2.4rem,6.5vw,4rem)]'
+      ? 'text-[clamp(2.2rem,6vw,3.6rem)]'
       : size === 'lg'
-        ? 'text-[1.6rem]'
-        : 'text-[1.08rem]'
-  const gap = size === 'hero' ? 'gap-3.5' : 'gap-2.5'
+        ? 'text-[1.5rem]'
+        : 'text-[1.05rem]'
   const ink = tone === 'light' ? 'text-white' : 'text-ink'
 
   const node = (
-    <span className={`inline-flex items-center ${gap} ${className}`}>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <Mark size={mark} tone={tone} />
-      <span className={`font-display font-extrabold leading-none tracking-[-0.055em] ${ink} ${text}`}>
-        Tech<span className="text-jade">toil</span>
+      <span className={`font-display font-bold leading-none tracking-[-0.05em] ${ink} ${text}`}>
+        Tech<span className="text-mint">toil</span>
       </span>
     </span>
   )
@@ -73,7 +51,7 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
     <Link
       to={to ?? '/'}
       aria-label="Techtoil"
-      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-jade/40"
+      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-mint/40"
     >
       {node}
     </Link>

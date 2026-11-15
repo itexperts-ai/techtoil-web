@@ -1,24 +1,23 @@
 @import 'tailwindcss';
 
 /*
-  Jade Atelier — premium light studio identity
-  Architectural whitespace · jewel jade · expressive type
+  Graphite Mint — new premium light system
+  Solid split hero · sharp Swiss rhythm · stylish type
 */
 @theme {
-  --color-bg: #eef2f1;
-  --color-mist: #f5f8f7;
+  --color-bg: #e9eef2;
+  --color-paper: #f5f7fa;
   --color-surface: #ffffff;
-  --color-ink: #07110f;
-  --color-mute: #5a6b66;
-  --color-faint: #8a9a94;
-  --color-line: rgba(7, 17, 15, 0.1);
-  --color-jade: #0b6b5c;
-  --color-jade-bright: #12a38a;
-  --color-jade-deep: #085246;
-  --color-obsidian: #0a1210;
-  --color-brass: #b08d57;
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-sans: 'Figtree', sans-serif;
+  --color-ink: #0f1419;
+  --color-mute: #5c6773;
+  --color-faint: #8b96a3;
+  --color-line: rgba(15, 20, 25, 0.1);
+  --color-mint: #0d9488;
+  --color-mint-bright: #14b8a6;
+  --color-mint-deep: #0f766e;
+  --color-graphite: #151b22;
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Outfit', sans-serif;
 }
 
 @layer base {
@@ -29,16 +28,12 @@
   body {
     margin: 0;
     min-width: 320px;
-    background:
-      radial-gradient(ellipse 90% 50% at 0% -5%, rgba(18, 163, 138, 0.09), transparent 55%),
-      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(176, 141, 87, 0.06), transparent 50%),
-      var(--color-bg);
+    background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 17px;
+    font-size: 16.5px;
     line-height: 1.65;
-    letter-spacing: -0.018em;
-    font-weight: 450;
+    letter-spacing: -0.02em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -47,7 +42,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-jade-bright) 28%, white);
+    background: color-mix(in oklab, var(--color-mint) 26%, white);
   }
 }
 
@@ -56,70 +51,38 @@
     font-family: var(--font-display);
   }
 
-  .band-obsidian {
+  .band-graphite {
     background:
-      radial-gradient(ellipse 55% 70% at 100% 0%, rgba(18, 163, 138, 0.22), transparent 55%),
-      radial-gradient(ellipse 40% 50% at 0% 100%, rgba(176, 141, 87, 0.1), transparent 45%),
-      var(--color-obsidian);
+      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(20, 184, 166, 0.2), transparent 55%),
+      var(--color-graphite);
   }
 
   .eyebrow {
-    font-family: var(--font-sans);
-    font-size: 0.66rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 6.4vw, 4.75rem);
-    font-weight: 700;
+    font-size: clamp(2.55rem, 6.5vw, 4.6rem);
+    font-weight: 750;
     letter-spacing: -0.05em;
-    line-height: 1.0;
+    line-height: 0.98;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.95rem, 3.6vw, 3rem);
+    font-size: clamp(1.85rem, 3.5vw, 2.85rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.08;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    font-size: clamp(1.05rem, 1.35vw, 1.175rem);
     line-height: 1.7;
-    font-weight: 400;
-  }
-
-  .hero-wash {
-    background:
-      linear-gradient(
-        108deg,
-        rgba(245, 248, 247, 0.98) 0%,
-        rgba(245, 248, 247, 0.92) 30%,
-        rgba(245, 248, 247, 0.5) 50%,
-        rgba(245, 248, 247, 0.1) 70%,
-        transparent 100%
-      );
-  }
-
-  @media (max-width: 767px) {
-    .hero-wash {
-      background:
-        linear-gradient(
-          180deg,
-          rgba(245, 248, 247, 0.97) 0%,
-          rgba(245, 248, 247, 0.9) 40%,
-          rgba(245, 248, 247, 0.4) 68%,
-          transparent 100%
-        );
-    }
-  }
-
-  .rule-brass {
-    background: linear-gradient(90deg, var(--color-brass), transparent);
   }
 }
 

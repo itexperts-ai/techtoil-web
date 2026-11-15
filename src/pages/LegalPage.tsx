@@ -31,7 +31,7 @@ export function NotFoundPage() {
   return (
     <div className="px-4 py-32 text-center">
       <h1 className="title">Page not found</h1>
-      <a href="/" className="mt-6 inline-block font-semibold text-jade">
+      <a href="/" className="mt-6 inline-block font-semibold text-mint">
         Back home
       </a>
     </div>

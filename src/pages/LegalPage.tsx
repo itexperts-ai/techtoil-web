@@ -18,10 +18,10 @@ export function TermsPage() {
 
 function Legal({ title, body }: { title: string; body: string }) {
   return (
-    <div className="bg-ice px-4 pb-20 pt-32 md:px-6">
+    <div className="bg-bg px-4 pb-20 pt-32 md:px-6">
       <div className="mx-auto max-w-3xl">
         <h1 className="font-display text-3xl font-extrabold">{title}</h1>
-        <p className="mt-4 leading-relaxed text-mute">{body}</p>
+        <p className="mt-4 leading-relaxed text-soft">{body}</p>
       </div>
     </div>
   )

@@ -28,7 +28,7 @@ export function ConsultationForm() {
     return (
       <div className="rounded-3xl border border-blue/25 bg-white p-6 text-sm">
         <p className="font-bold">Message ready.</p>
-        <p className="mt-2 text-mute">
+        <p className="mt-2 text-soft">
           Email{' '}
           <a href="mailto:hello@techtoil.com" className="font-semibold text-blue">
             hello@techtoil.com
@@ -40,16 +40,16 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 rounded-3xl border border-line bg-white p-6 md:p-8">
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
+    <form onSubmit={onSubmit} className="space-y-4 rounded-3xl border border-line bg-white p-6 shadow-sm shadow-ink/5 md:p-8">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Name
         <input name="name" required className="field" placeholder="Your name" />
       </label>
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Email
         <input name="email" type="email" required className="field" placeholder="you@company.com" />
       </label>
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Interest
         <select name="interest" className="field" defaultValue={services[0].id}>
           <option value="aim">Our AIM / general</option>
@@ -61,7 +61,7 @@ export function ConsultationForm() {
           ))}
         </select>
       </label>
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Brief
         <textarea name="message" required className="field min-h-28" placeholder="What are you building?" />
       </label>

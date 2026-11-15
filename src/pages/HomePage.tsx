@@ -12,7 +12,7 @@ import {
 import { aiHighlights, services } from '../data/services'
 
 const fade = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' },
   transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
@@ -28,8 +28,8 @@ const filterMap: Record<Exclude<Filter, 'all'>, string[]> = {
 }
 
 const filters: { id: Filter; label: string }[] = [
-  { id: 'all', label: 'All 7' },
-  { id: 'technical', label: 'Technical' },
+  { id: 'all', label: 'All solutions' },
+  { id: 'technical', label: 'Product & tech' },
   { id: 'growth', label: 'Growth' },
   { id: 'management', label: 'Management' },
   { id: 'intelligence', label: 'AIM' },
@@ -38,35 +38,31 @@ const filters: { id: Filter; label: string }[] = [
 const pillars = [
   {
     icon: Code2,
-    t: 'Technical solutions',
-    d: 'Design, engineering, APIs, cloud, QA — products that ship and scale.',
-    ids: '01–02',
+    t: 'Product & engineering',
+    d: 'Design systems, web/mobile apps, APIs, cloud, QA — build what ships.',
   },
   {
     icon: LineChart,
-    t: 'Growth solutions',
-    d: 'SEO, social, and lead systems that turn presence into pipeline.',
-    ids: '03',
+    t: 'Growth systems',
+    d: 'SEO, social, and lead generation that create measurable demand.',
   },
   {
     icon: Briefcase,
-    t: 'Management & advisory',
+    t: 'Management & talent',
     d: 'Consultancy, funding readiness, and On Role / Off Role hiring.',
-    ids: '04–05 · 07',
   },
   {
     icon: Cpu,
-    t: 'AIM intelligence',
-    d: 'AI agents and workflows that automate ops with human control.',
-    ids: '06',
+    t: 'AIM operations',
+    d: 'AI agents and workflows that cut manual work with clear control.',
   },
 ]
 
 const process = [
-  { n: '01', t: 'Assess', d: 'Identify which of the seven solutions unlock your next outcome.' },
-  { n: '02', t: 'Plan', d: 'Architect technical, growth, and management workstreams together.' },
-  { n: '03', t: 'Deliver', d: 'Ship in sprints with shared context across every capability.' },
-  { n: '04', t: 'Manage', d: 'Operate, improve, and hand over systems your team can run.' },
+  { n: '01', t: 'Discover', d: 'Map business goals to the right mix of tech, growth, and management.' },
+  { n: '02', t: 'Architect', d: 'Define scope, stack, roadmap, and ownership across workstreams.' },
+  { n: '03', t: 'Build', d: 'Deliver in sprints — product, campaigns, AI, and talent in sync.' },
+  { n: '04', t: 'Operate', d: 'Handover, manage, and improve systems your team can run.' },
 ]
 
 export function HomePage() {
@@ -85,79 +81,74 @@ export function HomePage() {
 
   return (
     <div>
-      {/* Hero — research: outcome + audience + CTA + workspace photo */}
-      <section ref={heroRef} className="relative min-h-[92svh] overflow-hidden md:min-h-[100svh]">
+      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: imgY }}>
           <img
             src="/media/hero.jpg"
-            alt="Techtoil solutions workspace"
-            className="h-[115%] w-full object-cover object-[55%_center]"
+            alt="Techtoil IT solutions workspace"
+            className="h-[115%] w-full object-cover object-[58%_center]"
           />
         </motion.div>
         <div className="hero-wash absolute inset-0" />
 
-        <div className="relative z-10 mx-auto flex min-h-[92svh] max-w-6xl items-center px-4 pb-14 pt-28 md:min-h-[100svh] md:px-6 md:pb-16">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-4 pb-16 pt-28 md:px-6">
           <motion.div
-            className="max-w-[36rem]"
-            initial={{ opacity: 0, y: 28 }}
+            className="max-w-xl"
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.75 }}
           >
-            <p className="eyebrow text-accent">IT · Growth · Management · AIM</p>
+            <p className="eyebrow text-accent">IT Solutions · Product · Management</p>
             <h1 className="display mt-5 text-ink">
-              Seven solutions. One partner for tech, growth, and{' '}
-              <span className="italic font-medium">management.</span>
+              Your technology and management partner for what comes next.
             </h1>
-            <p className="lede mt-5 max-w-lg text-ink/70">
-              From product design and engineering to marketing, consultancy, funding support,
-              AI operations, and hiring — Techtoil delivers connected services businesses
-              actually run on.
+            <p className="lede mt-5 max-w-md text-mute">
+              Techtoil Infosol delivers product design & development, growth marketing,
+              consultancy, funding support, AI operations, and hiring — seven solutions under
+              one accountable team.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="#catalog"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
               >
-                Browse solutions <ArrowUpRight className="h-4 w-4" />
+                Explore solutions <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center rounded-full border border-ink/12 bg-paper/90 px-6 py-3.5 text-sm font-semibold text-ink backdrop-blur-sm hover:border-ink/25"
+                className="inline-flex items-center rounded-lg border border-ink/15 bg-paper/95 px-5 py-3.5 text-sm font-semibold text-ink hover:border-accent/40"
               >
-                Book a consultation
+                Book consultation
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 4 pillars — Cloudsware-style capability row */}
-      <section className="border-b border-line bg-paper px-4 py-14 md:px-6 md:py-16">
-        <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="border-y border-line bg-paper px-4 py-14 md:px-6 md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p, i) => (
             <motion.div key={p.t} {...fade} transition={{ ...fade.transition, delay: i * 0.05 }}>
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent">
                 <p.icon className="h-5 w-5" />
               </span>
-              <p className="mt-4 text-[0.65rem] font-semibold tracking-[0.14em] text-faint uppercase">
-                {p.ids}
-              </p>
-              <h3 className="mt-1 font-display text-lg font-medium tracking-[-0.02em]">{p.t}</h3>
+              <h3 className="mt-4 font-display text-base font-semibold tracking-[-0.02em]">
+                {p.t}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-mute">{p.d}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Visual catalog — research: image cards + filters beat text lists */}
       <section id="catalog" className="scroll-mt-24 bg-bg px-4 py-16 md:px-6 md:py-20">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fade} className="max-w-2xl">
             <p className="eyebrow text-accent">Solutions catalog</p>
-            <h2 className="title mt-3">Find the service that matches your problem.</h2>
+            <h2 className="title mt-3">Seven capabilities. Built for IT buyers.</h2>
             <p className="mt-4 text-mute">
-              Filter by technical, growth, management, or AIM — each card opens full scope
-              and outcomes below.
+              Filter by product & tech, growth, management, or AIM. Each card opens full
+              scope, approach, and outcomes.
             </p>
           </motion.div>
 
@@ -167,10 +158,10 @@ export function HomePage() {
                 key={f.id}
                 type="button"
                 onClick={() => setFilter(f.id)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
                   filter === f.id
                     ? 'bg-accent text-white'
-                    : 'bg-surface text-ink ring-1 ring-line hover:ring-accent/40'
+                    : 'bg-paper text-ink ring-1 ring-line hover:ring-accent/40'
                 }`}
               >
                 {f.label}
@@ -183,32 +174,29 @@ export function HomePage() {
               <motion.a
                 key={s.id}
                 href={`#${s.id}`}
-                className="group overflow-hidden rounded-2xl bg-surface shadow-[0_20px_50px_-32px_rgba(23,26,24,0.4)] ring-1 ring-line transition hover:ring-accent/40"
+                className="group overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line transition hover:shadow-md hover:ring-accent/35"
                 {...fade}
                 transition={{ ...fade.transition, delay: i * 0.04 }}
               >
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-bg">
                   <img
                     src={s.image}
                     alt=""
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-paper/95 px-2.5 py-1 text-[0.65rem] font-bold tracking-wide text-accent backdrop-blur-sm">
+                  <span className="absolute left-3 top-3 rounded bg-paper/95 px-2 py-0.5 text-[0.65rem] font-bold text-accent">
                     {s.num}
                   </span>
                 </div>
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-display text-xl font-medium tracking-[-0.02em] group-hover:text-accent">
+                    <h3 className="font-display text-lg font-semibold tracking-[-0.02em] group-hover:text-accent">
                       {s.title}
                     </h3>
                     <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-faint group-hover:text-accent" />
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-mute">{s.tagline}</p>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-accent">
-                    View scope →
-                  </p>
+                  <p className="mt-2 text-sm text-mute">{s.tagline}</p>
                 </div>
               </motion.a>
             ))}
@@ -216,15 +204,14 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* AIM band */}
       <section className="band-dark px-4 py-20 text-white md:px-6 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <motion.div {...fade}>
-            <p className="eyebrow text-accent-bright">AIM · Intelligence solution</p>
-            <h2 className="title mt-4">AI that solves ops problems — not demos.</h2>
+            <p className="eyebrow text-accent-bright">AIM · AI operations</p>
+            <h2 className="title mt-4">Intelligence as an IT solution.</h2>
             <p className="lede mt-4 text-white/60">
-              Business problem first: fewer manual hours, faster handoffs, clearer reporting.
-              Then the agents and workflows that deliver it.
+              Automate support, sales ops, and reporting with governed agents — judgment
+              stays with your people.
             </p>
             <ul className="mt-8 space-y-5">
               {aiHighlights.map((h) => (
@@ -237,29 +224,22 @@ export function HomePage() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#ai-automation"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent-bright hover:text-white"
-            >
-              Full AI operations scope <ArrowUpRight className="h-4 w-4" />
-            </a>
           </motion.div>
           <motion.div {...fade}>
             <img
               src="/media/svc-aiops.jpg"
               alt="AI operations"
-              className="aspect-[4/3] w-full rounded-2xl object-cover"
+              className="aspect-[4/3] w-full rounded-xl object-cover"
             />
           </motion.div>
         </div>
       </section>
 
-      {/* Depth pages — outcome → what we do → scope */}
       <div id="services" className="scroll-mt-24">
         <div className="bg-paper px-4 py-14 md:px-6 md:py-16">
           <div className="mx-auto max-w-6xl">
             <p className="eyebrow text-accent">Service depth</p>
-            <h2 className="title mt-3">Problem, approach, and outcome — for each solution.</h2>
+            <h2 className="title mt-3">Scope, approach, and outcomes.</h2>
           </div>
         </div>
 
@@ -281,12 +261,9 @@ export function HomePage() {
                 <motion.div {...fade}>
                   <p className="eyebrow text-accent">{s.num} · Solution</p>
                   <h2 className="title mt-3">{s.title}</h2>
-                  <p className="mt-3 font-display text-xl italic text-ink/80">{s.tagline}</p>
+                  <p className="mt-3 text-lg font-semibold text-ink/85">{s.tagline}</p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
-                  <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-faint">
-                    What’s included
-                  </p>
-                  <ul className="mt-3 space-y-3">
+                  <ul className="mt-7 space-y-3">
                     {s.details.map((d) => (
                       <li key={d} className="flex items-start gap-3 text-sm">
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.5} />
@@ -296,16 +273,16 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-9 inline-flex items-center gap-2 rounded-full bg-dark px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
+                    className="mt-8 inline-flex items-center gap-2 rounded-lg bg-dark px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
                   >
-                    Request {s.title} consult <ArrowUpRight className="h-4 w-4" />
+                    Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
                 <motion.div {...fade}>
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_30px_60px_-34px_rgba(23,26,24,0.4)]"
+                    className="aspect-[4/3] w-full rounded-xl object-cover shadow-lg shadow-ink/10"
                     loading="lazy"
                   />
                 </motion.div>
@@ -315,23 +292,22 @@ export function HomePage() {
         })}
       </div>
 
-      {/* Process */}
       <section className="bg-paper px-4 py-20 md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fade} className="max-w-2xl">
-            <p className="eyebrow text-accent">How engagement works</p>
-            <h2 className="title mt-3">Assess → Plan → Deliver → Manage.</h2>
+            <p className="eyebrow text-accent">Engagement model</p>
+            <h2 className="title mt-3">Discover → Architect → Build → Operate.</h2>
           </motion.div>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((step, i) => (
               <motion.div
                 key={step.n}
-                className="rounded-2xl bg-bg p-6 ring-1 ring-line"
+                className="rounded-xl border border-line bg-bg p-6"
                 {...fade}
                 transition={{ ...fade.transition, delay: i * 0.05 }}
               >
-                <p className="font-display text-2xl font-medium text-accent">{step.n}</p>
-                <h3 className="mt-3 font-display text-xl font-medium">{step.t}</h3>
+                <p className="font-display text-sm font-bold text-accent">{step.n}</p>
+                <h3 className="mt-3 font-display text-lg font-semibold">{step.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-mute">{step.d}</p>
               </motion.div>
             ))}
@@ -341,22 +317,22 @@ export function HomePage() {
 
       <section className="px-4 py-20 md:px-6 md:py-24">
         <motion.div
-          className="band-dark mx-auto max-w-6xl rounded-[1.75rem] px-8 py-14 text-white md:px-12 md:py-16"
+          className="band-dark mx-auto max-w-6xl rounded-2xl px-8 py-14 text-white md:px-12 md:py-16"
           {...fade}
         >
-          <p className="eyebrow text-accent-bright">Consultation</p>
+          <p className="eyebrow text-accent-bright">Next step</p>
           <h2 className="title mt-4 max-w-xl">
-            Tell us the business problem — we’ll map the right solutions.
+            Ready to scope product, growth, or management work?
           </h2>
           <p className="lede mt-4 max-w-lg text-white/55">
-            Technical, growth, management, AIM, or hiring. One plan across the capabilities
-            you need.
+            Tell us your stage. We’ll map the right IT and management solutions into one
+            plan.
           </p>
           <Link
             to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-bright px-6 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-dark"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-accent-bright px-5 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-dark"
           >
-            Book your free assessment <ArrowUpRight className="h-4 w-4" />
+            Book a free assessment <ArrowUpRight className="h-4 w-4" />
           </Link>
         </motion.div>
       </section>

@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowUpRight, Check, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Check } from 'lucide-react'
 import { aiHighlights, services } from '../data/services'
+import { company } from '../data/company'
 
 const fade = {
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' },
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
 }
 
-const steps = [
+const method = [
   { n: '01', t: 'Discover', d: 'Clarify stage, constraints, and the outcome that matters.' },
-  { n: '02', t: 'Map', d: 'Pick the craft mix — design, build, growth, funding, AI, hiring.' },
-  { n: '03', t: 'Build', d: 'Ship in focused sprints with shared context across teams.' },
-  { n: '04', t: 'Operate', d: 'Hand over systems people and AI can run with confidence.' },
+  { n: '02', t: 'Map', d: 'Choose the craft mix across design, build, growth, funding, AI, hiring.' },
+  { n: '03', t: 'Build', d: 'Ship in focused sprints with shared context across every workstream.' },
+  { n: '04', t: 'Operate', d: 'Hand over systems people and AI can run without firefighting.' },
 ]
 
 export function HomePage() {
@@ -24,148 +25,208 @@ export function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.06, 1])
 
   return (
     <div>
-      {/* Hero — cinematic wash */}
+      {/* Hero */}
       <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ y: imgY }}>
+        <motion.div className="absolute inset-0" style={{ scale: imgScale }}>
           <img
             src="/media/hero.jpg"
             alt=""
-            className="h-[115%] w-full object-cover object-[65%_center]"
+            className="h-full w-full object-cover object-[60%_center] saturate-[0.9]"
           />
         </motion.div>
         <div className="hero-wash absolute inset-0" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-4 pb-16 pt-28 md:px-6">
-          <motion.div
-            className="max-w-xl"
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.p
-              className="inline-flex items-center gap-2 text-accent"
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
+          <div className="max-w-xl">
+            <motion.span
+              className="citron-label"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <Sparkles className="h-4 w-4" />
-              <span className="eyebrow">Product · Growth · Intelligence</span>
+              Delhi · Noida
+            </motion.span>
+            <motion.h1
+              className="display mt-6 text-ink"
+              initial={{ opacity: 0, y: 36, clipPath: 'inset(100% 0 0 0)' }}
+              animate={{ opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)' }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Build what{' '}
+              <motion.span
+                className="display-italic"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.35, duration: 0.5 }}
+              >
+                lasts.
+              </motion.span>
+            </motion.h1>
+            <motion.p
+              className="lede mt-5 max-w-md text-mute"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.45 }}
+            >
+              Design, ship, grow, fund, automate, and hire — one connected studio path.
             </motion.p>
-            <h1 className="display mt-5 text-ink">
-              Vision to a business that runs.
-            </h1>
-            <p className="lede mt-5 max-w-md text-mute">
-              Design, build, grow, fund, automate, and hire — connected as one stylish path,
-              with AI in the loop.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a href="#services" className="btn-primary">
-                Explore services <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <Link to="/contact" className="btn-ghost">
-                Book a call
+            <motion.div
+              className="mt-9"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55 }}
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 border-b border-ink pb-1 text-sm font-semibold tracking-wide hover:text-mute"
+              >
+                Start a brief <ArrowUpRight className="h-4 w-4" />
               </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Collection lookbook */}
+      <section id="collection" className="scroll-mt-24 border-t border-line bg-paper px-4 py-16 md:px-6 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <motion.div {...fade} className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow text-mute">Collection</p>
+              <h2 className="title mt-3">Seven practices.</h2>
             </div>
+            <p className="max-w-xs text-sm text-mute">Scroll the lookbook — then open any craft below.</p>
+          </motion.div>
+
+          <motion.div
+            className="lookbook-scroll mt-10"
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {services.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="group relative h-[22rem] w-[15rem] shrink-0 scroll-snap-align-start overflow-hidden sm:h-[26rem] sm:w-[18rem]"
+                style={{ scrollSnapAlign: 'start' }}
+              >
+                <img
+                  src={s.image}
+                  alt=""
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-accent-bright">
+                    {s.num}
+                  </p>
+                  <p className="mt-2 font-display text-2xl font-semibold leading-none tracking-[-0.03em] text-white sm:text-3xl">
+                    {s.title.split(' ')[0]}
+                  </p>
+                </div>
+              </a>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Why — soft band, stylish chips not ledger */}
-      <section className="band-soft relative overflow-hidden px-4 py-20 md:px-6 md:py-28">
-        <div className="glow-dot -left-20 top-10 h-56 w-56 bg-accent/15" />
-        <div className="glow-dot -right-16 bottom-0 h-64 w-64 bg-indigo-400/10" />
-        <div className="relative mx-auto max-w-6xl">
-          <motion.div {...fade} className="max-w-2xl">
-            <p className="eyebrow text-accent">Why Techtoil</p>
-            <h2 className="title mt-4">One studio. Every stage of execution.</h2>
-            <p className="mt-4 text-mute">
+      {/* Featured / studio */}
+      <section className="border-t border-line bg-bg">
+        <div className="mx-auto grid max-w-6xl lg:grid-cols-12">
+          <motion.div {...fade} className="relative min-h-[22rem] lg:col-span-7 lg:min-h-[32rem]">
+            <img
+              src="/media/svc-design.jpg"
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            {...fade}
+            className="flex flex-col justify-center px-4 py-14 md:px-10 lg:col-span-5 lg:py-20"
+          >
+            <span className="font-display text-5xl font-semibold text-accent-bright">01</span>
+            <h2 className="title mt-4">One studio for every stage.</h2>
+            <p className="mt-5 text-mute">
               Stop stitching vendors. Keep product, growth, capital readiness, intelligence,
-              and talent on a shared plan.
+              and talent on a shared plan — so craft and AI move together.
+            </p>
+            <Link
+              to="/about"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold border-b border-ink pb-1 w-fit"
+            >
+              About the studio <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Method staggered */}
+      <section className="border-t border-line bg-paper px-4 py-20 md:px-6 md:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
+          <motion.div {...fade}>
+            <p className="eyebrow text-mute">Method</p>
+            <h2 className="title mt-4">From brief to running systems.</h2>
+            <div className="mt-10 space-y-8">
+              {method.map((step, i) => (
+                <div
+                  key={step.n}
+                  className="border-l-2 border-accent-bright pl-5"
+                  style={{ marginLeft: `${i * 12}px` }}
+                >
+                  <p className="text-xs font-semibold tracking-[0.16em] text-mute">{step.n}</p>
+                  <h3 className="mt-2 font-display text-xl font-semibold tracking-[-0.02em]">
+                    {step.t}
+                  </h3>
+                  <p className="mt-2 text-sm text-mute">{step.d}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div {...fade} className="relative min-h-[20rem] overflow-hidden lg:min-h-full">
+            <img
+              src="/media/svc-aiops.jpg"
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Intelligence */}
+      <section className="band-dark px-4 py-20 text-white md:px-6 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <motion.div {...fade} className="max-w-2xl">
+            <span className="citron-label">Intelligence</span>
+            <h2 className="title mt-6">AI built into operations.</h2>
+            <p className="lede mt-4 text-white/55">
+              Agents, workflows, and automation that remove friction — without giving up
+              control.
             </p>
           </motion.div>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                t: 'One partner',
-                d: 'Design, engineering, marketing, funding, AI ops, and hiring stay connected.',
-              },
-              {
-                t: 'Outcome first',
-                d: 'We start from where you want to go — then choose the craft that moves it.',
-              },
-              {
-                t: 'AI with control',
-                d: 'Automate repetitive work while people keep judgment and ownership.',
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.t}
-                className="rounded-3xl bg-surface/80 p-7 shadow-[0_20px_50px_-28px_rgba(16,19,26,0.35)] ring-1 ring-ink/5 backdrop-blur-sm md:p-8"
-                {...fade}
-                transition={{ ...fade.transition, delay: i * 0.07 }}
-              >
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-2xl bg-accent/10 font-display text-sm font-bold text-accent">
-                  0{i + 1}
-                </div>
-                <h3 className="font-display text-xl font-bold tracking-[-0.03em]">{item.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-mute">{item.d}</p>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {aiHighlights.map((h, i) => (
+              <motion.div key={h.title} {...fade} transition={{ ...fade.transition, delay: i * 0.06 }}>
+                <p className="font-display text-2xl font-semibold tracking-[-0.03em]">{h.title}</p>
+                <p className="mt-3 text-sm text-white/50">{h.body}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* AI */}
-      <section className="band-dark relative overflow-hidden px-4 py-20 text-white md:px-6 md:py-28">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div {...fade}>
-            <p className="eyebrow text-accent-bright">Intelligence</p>
-            <h2 className="title mt-4">AI woven into operations.</h2>
-            <p className="lede mt-4 text-white/60">
-              Agents, workflows, and automation that remove friction — without giving up
-              control.
-            </p>
-            <ul className="mt-9 space-y-5">
-              {aiHighlights.map((h) => (
-                <li key={h.title} className="flex gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/20">
-                    <Check className="h-3.5 w-3.5 text-accent-bright" strokeWidth={2.5} />
-                  </span>
-                  <div>
-                    <p className="font-semibold tracking-[-0.02em]">{h.title}</p>
-                    <p className="mt-1 text-sm text-white/50">{h.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div {...fade} className="relative">
-            <div className="absolute -inset-3 rounded-[2rem] bg-accent/20 blur-2xl" />
-            <img
-              src="/media/svc-aiops.jpg"
-              alt="AI operations"
-              className="relative aspect-[4/3] w-full rounded-[1.75rem] object-cover ring-1 ring-white/10"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services */}
+      {/* Services depth */}
       <div id="services" className="scroll-mt-24">
-        <div className="bg-paper px-4 py-16 md:px-6 md:py-20">
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="eyebrow text-accent">Services</p>
-              <h2 className="title mt-3">Seven crafts. Full depth.</h2>
-            </div>
-            <p className="max-w-sm text-sm text-mute md:text-right">
-              Product-level detail for every capability — from first concept to hired teams.
-            </p>
+        <div className="border-t border-line bg-paper px-4 py-14 md:px-6 md:py-16">
+          <div className="mx-auto max-w-6xl">
+            <p className="eyebrow text-mute">Depth</p>
+            <h2 className="title mt-3">Every craft, in full.</h2>
           </div>
         </div>
 
@@ -175,7 +236,7 @@ export function HomePage() {
             <section
               key={s.id}
               id={s.id}
-              className={`scroll-mt-24 px-4 py-16 md:px-6 md:py-20 ${
+              className={`scroll-mt-24 border-t border-line px-4 py-16 md:px-6 md:py-20 ${
                 reverse ? 'bg-bg' : 'bg-paper'
               }`}
             >
@@ -185,23 +246,24 @@ export function HomePage() {
                 }`}
               >
                 <motion.div {...fade}>
-                  <p className="eyebrow text-accent">{s.num} · Service</p>
-                  <h2 className="title mt-3">{s.title}</h2>
-                  <p className="mt-3 text-lg font-semibold tracking-[-0.02em] text-ink/85">
-                    {s.tagline}
+                  <p className="eyebrow text-mute">
+                    {s.num} · {s.title}
                   </p>
+                  <h2 className="title mt-3">{s.title}</h2>
+                  <p className="mt-3 font-display text-xl italic text-ink/80">{s.tagline}</p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
                   <ul className="mt-7 space-y-3">
                     {s.details.map((d) => (
-                      <li key={d} className="flex items-start gap-3 text-sm font-medium">
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                          <Check className="h-3 w-3 text-accent" strokeWidth={2.5} />
-                        </span>
+                      <li key={d} className="flex items-start gap-3 text-sm">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink" strokeWidth={2} />
                         {d}
                       </li>
                     ))}
                   </ul>
-                  <Link to="/contact" className="btn-primary mt-8">
+                  <Link
+                    to="/contact"
+                    className="mt-8 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm font-semibold"
+                  >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
@@ -209,7 +271,7 @@ export function HomePage() {
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-[0_30px_60px_-30px_rgba(16,19,26,0.4)]"
+                    className="aspect-[3/4] w-full object-cover md:aspect-[4/3]"
                     loading="lazy"
                   />
                 </motion.div>
@@ -219,54 +281,37 @@ export function HomePage() {
         })}
       </div>
 
-      {/* Process */}
-      <section className="relative overflow-hidden bg-paper px-4 py-20 md:px-6 md:py-28">
-        <div className="glow-dot right-0 top-0 h-72 w-72 bg-accent/10" />
-        <div className="relative mx-auto max-w-6xl">
-          <motion.div {...fade} className="max-w-2xl">
-            <p className="eyebrow text-accent">Process</p>
-            <h2 className="title mt-4">A clear path from brief to running systems.</h2>
+      {/* Visit CTA */}
+      <section className="border-t border-line bg-paper">
+        <div className="mx-auto grid max-w-6xl lg:grid-cols-2">
+          <motion.div {...fade} className="flex flex-col justify-center px-4 py-16 md:px-10 md:py-24">
+            <p className="eyebrow text-mute">Visit</p>
+            <h2 className="title mt-4">Send a brief.</h2>
+            <p className="mt-4 max-w-md text-mute">
+              Tell us your stage. We’ll map the craft into one practical plan.
+            </p>
+            <p className="mt-8 text-sm leading-relaxed text-mute">
+              {company.registeredOffice.lines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
+            <Link
+              to="/contact"
+              className="mt-10 inline-flex w-fit items-center gap-2 bg-accent-bright px-5 py-3.5 text-sm font-bold text-ink hover:bg-accent"
+            >
+              Book a call <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </motion.div>
-
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.n}
-                className="rounded-3xl bg-bg/80 p-6 ring-1 ring-ink/5"
-                {...fade}
-                transition={{ ...fade.transition, delay: i * 0.06 }}
-              >
-                <p className="font-display text-3xl font-extrabold tracking-[-0.05em] text-accent/30">
-                  {step.n}
-                </p>
-                <h3 className="mt-3 font-display text-lg font-bold tracking-[-0.02em]">{step.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-mute">{step.d}</p>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div {...fade} className="relative min-h-[22rem] lg:min-h-[28rem]">
+            <img
+              src="/media/svc-consult.jpg"
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </motion.div>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="px-4 py-20 md:px-6 md:py-24">
-        <motion.div
-          className="band-dark relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] px-8 py-14 text-white md:px-12 md:py-16"
-          {...fade}
-        >
-          <div className="glow-dot -right-10 -top-10 h-48 w-48 bg-accent/40" />
-          <p className="eyebrow text-accent-bright">Next step</p>
-          <h2 className="title mt-4 max-w-xl">Ready for a clear next move?</h2>
-          <p className="lede mt-4 max-w-lg text-white/55">
-            Tell us your stage. We’ll map design, build, growth, funding, automation, and
-            hiring into one practical plan.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-bright px-5 py-3.5 text-sm font-semibold text-dark hover:bg-white"
-          >
-            Book a call <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </motion.div>
       </section>
     </div>
   )

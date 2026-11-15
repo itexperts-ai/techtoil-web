@@ -12,22 +12,22 @@ export function TopNav() {
   }, [pathname])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line/80 bg-paper/90 shadow-sm shadow-ink/5 backdrop-blur-xl">
-      <div className="mx-auto flex h-[4.35rem] max-w-6xl items-center justify-between px-4 md:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-xl">
+      <div className="mx-auto flex h-[4.4rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
-        <nav className="hidden items-center gap-0.5 md:flex">
-          <Link to="/" className="rounded-full px-3.5 py-2 text-sm font-semibold text-ink hover:text-accent">
+        <nav className="hidden items-center gap-1 md:flex">
+          <Link to="/" className="px-3 py-2 text-sm font-semibold text-ink hover:opacity-60">
             Home
           </Link>
-          <a href="/#services" className="rounded-full px-3.5 py-2 text-sm font-semibold text-ink hover:text-accent">
+          <a href="/#services" className="px-3 py-2 text-sm font-semibold text-ink hover:opacity-60">
             Services
           </a>
-          <Link to="/about" className="rounded-full px-3.5 py-2 text-sm font-semibold text-ink hover:text-accent">
+          <Link to="/about" className="px-3 py-2 text-sm font-semibold text-ink hover:opacity-60">
             About
           </Link>
           <Link
             to="/contact"
-            className="ml-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-deep"
+            className="ml-2 bg-ink px-4 py-2.5 text-sm font-semibold text-paper hover:bg-ink/85"
           >
             Contact
           </Link>
@@ -35,7 +35,7 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className="rounded-full border border-line px-3.5 py-1.5 text-sm font-semibold text-ink md:hidden"
+          className="border border-line px-3 py-1.5 text-sm font-semibold md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
@@ -64,7 +64,7 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center rounded-full bg-accent py-3 text-sm font-semibold text-white"
+            className="mt-3 flex justify-center bg-ink py-3 text-sm font-semibold text-paper"
             onClick={() => setOpen(false)}
           >
             Contact

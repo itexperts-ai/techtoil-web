@@ -1,27 +1,24 @@
 @import 'tailwindcss';
 
 /*
-  Cobalt Relay — AI workflow graph system
-  Cool field · flat cobalt signal · Syne + Figtree + IBM Plex Mono
+  Aperture — calm premium light studio
+  Soft mist · ink · forest accent · Outfit
+  No graphs, meshes, mono tags, or citron chrome
 */
 @theme {
-  --color-bg: #f6f7f9;
-  --color-paper: #ffffff;
+  --color-bg: #eef1f4;
+  --color-paper: #f7f8fa;
   --color-surface: #ffffff;
-  --color-ink: #14171c;
-  --color-mute: #5e6670;
-  --color-faint: #8b929c;
-  --color-line: #d3d9e2;
-  --color-well: #e7ecf3;
-  --color-accent: #1e4dff;
-  --color-accent-bright: #4d72ff;
-  --color-accent-deep: #1436c4;
-  --color-ai: #1e4dff;
-  --color-ai-soft: #eef2ff;
-  --color-dark: #14171c;
-  --font-display: 'Syne', sans-serif;
-  --font-sans: 'Figtree', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --color-ink: #12161c;
+  --color-mute: #5c6570;
+  --color-faint: #8a939e;
+  --color-line: rgba(18, 22, 28, 0.1);
+  --color-accent: #0f6b5c;
+  --color-accent-bright: #12856f;
+  --color-accent-deep: #0a5246;
+  --color-dark: #12161c;
+  --font-display: 'Outfit', sans-serif;
+  --font-sans: 'Outfit', sans-serif;
 }
 
 @layer base {
@@ -37,7 +34,7 @@
     font-family: var(--font-sans);
     font-size: 16.5px;
     line-height: 1.65;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -46,7 +43,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent) 22%, white);
+    background: color-mix(in oklab, var(--color-accent) 24%, white);
   }
 }
 
@@ -55,53 +52,46 @@
     font-family: var(--font-display);
   }
 
-  .font-mono {
-    font-family: var(--font-mono);
-  }
-
   .band-dark {
-    background: var(--color-dark);
-  }
-
-  .band-ai {
-    background: linear-gradient(180deg, #eef2ff 0%, #f6f7f9 55%, #ffffff 100%);
+    background:
+      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(15, 107, 92, 0.22), transparent 55%),
+      var(--color-dark);
   }
 
   .eyebrow {
-    font-family: var(--font-sans);
-    font-size: 0.68rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 650;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.7rem, 6.8vw, 4.9rem);
-    font-weight: 750;
-    letter-spacing: -0.05em;
-    line-height: 0.98;
+    font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-size: clamp(1.85rem, 3.4vw, 2.85rem);
     font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.08;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
     line-height: 1.7;
   }
 
   .hero-wash {
     background: linear-gradient(
       105deg,
-      rgba(246, 247, 249, 0.98) 0%,
-      rgba(246, 247, 249, 0.94) 34%,
-      rgba(246, 247, 249, 0.55) 55%,
+      rgba(247, 248, 250, 0.98) 0%,
+      rgba(247, 248, 250, 0.94) 36%,
+      rgba(247, 248, 250, 0.55) 56%,
       transparent 78%
     );
   }
@@ -110,79 +100,12 @@
     .hero-wash {
       background: linear-gradient(
         180deg,
-        rgba(246, 247, 249, 0.97) 0%,
-        rgba(246, 247, 249, 0.92) 45%,
-        rgba(246, 247, 249, 0.4) 72%,
+        rgba(247, 248, 250, 0.97) 0%,
+        rgba(247, 248, 250, 0.92) 48%,
+        rgba(247, 248, 250, 0.4) 72%,
         transparent 100%
       );
     }
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 9999px;
-    background: var(--color-accent);
-    padding: 0.9rem 1.4rem;
-    font-size: 0.9rem;
-    font-weight: 650;
-    color: white;
-    transition: background 0.2s ease;
-  }
-
-  .btn-primary:hover {
-    background: var(--color-accent-deep);
-  }
-
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 9999px;
-    border: 1px solid var(--color-line);
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.9rem 1.4rem;
-    font-size: 0.9rem;
-    font-weight: 650;
-    color: var(--color-ink);
-    backdrop-filter: blur(8px);
-  }
-
-  .node-grid {
-    background-image: radial-gradient(circle, rgba(20, 23, 28, 0.12) 1px, transparent 1px);
-    background-size: 8px 8px;
-  }
-
-  .ai-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    border-radius: 9999px;
-    background: var(--color-ai-soft);
-    color: var(--color-accent-deep);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.4rem 0.75rem;
-  }
-
-  .ai-chip::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 9999px;
-    background: var(--color-accent);
-  }
-
-  .agt-tag {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--color-accent);
   }
 }
 

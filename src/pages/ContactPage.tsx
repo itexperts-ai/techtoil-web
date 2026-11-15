@@ -5,7 +5,7 @@ import { company, mapsEmbedUrl, mapsOpenUrl } from '../data/company'
 export function ContactPage() {
   return (
     <div className="bg-bg">
-      <section className="band-ai px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
+      <section className="border-b border-line bg-paper px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow text-accent">Contact & location</p>
           <h1 className="display mt-4 max-w-2xl">Let’s talk.</h1>
@@ -20,9 +20,9 @@ export function ContactPage() {
           <div className="space-y-4">
             <a
               href={`mailto:${company.email}`}
-              className="flex gap-4 rounded-3xl bg-surface p-5 ring-1 ring-ink/5 transition hover:ring-accent/30"
+              className="flex gap-4 border border-line bg-surface p-5 transition hover:border-accent/40"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10">
                 <Mail className="h-5 w-5 text-accent" />
               </span>
               <span>
@@ -33,8 +33,8 @@ export function ContactPage() {
               </span>
             </a>
 
-            <div className="flex gap-4 rounded-3xl bg-surface p-5 ring-1 ring-ink/5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+            <div className="flex gap-4 border border-line bg-surface p-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10">
                 <Phone className="h-5 w-5 text-accent" />
               </span>
               <div>
@@ -51,9 +51,9 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-surface p-5 ring-1 ring-ink/5 md:p-6">
+            <div className="border border-line bg-surface p-5 md:p-6">
               <div className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10">
                   <MapPin className="h-5 w-5 text-accent" />
                 </span>
                 <div>
@@ -73,7 +73,7 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-surface p-5 ring-1 ring-ink/5 md:p-6">
+            <div className="border border-line bg-surface p-5 md:p-6">
               <p className="eyebrow text-accent">{company.operationsOffice.label}</p>
               <p className="mt-3 text-sm leading-relaxed text-mute">
                 {company.operationsOffice.lines.map((line) => (

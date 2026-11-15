@@ -7,46 +7,29 @@ type Props = {
   className?: string
 }
 
-/**
- * Cobalt Relay mark — open hub node + docked agent satellite
- * (the “O” as workflow node)
- */
+/** Aperture mark — simple ring + core */
 function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
-  const plate = tone === 'light' ? '#FFFFFF' : '#14171C'
-  const ring = tone === 'light' ? '#14171C' : '#FFFFFF'
+  const plate = tone === 'light' ? '#F7F8FA' : '#12161C'
 
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden className="shrink-0">
       <rect width="64" height="64" rx="16" fill={plate} />
-      {/* Open ring (O / AIM hub) */}
-      <circle cx="30" cy="34" r="14" stroke={ring} strokeWidth="2.5" fill="none" />
-      <circle cx="30" cy="34" r="4" fill="#1E4DFF" />
-      {/* Hairline to docked agent */}
-      <path d="M30 20V10" stroke="#1E4DFF" strokeWidth="1.25" />
-      <circle cx="30" cy="8" r="3.5" fill="#1E4DFF" />
+      <circle cx="32" cy="32" r="16" stroke="#0F6B5C" strokeWidth="3" />
+      <circle cx="32" cy="32" r="6.5" fill="#0F6B5C" />
     </svg>
   )
 }
 
 export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: Props) {
-  const mark = size === 'lg' ? 44 : 34
-  const text = size === 'lg' ? 'text-[1.55rem]' : 'text-[1.1rem]'
+  const mark = size === 'lg' ? 42 : 32
+  const text = size === 'lg' ? 'text-[1.5rem]' : 'text-[1.1rem]'
   const ink = tone === 'light' ? 'text-white' : 'text-ink'
 
   const node = (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <Mark size={mark} tone={tone} />
-      <span className="flex flex-col leading-none">
-        <span className={`font-display font-extrabold tracking-[-0.05em] ${ink} ${text}`}>
-          Tech<span className="text-accent">toil</span>
-        </span>
-        <span
-          className={`mt-1 font-mono text-[0.58rem] font-medium uppercase tracking-[0.14em] ${
-            tone === 'light' ? 'text-accent-bright' : 'text-mute'
-          }`}
-        >
-          AIM · hub
-        </span>
+      <span className={`font-display font-bold leading-none tracking-[-0.04em] ${ink} ${text}`}>
+        Tech<span className="text-accent">toil</span>
       </span>
     </span>
   )
@@ -56,7 +39,7 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
     <Link
       to={to ?? '/'}
       aria-label="Techtoil"
-      className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+      className="rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
     >
       {node}
     </Link>

@@ -1,32 +1,32 @@
 import { Link } from 'react-router-dom'
 
-type Props = { to?: string | null; size?: 'sm' | 'lg'; invert?: boolean; className?: string }
+type Props = { to?: string | null; size?: 'sm' | 'lg'; light?: boolean; className?: string }
 
-export function Logo({ to = '/', size = 'sm', invert = false, className = '' }: Props) {
-  const mark = size === 'lg' ? 42 : 28
-  const text = size === 'lg' ? 'text-4xl md:text-5xl' : 'text-xl'
+export function Logo({ to = '/', size = 'sm', light = false, className = '' }: Props) {
+  const mark = size === 'lg' ? 44 : 30
+  const text = size === 'lg' ? 'text-[1.9rem]' : 'text-[1.2rem]'
 
   const node = (
-    <span className={`inline-flex items-center gap-2 ${className}`}>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <svg width={mark} height={mark} viewBox="0 0 64 64" fill="none" aria-hidden>
-        <rect width="64" height="64" rx="8" fill={invert ? '#fff' : '#111'} />
-        <path d="M12 28.5 32 16l20 12.5v6L32 22.8 12 34.5v-6Z" fill="#FF4D00" />
-        <path d="M42 27 52 33.2V48L32 60.2V53.5l14-9V27Z" fill={invert ? '#bbb' : '#777'} />
-        <path d="M22 27v18.5L32 53.5v6.7L12 48V33.2L22 27Z" fill="#D93F00" />
+        <rect width="64" height="64" rx="12" fill={light ? 'rgba(255,255,255,0.12)' : '#0E1420'} />
+        <path d="M11 29 32 15.5 53 29v6.2L32 22.4 11 35.2V29Z" fill="#2F6BFF" />
+        <path d="M43 27.5 53 34v15.5L32 61.5V54.8l15-9.5V27.5Z" fill="#8B95A8" />
+        <path d="M21 27.5v17.8L32 54.8v6.7L11 49.5V34l10-6.5Z" fill="#1A4FD6" />
       </svg>
       <span
-        className={`font-display font-extrabold uppercase tracking-[-0.03em] leading-none ${text} ${
-          invert ? 'text-white' : 'text-ink'
+        className={`font-display font-extrabold tracking-[-0.04em] leading-none ${text} ${
+          light ? 'text-white' : 'text-ink'
         }`}
       >
-        Tech<span className="text-ember">toil</span>
+        Tech<span className="text-blue">toil</span>
       </span>
     </span>
   )
 
   if (to === null) return node
   return (
-    <Link to={to ?? '/'} aria-label="Techtoil" className="outline-none focus-visible:ring-2 focus-visible:ring-ember/40">
+    <Link to={to ?? '/'} aria-label="Techtoil" className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-blue/40">
       {node}
     </Link>
   )

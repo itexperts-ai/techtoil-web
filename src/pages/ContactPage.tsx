@@ -1,19 +1,28 @@
 import { ConsultationForm } from '../components/forms/ConsultationForm'
+import { services } from '../data/services'
 
 export function ContactPage() {
   return (
-    <div className="px-4 pb-24 pt-32 md:px-6 md:pt-40">
+    <div className="bg-ice px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">Contact</p>
-          <h1 className="mt-4 font-display text-5xl font-extrabold uppercase leading-none tracking-[-0.02em]">
-            Start here.
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue">Contact</p>
+          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
+            Tell us what you need.
           </h1>
-          <p className="mt-5 max-w-md text-soft">
-            Tell us what you are building. We reply with a practical next step.
+          <p className="mt-5 text-mute leading-relaxed">
+            AIM, AI, or any of the seven capabilities — share a short brief and we
+            will reply with a clear next step.
           </p>
+          <ul className="mt-6 space-y-1 text-sm text-mute">
+            {services.map((s) => (
+              <li key={s.id}>
+                {s.num} · {s.title}
+              </li>
+            ))}
+          </ul>
           <p className="mt-8">
-            <a className="font-bold text-ember" href="mailto:hello@techtoil.com">
+            <a className="font-bold text-blue" href="mailto:hello@techtoil.com">
               hello@techtoil.com
             </a>
           </p>

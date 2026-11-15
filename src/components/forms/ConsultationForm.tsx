@@ -79,15 +79,15 @@ export function ConsultationForm() {
       <style>{`
         .field {
           width: 100%;
-          border: 1px solid #e6e1d8;
-          background: #f4f2ee;
+          border: 1px solid #ddd8cf;
+          background: #f1efe9;
           padding: 0.85rem 1rem;
           font: inherit;
           outline: none;
         }
         .field:focus {
-          border-color: #121110;
-          background: #fbf9f6;
+          border-color: #0e0d0c;
+          background: #faf8f4;
         }
       `}</style>
     </form>

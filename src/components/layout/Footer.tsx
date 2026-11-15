@@ -6,7 +6,7 @@ import { services } from '../../data/services'
 export function Footer() {
   return (
     <footer className="band-dark text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/45">
@@ -14,7 +14,7 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <p className="eyebrow text-white/35">Explore</p>
+          <p className="eyebrow text-white/30">Explore</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/55">
             <li>
               <Link to="/" className="hover:text-white">
@@ -39,7 +39,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-white/35">Practices</p>
+          <p className="eyebrow text-white/30">Practices</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/55">
             {services.map((s) => (
               <li key={s.id}>
@@ -51,7 +51,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-white/35">Contact</p>
+          <p className="eyebrow text-white/30">Contact</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/55">
             <li>
               <a href={`mailto:${company.email}`} className="hover:text-white">
@@ -75,8 +75,8 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 px-4 py-4 md:px-6">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 text-xs text-white/30 sm:flex-row sm:justify-between">
+      <div className="border-t border-white/10 px-4 py-4 md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 text-xs text-white/30 sm:flex-row sm:justify-between">
           <span>
             © {new Date().getFullYear()} {company.legalName}
           </span>

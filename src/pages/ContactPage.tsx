@@ -5,8 +5,8 @@ import { company, mapsEmbedUrl, mapsOpenUrl } from '../data/company'
 export function ContactPage() {
   return (
     <div className="bg-bg">
-      <section className="border-b border-line bg-paper px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
-        <div className="mx-auto max-w-6xl">
+      <section className="border-b border-line bg-paper px-4 pb-14 pt-32 md:px-8 md:pb-16 md:pt-36">
+        <div className="mx-auto max-w-7xl">
           <span className="citron-label">Contact</span>
           <h1 className="display mt-6 max-w-2xl">
             Let’s <span className="display-italic">talk.</span>
@@ -17,8 +17,8 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="px-4 py-14 md:px-6 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:gap-14">
+      <section className="px-4 py-14 md:px-8 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-0 divide-y divide-line border-y border-line">
             <a href={`mailto:${company.email}`} className="flex gap-4 py-5 hover:bg-paper/70">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-accent-bright">
@@ -58,7 +58,7 @@ export function ContactPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-faint">
                   {company.registeredOffice.label}
                 </p>
-                <p className="mt-2 font-display text-lg font-semibold tracking-[-0.02em]">
+                <p className="mt-2 font-display text-lg font-medium tracking-[-0.02em]">
                   {company.legalName}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-mute">
@@ -95,7 +95,7 @@ export function ContactPage() {
       </section>
 
       <section className="border-t border-line bg-paper">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-4 px-4 py-8 md:px-6">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-4 px-4 py-8 md:px-8">
           <div>
             <p className="eyebrow text-mute">Map</p>
             <h2 className="title mt-2">Find our offices</h2>
@@ -105,7 +105,7 @@ export function ContactPage() {
               href={mapsOpenUrl(company.registeredOffice.mapsQuery)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 border-b border-ink pb-0.5"
+              className="link-line"
             >
               Delhi map <ArrowUpRight className="h-4 w-4" />
             </a>
@@ -113,7 +113,7 @@ export function ContactPage() {
               href={mapsOpenUrl(company.operationsOffice.mapsQuery)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 border-b border-ink pb-0.5"
+              className="link-line"
             >
               Noida map <ArrowUpRight className="h-4 w-4" />
             </a>

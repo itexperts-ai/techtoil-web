@@ -1,21 +1,22 @@
 @import 'tailwindcss';
 
 /*
-  Silk Voltage — fashion-studio light system
+  Silk Atelier — elevated Silk Voltage
   Cool gallery porcelain · citron label · Fraunces + Sora
+  Magazine craft: uneven crops, italic accents, quiet luxury
 */
 @theme {
-  --color-bg: #f4f2ee;
-  --color-paper: #fbf9f6;
-  --color-surface: #efece7;
-  --color-ink: #121110;
-  --color-mute: #5c5854;
-  --color-faint: #8a8580;
-  --color-line: #e6e1d8;
-  --color-accent: #c9e83a;
+  --color-bg: #f1efe9;
+  --color-paper: #faf8f4;
+  --color-surface: #eae7e1;
+  --color-ink: #0e0d0c;
+  --color-mute: #56524e;
+  --color-faint: #857f78;
+  --color-line: #ddd8cf;
+  --color-accent: #c5e234;
   --color-accent-bright: #d6f34c;
   --color-accent-deep: #a8c42a;
-  --color-dark: #121110;
+  --color-dark: #0e0d0c;
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Sora', sans-serif;
 }
@@ -31,9 +32,9 @@
     background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.65;
-    letter-spacing: -0.01em;
+    font-size: 16.5px;
+    line-height: 1.7;
+    letter-spacing: -0.012em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -42,7 +43,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent-bright) 55%, white);
+    background: color-mix(in oklab, var(--color-accent-bright) 50%, white);
   }
 }
 
@@ -52,51 +53,54 @@
   }
 
   .band-dark {
-    background: var(--color-dark);
+    background:
+      radial-gradient(ellipse 50% 40% at 100% 0%, rgba(214, 243, 76, 0.08), transparent 50%),
+      var(--color-dark);
   }
 
   .eyebrow {
     font-family: var(--font-sans);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 7.2vw, 5.2rem);
-    font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 0.98;
+    font-size: clamp(3rem, 8vw, 5.75rem);
+    font-weight: 550;
+    letter-spacing: -0.04em;
+    line-height: 0.94;
   }
 
   .display-italic {
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 500;
+    font-weight: 450;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.8vw, 3.1rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
+    font-size: clamp(2.1rem, 4vw, 3.35rem);
+    font-weight: 550;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+    font-size: clamp(1.08rem, 1.45vw, 1.25rem);
     line-height: 1.7;
+    font-weight: 400;
   }
 
   .hero-wash {
     background: linear-gradient(
       105deg,
-      rgba(251, 249, 246, 0.98) 0%,
-      rgba(251, 249, 246, 0.95) 34%,
-      rgba(251, 249, 246, 0.72) 52%,
-      rgba(251, 249, 246, 0.2) 72%,
+      rgba(250, 248, 244, 0.98) 0%,
+      rgba(250, 248, 244, 0.96) 32%,
+      rgba(250, 248, 244, 0.78) 50%,
+      rgba(250, 248, 244, 0.25) 70%,
       transparent 88%
     );
   }
@@ -105,59 +109,71 @@
     .hero-wash {
       background: linear-gradient(
         180deg,
-        rgba(251, 249, 246, 0.98) 0%,
-        rgba(251, 249, 246, 0.94) 48%,
-        rgba(251, 249, 246, 0.55) 72%,
+        rgba(250, 248, 244, 0.98) 0%,
+        rgba(250, 248, 244, 0.95) 45%,
+        rgba(250, 248, 244, 0.55) 72%,
         transparent 100%
       );
     }
   }
 
   .hero-copy {
-    text-shadow: 0 1px 0 rgba(251, 249, 246, 0.4);
+    text-shadow: 0 1px 0 rgba(250, 248, 244, 0.5);
   }
 
   .citron-label {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.45rem;
     background: var(--color-accent-bright);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    padding: 0.35rem 0.65rem;
-  }
-
-  .stitch {
-    display: inline-flex;
-    gap: 3px;
-    align-items: center;
-  }
-
-  .stitch span {
-    width: 6px;
-    height: 2px;
-    background: var(--color-accent-bright);
+    padding: 0.4rem 0.7rem;
   }
 
   .lookbook-scroll {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     overflow-x: auto;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
   .lookbook-scroll::-webkit-scrollbar {
-    height: 4px;
+    height: 3px;
   }
 
   .lookbook-scroll::-webkit-scrollbar-thumb {
-    background: var(--color-line);
+    background: var(--color-ink);
+  }
+
+  .grain {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .link-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1.5px solid currentColor;
+    padding-bottom: 0.15rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s ease;
+  }
+
+  .link-line:hover {
+    opacity: 0.65;
   }
 }
 

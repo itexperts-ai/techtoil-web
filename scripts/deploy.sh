@@ -114,25 +114,57 @@ fi
 # nginx (www-data) must be able to traverse/read dist
 chmod -R a+rX "${APP_DIR}/dist"
 
+log "Ensuring TLS material for ${DOMAIN}…"
+mkdir -p /etc/ssl/techtoil
+if [[ ! -f /etc/ssl/techtoil/fullchain.pem || ! -f /etc/ssl/techtoil/privkey.pem ]]; then
+  openssl req -x509 -nodes -days 825 -newkey rsa:2048 \
+    -keyout /etc/ssl/techtoil/privkey.pem \
+    -out /etc/ssl/techtoil/fullchain.pem \
+    -subj "/CN=${DOMAIN}/O=Techtoil/C=IN"
+  chmod 600 /etc/ssl/techtoil/privkey.pem
+  log "Created self-signed cert (replace with Let's Encrypt after DNS A record exists)"
+fi
+
 log "Configuring nginx for ${DOMAIN}…"
 sed "s/techtoil.itexperts.org.in/${DOMAIN}/g" "${NGINX_SRC}" > "${NGINX_AVAIL}"
 ln -sfn "${NGINX_AVAIL}" "${NGINX_ENABLED}"
+
+# Direct port access works even when public DNS is missing
+cat > /etc/nginx/sites-available/techtoil-web-port <<'PORTCONF'
+server {
+    listen 3088;
+    listen [::]:3088;
+    server_name _;
+    root /var/www/techtoil-web/dist;
+    index index.html;
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+PORTCONF
+ln -sfn /etc/nginx/sites-available/techtoil-web-port /etc/nginx/sites-enabled/techtoil-web-port
+ufw allow 3088/tcp >/dev/null 2>&1 || true
+
 nginx -t
 systemctl reload nginx
 
 if [[ "${ENABLE_SSL}" == "1" ]]; then
-  log "Requesting / renewing Let's Encrypt cert for ${DOMAIN}…"
-  certbot --nginx -d "${DOMAIN}" --non-interactive --agree-tos --register-unsafely-without-email --redirect || \
-    certbot --nginx -d "${DOMAIN}" --non-interactive --agree-tos --register-unsafely-without-email --redirect
+  if dig +short "${DOMAIN}" A @8.8.8.8 | grep -qE '^[0-9.]+$'; then
+    log "Requesting / renewing Let's Encrypt cert for ${DOMAIN}…"
+    certbot --nginx -d "${DOMAIN}" --non-interactive --agree-tos --register-unsafely-without-email --redirect || true
+  else
+    log "SKIP Let's Encrypt — ${DOMAIN} has no public A record (NXDOMAIN). Add DNS first."
+  fi
 fi
 
-if curl -sf --max-time 5 "http://127.0.0.1/." -H "Host: ${DOMAIN}" >/dev/null 2>&1 \
-  || curl -sf --max-time 5 "https://${DOMAIN}/" >/dev/null 2>&1; then
+if curl -sf --max-time 5 "http://127.0.0.1:3088/" >/dev/null 2>&1 \
+  || curl -skf --max-time 5 --resolve "${DOMAIN}:443:127.0.0.1" "https://${DOMAIN}/" >/dev/null 2>&1; then
   log "Health check OK"
 else
   log "WARN: health check inconclusive — verify DNS + nginx"
 fi
 
 log "Deploy complete."
-log "HTTP:  http://${DOMAIN}/"
-log "HTTPS: https://${DOMAIN}/  (after --ssl / certbot)"
+log "Direct: http://$(curl -s --max-time 3 ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}'):3088/"
+log "HTTP:  http://${DOMAIN}/  (needs DNS A → this VPS)"
+log "HTTPS: https://${DOMAIN}/ (needs DNS A → this VPS)"

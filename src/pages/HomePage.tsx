@@ -72,7 +72,8 @@ export function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.06, 1.14])
 
   const visible =
     filter === 'all'
@@ -82,47 +83,100 @@ export function HomePage() {
   return (
     <div>
       <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ y: imgY }}>
+        <motion.div className="absolute inset-0" style={{ y: imgY, scale: imgScale }}>
           <img
             src="/media/hero.jpg"
             alt="Techtoil IT solutions team collaborating"
-            className="h-[115%] w-full object-cover object-[62%_center]"
+            className="h-full w-full object-cover object-[72%_center] md:object-[68%_40%]"
           />
         </motion.div>
         <div className="hero-wash absolute inset-0" />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-4 pb-16 pt-28 md:px-6">
-          <motion.div
-            className="max-w-xl"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75 }}
-          >
-            <p className="eyebrow text-accent">Complete IT solutions partner</p>
-            <h1 className="display mt-5 text-ink">
-              Product, growth, and management — delivered as one system.
-            </h1>
-            <p className="lede mt-5 max-w-md text-mute">
-              Techtoil Infosol is a full-service partner for design, development, marketing,
-              consultancy, funding readiness, AI operations, and hiring — seven core solutions
-              under one accountable team.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-end px-4 pb-16 pt-28 md:items-center md:px-6 md:pb-20 md:pt-24">
+          <div className="max-w-[34rem]">
+            <motion.p
+              className="eyebrow text-accent"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Infosol · IT Solutions
+            </motion.p>
+
+            <motion.h1
+              className="hero-brand mt-4 text-ink"
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Tech<span className="text-accent">toil</span>
+            </motion.h1>
+
+            <motion.div
+              className="mt-5 h-[3px] w-14 rounded-full bg-accent"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.55, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: 'left' }}
+            />
+
+            <motion.p
+              className="hero-headline mt-6 text-ink/90"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Product, growth, and management — one accountable team.
+            </motion.p>
+
+            <motion.p
+              className="mt-4 max-w-md text-[1.05rem] leading-relaxed text-mute"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Design, development, marketing, consultancy, funding, AI operations, and hiring —
+              seven solutions built to ship together.
+            </motion.p>
+
+            <motion.div
+              className="mt-9 flex flex-wrap gap-3"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.48, ease: [0.22, 1, 0.36, 1] }}
+            >
               <a
                 href="#catalog"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent-deep hover:shadow-accent/35"
               >
                 Explore solutions <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
                 to="/assessment"
-                className="inline-flex items-center rounded-lg border border-ink/15 bg-paper/95 px-5 py-3.5 text-sm font-semibold text-ink hover:border-accent/40"
+                className="inline-flex items-center rounded-lg border border-ink/12 bg-paper/90 px-5 py-3.5 text-sm font-semibold text-ink backdrop-blur-sm transition hover:border-accent/45 hover:bg-paper"
               >
                 Book free assessment
               </Link>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
+
+        <motion.a
+          href="#catalog"
+          className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-mute md:flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
+          aria-label="Scroll to solutions"
+        >
+          <span>Scroll</span>
+          <motion.span
+            className="block h-8 w-px bg-accent/50"
+            animate={{ scaleY: [0.55, 1, 0.55], opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ transformOrigin: 'top' }}
+          />
+        </motion.a>
       </section>
 
       <section className="border-y border-line bg-paper px-4 py-14 md:px-6 md:py-16">

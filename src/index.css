@@ -1,24 +1,23 @@
 @import 'tailwindcss';
 
 /*
-  Aperture — calm premium light studio
-  Soft mist · ink · forest accent · Outfit
-  No graphs, meshes, mono tags, or citron chrome
+  North Light — calm light studio
+  Paper wash · pine accent · Newsreader + Figtree
 */
 @theme {
-  --color-bg: #eef1f4;
-  --color-paper: #f7f8fa;
+  --color-bg: #f0eeea;
+  --color-paper: #f6f4f0;
   --color-surface: #ffffff;
-  --color-ink: #12161c;
-  --color-mute: #5c6570;
-  --color-faint: #8a939e;
-  --color-line: rgba(18, 22, 28, 0.1);
-  --color-accent: #0f6b5c;
-  --color-accent-bright: #12856f;
-  --color-accent-deep: #0a5246;
-  --color-dark: #12161c;
-  --font-display: 'Outfit', sans-serif;
-  --font-sans: 'Outfit', sans-serif;
+  --color-ink: #1b1e1c;
+  --color-mute: #5a615c;
+  --color-faint: #8a908b;
+  --color-line: #e7e4de;
+  --color-accent: #3e6b58;
+  --color-accent-bright: #4f826a;
+  --color-accent-deep: #2f5344;
+  --color-dark: #1b1e1c;
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-sans: 'Figtree', sans-serif;
 }
 
 @layer base {
@@ -34,7 +33,7 @@
     font-family: var(--font-sans);
     font-size: 16.5px;
     line-height: 1.65;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -43,7 +42,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent) 24%, white);
+    background: color-mix(in oklab, var(--color-accent) 22%, white);
   }
 }
 
@@ -53,31 +52,30 @@
   }
 
   .band-dark {
-    background:
-      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(15, 107, 92, 0.22), transparent 55%),
-      var(--color-dark);
+    background: var(--color-dark);
   }
 
   .eyebrow {
-    font-size: 0.7rem;
-    font-weight: 650;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 6.5vw, 4.6rem);
-    font-weight: 700;
-    letter-spacing: -0.045em;
-    line-height: 1.02;
+    font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.85rem, 3.4vw, 2.85rem);
-    font-weight: 700;
-    letter-spacing: -0.035em;
+    font-size: clamp(1.9rem, 3.4vw, 2.85rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
     line-height: 1.12;
   }
 
@@ -88,11 +86,12 @@
 
   .hero-wash {
     background: linear-gradient(
-      105deg,
-      rgba(247, 248, 250, 0.98) 0%,
-      rgba(247, 248, 250, 0.94) 36%,
-      rgba(247, 248, 250, 0.55) 56%,
-      transparent 78%
+      100deg,
+      #f6f4f0 0%,
+      rgba(246, 244, 240, 0.96) 32%,
+      rgba(246, 244, 240, 0.72) 48%,
+      rgba(246, 244, 240, 0.2) 68%,
+      transparent 82%
     );
   }
 
@@ -100,9 +99,9 @@
     .hero-wash {
       background: linear-gradient(
         180deg,
-        rgba(247, 248, 250, 0.97) 0%,
-        rgba(247, 248, 250, 0.92) 48%,
-        rgba(247, 248, 250, 0.4) 72%,
+        rgba(246, 244, 240, 0.98) 0%,
+        rgba(246, 244, 240, 0.94) 55%,
+        rgba(246, 244, 240, 0.45) 78%,
         transparent 100%
       );
     }

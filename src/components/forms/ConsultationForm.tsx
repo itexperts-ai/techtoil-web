@@ -80,13 +80,13 @@ export function ConsultationForm() {
         .field {
           width: 100%;
           border: 1px solid rgba(18, 22, 28, 0.1);
-          background: #eef1f4;
+          background: #f0eeea;
           padding: 0.85rem 1rem;
           font: inherit;
           outline: none;
         }
         .field:focus {
-          border-color: #0f6b5c;
+          border-color: #3e6b58;
           background: #ffffff;
         }
       `}</style>

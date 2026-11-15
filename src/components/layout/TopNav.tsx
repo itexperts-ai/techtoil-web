@@ -18,8 +18,8 @@ export function TopNav() {
   }, [])
 
   const link = overHero
-    ? 'px-3 py-2 text-sm font-semibold text-white/80 hover:text-white'
-    : 'px-3 py-2 text-sm font-semibold text-soft hover:text-ink'
+    ? 'px-3 py-2 text-[0.8125rem] font-medium text-white/80 hover:text-white'
+    : 'px-3 py-2 text-[0.8125rem] font-medium text-soft hover:text-ink'
 
   return (
     <header
@@ -42,7 +42,7 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className={`ml-3 px-4 py-2 text-sm font-bold transition ${
+            className={`ml-3 px-4 py-2 text-[0.8125rem] font-semibold transition ${
               overHero
                 ? 'bg-white text-ink hover:bg-mist'
                 : 'bg-slate text-white hover:bg-blue'

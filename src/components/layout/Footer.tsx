@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
-            {company.legalName} — IT solutions for product, growth, and management.
+            {company.legalName} — complete IT solutions for product, growth, and management.
           </p>
         </div>
         <div>
@@ -29,6 +29,11 @@ export function Footer() {
             <li>
               <Link to="/about" className="hover:text-white">
                 About
+              </Link>
+            </li>
+            <li>
+              <Link to="/assessment" className="hover:text-white">
+                Book assessment
               </Link>
             </li>
             <li>

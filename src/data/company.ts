@@ -21,6 +21,9 @@ export const company = {
       '55, 2nd Floor, Westend Marg, Saidullajab, Gadaipur, South West Delhi, New Delhi, Delhi 110030, India',
     mapsQuery:
       '55, 2nd Floor, Westend Marg, Saidullajab, Gadaipur, New Delhi, Delhi 110030, India',
+    // Exact pin near 55 Westend Marg, Saidulajab (same building cluster)
+    lat: 28.519608,
+    lng: 77.201959,
   },
   operationsOffice: {
     label: 'Operations',
@@ -32,13 +35,32 @@ export const company = {
     singleLine:
       'Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309, India',
     mapsQuery: 'Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309',
+    lat: 28.6271,
+    lng: 77.3649,
   },
+  assessmentSla: 'We respond within 1 business day with a scoped next step.',
 } as const
 
-export function mapsEmbedUrl(query: string) {
-  return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`
+export function mapsEmbedUrl(office: {
+  lat: number
+  lng: number
+  mapsQuery: string
+}) {
+  const label = encodeURIComponent(office.mapsQuery)
+  return `https://maps.google.com/maps?q=${office.lat},${office.lng}(${label})&ll=${office.lat},${office.lng}&z=17&output=embed&iwloc=A`
 }
 
-export function mapsOpenUrl(query: string) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+export function mapsOpenUrl(office: {
+  lat: number
+  lng: number
+  mapsQuery: string
+}) {
+  return `https://www.google.com/maps/search/?api=1&query=${office.lat}%2C${office.lng}`
+}
+
+export function mapsDirectionsUrl(office: {
+  lat: number
+  lng: number
+}) {
+  return `https://www.google.com/maps/dir/?api=1&destination=${office.lat}%2C${office.lng}`
 }

@@ -11,13 +11,13 @@ export function AboutPage() {
         <h1 className="title mt-4 max-w-3xl">{company.legalName}</h1>
         <div className="lede mt-8 max-w-3xl space-y-5 text-mute">
           <p>
-            We are an IT solutions partner for organizations that need product design &
-            development, growth marketing, management advisory, funding readiness, AI
-            operations, and hiring — delivered as connected services.
+            We are a complete IT solutions company for organizations that need product design
+            & development, growth marketing, management advisory, funding readiness, AI
+            operations, and hiring — delivered as connected services, not disconnected vendors.
           </p>
           <p>
-            Buyers get one accountable team across technology and management — not a stack of
-            disconnected vendors.
+            Buyers get one accountable team across technology and management. That is the
+            Techtoil model: scope correctly, build what ships, and operate what lasts.
           </p>
         </div>
 
@@ -28,8 +28,8 @@ export function AboutPage() {
               href={`/#${s.id}`}
               className="rounded-xl border border-line bg-paper p-5 transition hover:border-accent/40"
             >
-              <p className="text-xs font-bold text-accent">{s.num}</p>
-              <p className="mt-2 font-display font-semibold">{s.title}</p>
+              <p className="font-display font-semibold">{s.title}</p>
+              <p className="mt-1.5 text-sm text-mute">{s.tagline}</p>
             </a>
           ))}
         </div>
@@ -58,12 +58,20 @@ export function AboutPage() {
           </div>
         </div>
 
-        <Link
-          to="/contact"
-          className="mt-10 inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
-        >
-          Talk to our team <ArrowUpRight className="h-4 w-4" />
-        </Link>
+        <div className="mt-10 flex flex-wrap gap-3">
+          <Link
+            to="/assessment"
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
+          >
+            Book free assessment <ArrowUpRight className="h-4 w-4" />
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center rounded-lg border border-line bg-paper px-5 py-3.5 text-sm font-semibold text-ink hover:border-accent/40"
+          >
+            Contact
+          </Link>
+        </div>
       </div>
     </div>
   )

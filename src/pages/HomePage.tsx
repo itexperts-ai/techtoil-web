@@ -85,8 +85,8 @@ export function HomePage() {
         <motion.div className="absolute inset-0" style={{ y: imgY }}>
           <img
             src="/media/hero.jpg"
-            alt="Techtoil IT solutions workspace"
-            className="h-[115%] w-full object-cover object-[58%_center]"
+            alt="Techtoil IT solutions team collaborating"
+            className="h-[115%] w-full object-cover object-[62%_center]"
           />
         </motion.div>
         <div className="hero-wash absolute inset-0" />
@@ -98,14 +98,14 @@ export function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75 }}
           >
-            <p className="eyebrow text-accent">IT Solutions · Product · Management</p>
+            <p className="eyebrow text-accent">Complete IT solutions partner</p>
             <h1 className="display mt-5 text-ink">
-              Your technology and management partner for what comes next.
+              Product, growth, and management — delivered as one system.
             </h1>
             <p className="lede mt-5 max-w-md text-mute">
-              Techtoil Infosol delivers product design & development, growth marketing,
-              consultancy, funding support, AI operations, and hiring — seven solutions under
-              one accountable team.
+              Techtoil Infosol is a full-service partner for design, development, marketing,
+              consultancy, funding readiness, AI operations, and hiring — seven core solutions
+              under one accountable team.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
@@ -115,10 +115,10 @@ export function HomePage() {
                 Explore solutions <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
-                to="/contact"
+                to="/assessment"
                 className="inline-flex items-center rounded-lg border border-ink/15 bg-paper/95 px-5 py-3.5 text-sm font-semibold text-ink hover:border-accent/40"
               >
-                Book consultation
+                Book free assessment
               </Link>
             </div>
           </motion.div>
@@ -171,34 +171,34 @@ export function HomePage() {
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {visible.map((s, i) => (
-              <motion.a
+              <motion.div
                 key={s.id}
-                href={`#${s.id}`}
-                className="group overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line transition hover:shadow-md hover:ring-accent/35"
                 {...fade}
                 transition={{ ...fade.transition, delay: i * 0.04 }}
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-bg">
-                  <img
-                    src={s.image}
-                    alt=""
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                    loading="lazy"
-                  />
-                  <span className="absolute left-3 top-3 rounded bg-paper/95 px-2 py-0.5 text-[0.65rem] font-bold text-accent">
-                    {s.num}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-display text-lg font-semibold tracking-[-0.02em] group-hover:text-accent">
-                      {s.title}
-                    </h3>
-                    <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-faint group-hover:text-accent" />
+                <a
+                  href={`#${s.id}`}
+                  className="group flex h-full flex-col overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-line transition hover:shadow-md hover:ring-accent/35"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+                    <img
+                      src={s.image}
+                      alt=""
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                      loading="lazy"
+                    />
                   </div>
-                  <p className="mt-2 text-sm text-mute">{s.tagline}</p>
-                </div>
-              </motion.a>
+                  <div className="flex flex-1 flex-col p-5">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-display text-lg font-semibold tracking-[-0.02em] group-hover:text-accent">
+                        {s.title}
+                      </h3>
+                      <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-faint group-hover:text-accent" />
+                    </div>
+                    <p className="mt-2 text-sm text-mute">{s.tagline}</p>
+                  </div>
+                </a>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -259,7 +259,7 @@ export function HomePage() {
                 }`}
               >
                 <motion.div {...fade}>
-                  <p className="eyebrow text-accent">{s.num} · Solution</p>
+                  <p className="eyebrow text-accent">Solution</p>
                   <h2 className="title mt-3">{s.title}</h2>
                   <p className="mt-3 text-lg font-semibold text-ink/85">{s.tagline}</p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
@@ -271,12 +271,20 @@ export function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 rounded-lg bg-dark px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
-                  >
-                    Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link
+                      to="/assessment"
+                      className="inline-flex items-center gap-2 rounded-lg bg-dark px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
+                    >
+                      Assess this solution <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center rounded-lg border border-line bg-paper px-5 py-3.5 text-sm font-semibold text-ink hover:border-accent/40"
+                    >
+                      Contact
+                    </Link>
+                  </div>
                 </motion.div>
                 <motion.div {...fade}>
                   <img
@@ -325,15 +333,23 @@ export function HomePage() {
             Ready to scope product, growth, or management work?
           </h2>
           <p className="lede mt-4 max-w-lg text-white/55">
-            Tell us your stage. We’ll map the right IT and management solutions into one
-            plan.
+            Book a free assessment. We’ll map the right mix of Techtoil solutions into one
+            clear plan.
           </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-accent-bright px-5 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-dark"
-          >
-            Book a free assessment <ArrowUpRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/assessment"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent-bright px-5 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-dark"
+            >
+              Book free assessment <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center rounded-lg border border-white/25 px-5 py-3.5 text-sm font-semibold text-white hover:border-white/50"
+            >
+              Contact offices
+            </Link>
+          </div>
         </motion.div>
       </section>
     </div>

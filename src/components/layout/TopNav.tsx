@@ -25,6 +25,9 @@ export function TopNav() {
           <Link to="/about" className="px-3 py-2 text-sm font-semibold text-ink hover:text-accent">
             About
           </Link>
+          <Link to="/assessment" className="px-3 py-2 text-sm font-semibold text-ink hover:text-accent">
+            Assessment
+          </Link>
           <Link
             to="/contact"
             className="ml-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-deep"
@@ -61,6 +64,13 @@ export function TopNav() {
           ))}
           <Link to="/about" className="mt-1 block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             About
+          </Link>
+          <Link
+            to="/assessment"
+            className="block py-2.5 font-semibold"
+            onClick={() => setOpen(false)}
+          >
+            Assessment
           </Link>
           <Link
             to="/contact"

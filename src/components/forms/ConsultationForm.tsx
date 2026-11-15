@@ -87,7 +87,7 @@ export function ConsultationForm() {
           outline: none;
         }
         .field:focus {
-          border-color: #2d6bff;
+          border-color: #1e4dff;
           background: #ffffff;
         }
       `}</style>

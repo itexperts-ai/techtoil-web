@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { ArrowUpRight, Check, Bot, Workflow, ShieldCheck, Sparkles } from 'lucide-react'
 import { aiHighlights, services } from '../data/services'
 import { AiOrbitPanel } from '../components/ai/AiOrbitPanel'
+import { AimRelayGraph } from '../components/ai/AimRelayGraph'
 
 const fade = {
   initial: { opacity: 0, y: 26 },
@@ -13,10 +14,10 @@ const fade = {
 }
 
 const steps = [
-  { n: '01', t: 'Discover', d: 'Clarify stage, constraints, and the outcome that matters.' },
-  { n: '02', t: 'Map', d: 'Choose craft + AI agents that move the outcome.' },
-  { n: '03', t: 'Build', d: 'Ship product, growth, and automation in shared sprints.' },
-  { n: '04', t: 'Operate', d: 'Hand over systems people and agents can run together.' },
+  { n: '01', t: 'Intake', d: 'Clarify stage, constraints, and the outcome that matters.' },
+  { n: '02', t: 'Route', d: 'Map craft + agents that move the outcome.' },
+  { n: '03', t: 'Run', d: 'Ship product, growth, and automation in shared sprints.' },
+  { n: '04', t: 'Deliver', d: 'Hand over systems people and agents can run together.' },
 ]
 
 const aiPillars = [
@@ -90,44 +91,32 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Why */}
+      {/* Relay graph + why */}
       <section className="px-4 py-20 md:px-6 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <motion.div {...fade} className="max-w-2xl">
-            <p className="eyebrow text-accent">Why Techtoil</p>
-            <h2 className="title mt-4">One studio. Craft + intelligence.</h2>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-14">
+          <motion.div {...fade}>
+            <p className="eyebrow text-accent">Relay</p>
+            <h2 className="title mt-4">AIM is the hub. Seven crafts on the edges.</h2>
             <p className="mt-4 text-mute">
-              Stop stitching vendors. Keep product, growth, capital readiness, AI ops, and
-              talent on one shared plan.
+              Services are nodes on one graph — agents traverse the edges. Stop stitching
+              vendors; keep product, growth, capital, AI ops, and talent on a shared plan.
             </p>
+            <ul className="mt-8 space-y-3 text-sm">
+              {[
+                'Connected craft on one brief',
+                'Outcome first — then craft + agents',
+                'Automation with human control',
+              ].map((t) => (
+                <li key={t} className="flex items-center gap-3">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  {t}
+                </li>
+              ))}
+            </ul>
           </motion.div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                t: 'Connected craft',
-                d: 'Design, engineering, marketing, funding, AI, and hiring stay on one brief.',
-              },
-              {
-                t: 'Outcome first',
-                d: 'We start from where you want to go — then choose craft and agents that move it.',
-              },
-              {
-                t: 'AI with control',
-                d: 'Automate repetitive work while people keep judgment and ownership.',
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.t}
-                className="rounded-3xl bg-surface p-7 ring-1 ring-ink/5 shadow-[0_20px_50px_-32px_rgba(12,18,34,0.4)]"
-                {...fade}
-                transition={{ ...fade.transition, delay: i * 0.06 }}
-              >
-                <p className="font-display text-sm font-bold text-accent">0{i + 1}</p>
-                <h3 className="mt-4 font-display text-xl font-bold tracking-[-0.03em]">{item.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-mute">{item.d}</p>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div {...fade}>
+            <AimRelayGraph />
+          </motion.div>
         </div>
       </section>
 
@@ -251,15 +240,18 @@ export function HomePage() {
             <p className="eyebrow text-accent">Process</p>
             <h2 className="title mt-4">From brief to running systems.</h2>
           </motion.div>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, i) => (
               <motion.div
                 key={step.n}
-                className="rounded-3xl bg-bg p-6 ring-1 ring-ink/5"
+                className="relative border border-line bg-paper p-6 first:rounded-l-2xl last:rounded-r-2xl max-lg:rounded-2xl max-lg:mb-3"
                 {...fade}
                 transition={{ ...fade.transition, delay: i * 0.05 }}
               >
-                <p className="font-display text-3xl font-extrabold text-accent/25">{step.n}</p>
+                {i < steps.length - 1 && (
+                  <span className="absolute right-0 top-1/2 hidden h-px w-3 translate-x-full bg-accent lg:block" />
+                )}
+                <p className="font-mono text-xs text-accent">{step.n}</p>
                 <h3 className="mt-3 font-display text-lg font-bold tracking-[-0.02em]">{step.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-mute">{step.d}</p>
               </motion.div>

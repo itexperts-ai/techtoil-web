@@ -19,7 +19,12 @@ const method = [
   { n: '04', t: 'Operate', d: 'Hand over systems people and AI can run without firefighting.' },
 ]
 
-const lookWidths = ['w-[14rem] sm:w-[16rem]', 'w-[17rem] sm:w-[20rem]', 'w-[15rem] sm:w-[17rem]']
+const lookWidths = [
+  'w-[18rem] sm:w-[22rem]',
+  'w-[14rem] sm:w-[16rem]',
+  'w-[16rem] sm:w-[19rem]',
+  'w-[15rem] sm:w-[17rem]',
+]
 
 export function HomePage() {
   const heroRef = useRef<HTMLElement>(null)
@@ -64,7 +69,17 @@ export function HomePage() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               Build what{' '}
-              <span className="display-italic">lasts.</span>
+              <span className="display-italic relative inline-block">
+                lasts.
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-[3px] w-[42%] bg-accent-bright"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.55, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: 'left' }}
+                  aria-hidden
+                />
+              </span>
             </motion.h1>
             <motion.p
               className="lede mt-6 max-w-lg text-ink/70"
@@ -92,9 +107,9 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Lookbook — uneven widths */}
-      <section id="collection" className="scroll-mt-24 bg-paper px-4 py-16 md:px-8 md:py-24">
-        <div className="mx-auto max-w-7xl">
+      {/* Lookbook — bleeds to edge, lead card larger */}
+      <section id="collection" className="scroll-mt-24 bg-paper py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
           <motion.div
             {...fade}
             className="flex flex-col gap-4 border-b border-line pb-10 md:flex-row md:items-end md:justify-between"
@@ -107,40 +122,39 @@ export function HomePage() {
               A lookbook of craft. Scroll, then open any practice in full.
             </p>
           </motion.div>
-
-          <motion.div
-            className="lookbook-scroll mt-10"
-            initial={{ opacity: 0, x: 32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            {services.map((s, i) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className={`group relative h-[24rem] shrink-0 overflow-hidden sm:h-[30rem] ${lookWidths[i % lookWidths.length]}`}
-                style={{ scrollSnapAlign: 'start' }}
-              >
-                <img
-                  src={s.image}
-                  alt=""
-                  className="h-full w-full object-cover transition duration-[900ms] ease-out group-hover:scale-[1.04]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                  <p className="text-[0.62rem] font-semibold tracking-[0.2em] text-accent-bright">
-                    {s.num}
-                  </p>
-                  <p className="mt-2 font-display text-[1.65rem] font-medium leading-[1.05] tracking-[-0.03em] text-white sm:text-[2rem]">
-                    {s.title}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </motion.div>
         </div>
+
+        <motion.div
+          className="lookbook-scroll mt-10 pl-4 md:pl-[max(2rem,calc((100vw-80rem)/2+2rem))]"
+          initial={{ opacity: 0, x: 32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {services.map((s, i) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className={`group relative h-[24rem] shrink-0 overflow-hidden transition-transform duration-300 hover:-translate-y-2 sm:h-[30rem] ${lookWidths[i % lookWidths.length]}`}
+              style={{ scrollSnapAlign: 'start' }}
+            >
+              <img
+                src={s.image}
+                alt=""
+                className="h-full w-full object-cover transition duration-[900ms] ease-out group-hover:scale-[1.04]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                <p className="font-display text-sm italic text-accent-bright">{s.num}</p>
+                <p className="mt-2 font-display text-[1.65rem] font-medium leading-[1.05] tracking-[-0.03em] text-white sm:text-[2rem]">
+                  {s.title}
+                </p>
+              </div>
+              <span className="absolute bottom-0 left-0 h-0 w-full bg-accent-bright transition-all duration-300 group-hover:h-3" />
+            </a>
+          ))}
+        </motion.div>
       </section>
 
       {/* Plate — overlapping editorial */}

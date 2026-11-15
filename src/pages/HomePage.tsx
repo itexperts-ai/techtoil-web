@@ -1,143 +1,159 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { ArrowUpRight, Check } from 'lucide-react'
-import { Logo } from '../components/brand/Logo'
 import { aiHighlights, services } from '../data/services'
 
 const fade = {
-  initial: { opacity: 0, y: 26 },
+  initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
 }
 
 export function HomePage() {
+  const heroRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+  const mediaY = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
+
   return (
     <div>
-      {/* Advanced light split hero — evolves the preferred Graphite Rose structure */}
-      <section className="grain relative min-h-[100svh] overflow-hidden pt-[4.25rem]">
-        <div className="absolute inset-y-0 right-0 hidden w-[56%] lg:block">
+      {/* NEW runway hero — ice field + mega brand + full-bleed media plane */}
+      <section ref={heroRef} className="relative overflow-hidden pt-[4.25rem]">
+        <div className="mx-auto max-w-6xl px-4 pb-10 pt-10 md:px-6 md:pb-12 md:pt-14">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="eyebrow text-ember">Studio · Vision → Execution</p>
+            <h1 className="mega-brand mt-5 text-ink">
+              Tech<span className="text-ember">toil</span>
+            </h1>
+            <div className="mt-8 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+              <p className="display max-w-xl text-ink">
+                From vision to a business that runs.
+              </p>
+              <div className="md:pb-1">
+                <p className="lede text-mute">
+                  Design, build, grow, fund, automate, and hire — with AI in the loop.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="#services"
+                    className="inline-flex items-center gap-2 bg-ember px-5 py-3.5 text-sm font-bold text-white hover:bg-ember-deep"
+                  >
+                    Explore services <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center border border-ink/15 bg-surface px-5 py-3.5 text-sm font-bold text-ink hover:border-ink/35"
+                  >
+                    Talk to us
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="relative h-[42vh] min-h-[16rem] w-full overflow-hidden md:h-[52vh]">
           <motion.img
             src="/media/hero.jpg"
             alt=""
-            className="hero-clip h-full w-full object-cover object-[center_35%]"
-            initial={{ scale: 1.06, opacity: 0.7 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 h-[120%] w-full object-cover object-center"
+            style={{ y: mediaY }}
+            initial={{ opacity: 0.6, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-bg/40" />
-        </div>
-
-        <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4.25rem)] max-w-6xl lg:grid-cols-[1.08fr_0.92fr]">
-          <motion.div
-            className="flex flex-col justify-center px-4 py-14 md:px-6 lg:py-20"
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Logo to={null} size="hero" />
-            <div className="mt-8 flex items-center gap-3">
-              <motion.span
-                className="h-1 w-14 origin-left bg-signal"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.35, duration: 0.55 }}
-              />
-              <span className="eyebrow text-signal">Vision → Execution</span>
-            </div>
-            <h1 className="display mt-6 max-w-xl text-ink">
-              From vision to a business that runs.
-            </h1>
-            <p className="lede mt-5 max-w-md text-mute">
-              Design, build, grow, fund, automate, and hire — with AI in the loop.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 bg-signal px-5 py-3.5 text-sm font-semibold text-white hover:bg-signal-deep"
-              >
-                View services <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <Link
-                to="/contact"
-                className="inline-flex items-center border border-line bg-surface px-5 py-3.5 text-sm font-semibold text-ink hover:border-ink/25"
-              >
-                Contact us
-              </Link>
-            </div>
-          </motion.div>
-
-          <div className="px-4 pb-12 md:px-6 lg:hidden">
-            <img
-              src="/media/hero.jpg"
-              alt=""
-              className="aspect-[16/11] w-full object-cover"
-            />
+          <div className="absolute inset-0 bg-gradient-to-t from-polar/35 via-transparent to-bg/30" />
+          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-4 md:px-6">
+            <span className="eyebrow text-white/80">AIM · Product · Growth · Ops</span>
+            <span className="hidden text-xs font-semibold tracking-wide text-white/70 sm:inline">
+              7 connected capabilities
+            </span>
           </div>
         </div>
       </section>
 
-      <section className="band-forge px-4 py-20 text-white md:px-6 md:py-24">
+      {/* Capability strip — bento-inspired, not the old 3-column band only */}
+      <section className="border-y border-line bg-ice px-4 py-16 md:px-6 md:py-20">
         <div className="mx-auto max-w-6xl">
-          <motion.div {...fade}>
-            <p className="eyebrow text-signal">Our direction</p>
-            <h2 className="title mt-4 max-w-2xl">
-              Strategy, product, growth, and intelligence on one path.
-            </h2>
+          <motion.div {...fade} className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow text-ember">Operating system</p>
+              <h2 className="title mt-3 max-w-lg">One studio. One path. Multiple crafts.</h2>
+            </div>
+            <p className="max-w-sm text-sm text-mute">
+              Strategy, product, growth, and intelligence stay linked — so execution does not
+              fragment.
+            </p>
           </motion.div>
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
+
+          <div className="mt-12 grid gap-3 md:grid-cols-6">
             {[
               {
-                n: '01',
                 t: 'One partner',
-                d: 'Design, engineering, marketing, funding, AI ops, and hiring stay connected.',
+                d: 'Design through hiring under one roof.',
+                span: 'md:col-span-2',
               },
               {
-                n: '02',
                 t: 'Outcome first',
-                d: 'We start from where you want to go — then choose the craft that moves it.',
+                d: 'Start from the destination, then pick the craft.',
+                span: 'md:col-span-2',
               },
               {
-                n: '03',
                 t: 'AI with control',
-                d: 'Automate repetitive work while people keep judgment and ownership.',
+                d: 'Automate the repetitive. Keep human judgment.',
+                span: 'md:col-span-2',
+              },
+              {
+                t: 'Build & ship',
+                d: 'Product design and engineering that survive growth.',
+                span: 'md:col-span-3',
+              },
+              {
+                t: 'Grow & staff',
+                d: 'Demand systems, funding readiness, and hiring velocity.',
+                span: 'md:col-span-3',
               },
             ].map((item, i) => (
               <motion.div
                 key={item.t}
-                className="border-t border-white/15 pt-6"
+                className={`border border-line bg-surface p-5 md:p-6 ${item.span}`}
                 {...fade}
-                transition={{ ...fade.transition, delay: i * 0.06 }}
+                transition={{ ...fade.transition, delay: i * 0.04 }}
               >
-                <p className="font-display text-xs font-bold tracking-widest text-signal">
-                  {item.n}
-                </p>
-                <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.03em]">
+                <h3 className="font-display text-base font-semibold tracking-[-0.03em] md:text-lg">
                   {item.t}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">{item.d}</p>
+                <p className="mt-2 text-sm leading-relaxed text-mute">{item.d}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-surface px-4 py-20 md:px-6 md:py-24">
+      <section className="band-polar px-4 py-20 text-white md:px-6 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div {...fade}>
-            <p className="eyebrow text-signal">Intelligence</p>
+            <p className="eyebrow text-ember">Intelligence</p>
             <h2 className="title mt-4">AI built into operations.</h2>
-            <p className="lede mt-4 text-mute">
+            <p className="lede mt-4 text-white/65">
               Agents, workflows, and automation that remove friction — without giving up
               control.
             </p>
             <ul className="mt-8 space-y-5">
               {aiHighlights.map((h) => (
                 <li key={h.title} className="flex gap-3">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-signal" strokeWidth={2.25} />
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-ember" strokeWidth={2.5} />
                   <div>
                     <p className="font-semibold">{h.title}</p>
-                    <p className="mt-1 text-sm text-mute">{h.body}</p>
+                    <p className="mt-1 text-sm text-white/55">{h.body}</p>
                   </div>
                 </li>
               ))}
@@ -149,7 +165,7 @@ export function HomePage() {
               alt="AI operations"
               className="aspect-[4/3] w-full object-cover"
             />
-            <div className="absolute -bottom-3 -left-3 hidden h-16 w-16 bg-signal sm:block" />
+            <div className="absolute -right-3 -top-3 h-20 w-3 bg-ember" />
           </motion.div>
         </div>
       </section>
@@ -162,32 +178,35 @@ export function HomePage() {
               key={s.id}
               id={s.id}
               className={`scroll-mt-24 border-t border-line px-4 py-16 md:px-6 md:py-20 ${
-                reverse ? 'bg-bg' : 'bg-surface'
+                reverse ? 'bg-bg' : 'bg-ice'
               }`}
             >
               <div
-                className={`mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14 ${
-                  reverse ? 'lg:[&>*:first-child]:order-2' : ''
+                className={`mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 ${
+                  reverse ? 'lg:grid-cols-[1.1fr_0.9fr] lg:[&>*:first-child]:order-2' : ''
                 }`}
               >
                 <motion.div {...fade}>
-                  <p className="eyebrow text-signal">
-                    {s.num} · Service
-                  </p>
-                  <h2 className="title mt-3">{s.title}</h2>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-display text-4xl font-bold tracking-[-0.06em] text-ember/90">
+                      {s.num}
+                    </span>
+                    <span className="eyebrow text-mute">Service</span>
+                  </div>
+                  <h2 className="title mt-4">{s.title}</h2>
                   <p className="mt-3 text-lg font-semibold tracking-[-0.02em] text-ink/85">
                     {s.tagline}
                   </p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
-                  <ul className="mt-7 grid gap-2 sm:grid-cols-2">
+                  <ul className="mt-7 space-y-2">
                     {s.details.map((d) => (
                       <li
                         key={d}
-                        className="flex items-start gap-2 border border-line bg-surface px-3.5 py-3 text-sm font-medium"
+                        className="flex items-start gap-2.5 border-b border-line py-2.5 text-sm font-medium last:border-0"
                       >
                         <Check
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-signal"
-                          strokeWidth={2.25}
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ember"
+                          strokeWidth={2.5}
                         />
                         {d}
                       </li>
@@ -195,18 +214,19 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 bg-forge px-5 py-3.5 text-sm font-semibold text-white hover:bg-signal"
+                    className="mt-8 inline-flex items-center gap-2 bg-polar px-5 py-3.5 text-sm font-bold text-white hover:bg-ember"
                   >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
-                <motion.div {...fade}>
+                <motion.div {...fade} className="relative overflow-hidden">
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="aspect-[4/3] w-full object-cover"
+                    className="aspect-[5/4] w-full object-cover md:aspect-[4/3]"
                     loading="lazy"
                   />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-polar/25 to-transparent" />
                 </motion.div>
               </div>
             </section>
@@ -216,21 +236,35 @@ export function HomePage() {
 
       <section className="px-4 py-20 md:px-6 md:py-24">
         <motion.div
-          className="band-forge mx-auto max-w-6xl px-6 py-14 text-white md:px-12 md:py-16"
+          className="mx-auto max-w-6xl overflow-hidden border border-line bg-surface"
           {...fade}
         >
-          <p className="eyebrow text-signal">Next step</p>
-          <h2 className="title mt-4 max-w-2xl">Ready for a clear path forward?</h2>
-          <p className="lede mt-4 max-w-xl text-white/60">
-            Tell us your stage. We map design, build, growth, funding, automation, and
-            hiring into a practical plan.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 bg-signal px-5 py-3.5 text-sm font-semibold text-white hover:bg-signal-deep"
-          >
-            Start a conversation <ArrowUpRight className="h-4 w-4" />
-          </Link>
+          <div className="grid lg:grid-cols-2">
+            <div className="p-8 md:p-12">
+              <p className="eyebrow text-ember">Next step</p>
+              <h2 className="title mt-4">Ready for a clearer path?</h2>
+              <p className="lede mt-4 text-mute">
+                Tell us your stage. We map design, build, growth, funding, automation, and
+                hiring into one plan.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex items-center gap-2 bg-ember px-5 py-3.5 text-sm font-bold text-white hover:bg-ember-deep"
+              >
+                Start a conversation <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="band-polar relative min-h-[14rem] p-8 text-white md:p-12">
+              <p className="font-display text-3xl font-bold tracking-[-0.04em] md:text-4xl">
+                Vision
+                <br />
+                <span className="text-ember">→</span> Execution
+              </p>
+              <p className="mt-6 max-w-xs text-sm text-white/55">
+                Product, growth, capital readiness, AI ops, and talent — connected.
+              </p>
+            </div>
+          </div>
         </motion.div>
       </section>
     </div>

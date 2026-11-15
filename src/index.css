@@ -1,24 +1,23 @@
 @import 'tailwindcss';
 
 /*
-  Forge Signal — advanced light studio system
-  Inspired by editorial precision (COVEX) + light clarity (Featherless)
-  Evolves the prior Graphite Rose structure with stronger type & atmosphere
+  Polar Ember — completely new system (not Graphite Rose / Ink Azure)
+  Cool ice field + ember signal. Editorial runway layout.
 */
 @theme {
-  --color-bg: #eef1f6;
-  --color-bg-warm: #f6f3ef;
+  --color-bg: #e9eef5;
+  --color-ice: #f4f7fb;
   --color-surface: #ffffff;
-  --color-ink: #0c0e14;
-  --color-mute: #5a6475;
-  --color-faint: #94a0b4;
-  --color-line: rgba(12, 14, 20, 0.1);
-  --color-signal: #e11d48;
-  --color-signal-deep: #be123c;
-  --color-forge: #151922;
-  --color-mist: #d7dee9;
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-sans: 'Figtree', sans-serif;
+  --color-ink: #0a0f1a;
+  --color-mute: #5c6b7f;
+  --color-faint: #8fa0b5;
+  --color-line: rgba(10, 15, 26, 0.1);
+  --color-ember: #ff4d1a;
+  --color-ember-deep: #d93a0c;
+  --color-polar: #0b1220;
+  --color-glacier: #c5d2e3;
+  --font-display: 'Unbounded', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {
@@ -30,14 +29,14 @@
     margin: 0;
     min-width: 320px;
     background:
-      radial-gradient(ellipse 80% 50% at 0% -10%, rgba(225, 29, 72, 0.07), transparent 50%),
-      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(15, 25, 45, 0.05), transparent 45%),
-      var(--color-bg);
+      radial-gradient(ellipse 90% 55% at 10% -15%, rgba(255, 77, 26, 0.09), transparent 55%),
+      radial-gradient(ellipse 70% 45% at 95% 5%, rgba(11, 18, 32, 0.06), transparent 50%),
+      linear-gradient(180deg, #f4f7fb 0%, #e9eef5 45%, #e4ebf4 100%);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 16.5px;
     line-height: 1.65;
-    letter-spacing: -0.016em;
+    letter-spacing: -0.018em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -46,7 +45,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-signal) 24%, white);
+    background: color-mix(in oklab, var(--color-ember) 28%, white);
   }
 }
 
@@ -55,64 +54,48 @@
     font-family: var(--font-display);
   }
 
-  .band-forge {
+  .band-polar {
     background:
-      radial-gradient(ellipse 50% 80% at 100% 0%, rgba(225, 29, 72, 0.22), transparent 55%),
-      radial-gradient(ellipse 40% 50% at 0% 100%, rgba(255, 255, 255, 0.06), transparent 50%),
-      var(--color-forge);
+      radial-gradient(ellipse 55% 70% at 0% 0%, rgba(255, 77, 26, 0.2), transparent 55%),
+      radial-gradient(ellipse 40% 50% at 100% 100%, rgba(197, 210, 227, 0.12), transparent 50%),
+      var(--color-polar);
   }
 
   .eyebrow {
-    font-size: 0.68rem;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.45rem, 6vw, 4.35rem);
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
     font-weight: 700;
-    letter-spacing: -0.055em;
-    line-height: 0.98;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.08;
+    font-size: clamp(1.55rem, 3vw, 2.45rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    font-size: clamp(1.05rem, 1.35vw, 1.175rem);
     line-height: 1.7;
   }
 
-  /* Diagonal cinematic clip — refined from prior hero */
-  .hero-clip {
-    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  @media (max-width: 1023px) {
-    .hero-clip {
-      clip-path: none;
-    }
-  }
-
-  .grain {
-    position: relative;
-  }
-
-  .grain::after {
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    opacity: 0.035;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  .mega-brand {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 11vw, 7.5rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
   }
 }
 

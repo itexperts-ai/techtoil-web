@@ -7,28 +7,27 @@ export function TopNav() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
-  const onHome = pathname === '/'
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 20)
+    const onScroll = () => setSolid(window.scrollY > 12)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  const bar = solid || open || !onHome
+  const bar = solid || open
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         bar
-          ? 'border-b border-line bg-surface/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
+          ? 'border-b border-line bg-ice/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
-        <nav className="hidden items-center gap-0.5 md:flex">
+        <nav className="hidden items-center md:flex">
           <Link to="/" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
             Home
           </Link>
@@ -40,7 +39,7 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className="ml-2 bg-signal px-4 py-2.5 text-sm font-semibold text-white hover:bg-signal-deep"
+            className="ml-2 bg-ember px-4 py-2.5 text-sm font-bold text-white hover:bg-ember-deep"
           >
             Contact
           </Link>
@@ -48,14 +47,14 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className="border border-line px-3 py-1.5 text-sm font-semibold text-ink md:hidden"
+          className="border border-line px-3 py-1.5 text-sm font-bold text-ink md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
         </button>
       </div>
       {open && (
-        <div className="border-t border-line bg-surface px-4 py-5 md:hidden">
+        <div className="border-t border-line bg-ice px-4 py-5 md:hidden">
           <Link to="/" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             Home
           </Link>
@@ -77,7 +76,7 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-signal py-3 text-sm font-semibold text-white"
+            className="mt-3 flex justify-center bg-ember py-3 text-sm font-bold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

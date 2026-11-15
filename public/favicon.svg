@@ -1,13 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
-  <rect width="80" height="80" rx="20" fill="#0c0e14"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" fill="none">
+  <rect width="72" height="72" rx="18" fill="#0a0f1a"/>
   <defs>
-    <linearGradient id="t" x1="18" y1="14" x2="58" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fb7185"/>
-      <stop offset="0.55" stop-color="#e11d48"/>
-      <stop offset="1" stop-color="#9f1239"/>
+    <linearGradient id="e" x1="20" y1="16" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff8a5c"/>
+      <stop offset="0.5" stop-color="#ff4d1a"/>
+      <stop offset="1" stop-color="#c2410c"/>
     </linearGradient>
   </defs>
-  <path d="M16 58 L32 42 L44 50 L62 28" stroke="#64748b" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="62" cy="28" r="5.5" fill="url(#t)"/>
-  <path d="M18 20h44v10H49v26H31V30H18V20Z" fill="url(#t)"/>
+  <rect x="18" y="22" width="11" height="32" rx="2" fill="url(#e)"/>
+  <rect x="43" y="22" width="11" height="32" rx="2" fill="url(#e)"/>
+  <rect x="18" y="22" width="36" height="10" rx="2" fill="url(#e)"/>
+  <circle cx="36" cy="48" r="7" fill="url(#e)"/>
+  <circle cx="36" cy="48" r="3" fill="#0a0f1a"/>
 </svg>

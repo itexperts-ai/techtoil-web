@@ -5,17 +5,16 @@ import { services } from '../../data/services'
 
 export function Footer() {
   return (
-    <footer className="bg-night text-white">
+    <footer className="bg-void text-white">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 md:px-6">
-        <div className="lg:col-span-1">
+        <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
-            {company.legalName} — product, growth, AI operations, and talent.
+            {company.legalName}
           </p>
         </div>
-
         <div>
-          <p className="kicker text-white/35">Explore</p>
+          <p className="label text-white/35">Explore</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             <li>
               <Link to="/" className="hover:text-white">
@@ -37,16 +36,10 @@ export function Footer() {
                 Contact
               </Link>
             </li>
-            <li>
-              <a href="/contact#location" className="hover:text-white">
-                Location
-              </a>
-            </li>
           </ul>
         </div>
-
         <div>
-          <p className="kicker text-white/35">Services</p>
+          <p className="label text-white/35">Services</p>
           <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             {services.map((s) => (
               <li key={s.id}>
@@ -57,10 +50,9 @@ export function Footer() {
             ))}
           </ul>
         </div>
-
         <div>
-          <p className="kicker text-white/35">Contact</p>
-          <ul className="mt-4 space-y-3 text-sm text-white/60">
+          <p className="label text-white/35">Contact</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             <li>
               <a href={`mailto:${company.email}`} className="hover:text-white">
                 {company.email}
@@ -73,7 +65,7 @@ export function Footer() {
                 </a>
               </li>
             ))}
-            <li className="leading-relaxed text-white/50">
+            <li className="leading-relaxed text-white/45">
               {company.registeredOffice.lines.map((line) => (
                 <span key={line} className="block">
                   {line}

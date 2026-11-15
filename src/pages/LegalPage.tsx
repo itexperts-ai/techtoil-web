@@ -18,10 +18,10 @@ export function TermsPage() {
 
 function Legal({ title, body }: { title: string; body: string }) {
   return (
-    <div className="bg-canvas px-4 pb-20 pt-32 md:px-6">
+    <div className="bg-fog px-4 pb-20 pt-32 md:px-6">
       <div className="mx-auto max-w-2xl">
-        <h1 className="h-section">{title}</h1>
-        <p className="mt-4 leading-relaxed text-steel">{body}</p>
+        <h1 className="headline">{title}</h1>
+        <p className="mt-4 leading-relaxed text-mute">{body}</p>
       </div>
     </div>
   )
@@ -30,8 +30,8 @@ function Legal({ title, body }: { title: string; body: string }) {
 export function NotFoundPage() {
   return (
     <div className="px-4 py-32 text-center">
-      <h1 className="h-section">Page not found</h1>
-      <a href="/" className="mt-6 inline-block font-semibold text-brand">
+      <h1 className="headline">Page not found</h1>
+      <a href="/" className="mt-6 inline-block font-semibold text-volt">
         Back home
       </a>
     </div>

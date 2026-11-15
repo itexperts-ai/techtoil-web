@@ -10,7 +10,7 @@ export function TopNav() {
   const overHero = pathname === '/' && !solid && !open
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 32)
+    const onScroll = () => setSolid(window.scrollY > 28)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -18,13 +18,13 @@ export function TopNav() {
 
   const link = overHero
     ? 'px-3 py-2 text-sm font-medium text-white/80 hover:text-white'
-    : 'px-3 py-2 text-sm font-medium text-steel hover:text-ink'
+    : 'px-3 py-2 text-sm font-medium text-mute hover:text-ink'
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         solid || open
-          ? 'border-b border-edge bg-paper/95 backdrop-blur-lg'
+          ? 'border-b border-rule bg-snow/95 backdrop-blur-lg'
           : 'bg-transparent'
       }`}
     >
@@ -40,28 +40,22 @@ export function TopNav() {
           <Link to="/about" className={link}>
             About
           </Link>
-          <Link to="/contact" className={link}>
-            Contact
-          </Link>
-          <a href="/contact#location" className={link}>
-            Location
-          </a>
           <Link
             to="/contact"
-            className={`ml-4 px-4 py-2.5 text-sm font-semibold transition ${
+            className={`ml-3 px-4 py-2.5 text-sm font-semibold transition ${
               overHero
-                ? 'bg-white text-ink hover:bg-canvas'
-                : 'bg-night text-white hover:bg-brand'
+                ? 'bg-white text-ink hover:bg-fog'
+                : 'bg-void text-white hover:bg-volt'
             }`}
           >
-            Get in touch
+            Contact
           </Link>
         </nav>
         <button
           type="button"
           aria-label="Menu"
           className={`border px-3 py-1.5 text-sm font-semibold md:hidden ${
-            overHero ? 'border-white/35 text-white' : 'border-edge text-ink'
+            overHero ? 'border-white/35 text-white' : 'border-rule text-ink'
           }`}
           onClick={() => setOpen((v) => !v)}
         >
@@ -69,54 +63,32 @@ export function TopNav() {
         </button>
       </div>
       {open && (
-        <div className="border-t border-edge bg-paper px-4 py-5 md:hidden">
+        <div className="border-t border-rule bg-snow px-4 py-5 md:hidden">
           <Link to="/" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
             Home
           </Link>
-          <a
-            href="/#services"
-            className="block py-2.5 font-medium"
-            onClick={() => setOpen(false)}
-          >
+          <a href="/#services" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
             Services
           </a>
           {services.map((s) => (
             <a
               key={s.id}
               href={`/#${s.id}`}
-              className="block py-1.5 pl-2 text-sm text-steel"
+              className="block py-1.5 pl-2 text-sm text-mute"
               onClick={() => setOpen(false)}
             >
               {s.title}
             </a>
           ))}
-          <Link
-            to="/about"
-            className="mt-2 block py-2.5 font-medium"
-            onClick={() => setOpen(false)}
-          >
+          <Link to="/about" className="mt-1 block py-2.5 font-medium" onClick={() => setOpen(false)}>
             About
           </Link>
           <Link
             to="/contact"
-            className="block py-2.5 font-medium"
+            className="mt-3 flex justify-center bg-void py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
             Contact
-          </Link>
-          <a
-            href="/contact#location"
-            className="block py-2.5 font-medium"
-            onClick={() => setOpen(false)}
-          >
-            Location
-          </a>
-          <Link
-            to="/contact"
-            className="mt-3 flex justify-center bg-night py-3 text-sm font-semibold text-white"
-            onClick={() => setOpen(false)}
-          >
-            Get in touch
           </Link>
         </div>
       )}

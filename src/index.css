@@ -96,6 +96,7 @@
     font-weight: 800;
     letter-spacing: -0.06em;
     line-height: 0.9;
+    color: var(--color-polar);
   }
 }
 

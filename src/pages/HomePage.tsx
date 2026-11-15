@@ -30,11 +30,11 @@ export function HomePage() {
             transition={{ duration: 0.7 }}
           >
             <p className="eyebrow text-ember">Studio · Vision → Execution</p>
-            <h1 className="mega-brand mt-5 text-ink">
+            <h1 className="mega-brand mt-5 text-polar">
               Tech<span className="text-ember">toil</span>
             </h1>
             <div className="mt-8 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-              <p className="display max-w-xl text-ink">
+              <p className="display max-w-xl text-polar">
                 From vision to a business that runs.
               </p>
               <div className="md:pb-1">

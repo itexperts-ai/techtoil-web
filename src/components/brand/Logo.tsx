@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useId } from 'react'
 
 type Props = {
   to?: string | null
@@ -9,32 +8,29 @@ type Props = {
 }
 
 function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
-  const uid = useId().replace(/:/g, '')
-  const plate = tone === 'light' ? '#ffffff' : '#0b1220'
+  const stroke = tone === 'light' ? '#F4F5F2' : '#141815'
+  const fill = '#1C3D5A'
 
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden className="shrink-0">
-      <defs>
-        <linearGradient id={`${uid}-g`} x1="14" y1="12" x2="50" y2="52">
-          <stop stopColor="#2dd4bf" />
-          <stop offset="1" stopColor="#0d9488" />
-        </linearGradient>
-      </defs>
-      <rect width="64" height="64" rx="14" fill={plate} />
-      <path d="M20 22h24v8H36v18h-8V30H20V22Z" fill={`url(#${uid}-g)`} />
+      {/* Crop-mark brackets + quiet T survey point */}
+      <path d="M10 10H26V12.5H12.5V26H10V10Z" fill={stroke} />
+      <path d="M54 54H38V51.5H51.5V38H54V54Z" fill={stroke} />
+      <rect x="27" y="25" width="10" height="14" fill={fill} />
+      <rect x="22" y="25" width="20" height="4.5" fill={fill} />
     </svg>
   )
 }
 
 export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: Props) {
-  const mark = size === 'lg' ? 40 : 30
-  const text = size === 'lg' ? 'text-[1.55rem]' : 'text-[1.05rem]'
+  const mark = size === 'lg' ? 42 : 32
+  const text = size === 'lg' ? 'text-[1.55rem]' : 'text-[1.1rem]'
   const ink = tone === 'light' ? 'text-white' : 'text-ink'
 
   const node = (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <Mark size={mark} tone={tone} />
-      <span className={`font-display font-bold leading-none tracking-[-0.04em] ${ink} ${text}`}>
+      <span className={`font-display font-bold leading-none tracking-[-0.05em] ${ink} ${text}`}>
         Tech<span className="text-accent">toil</span>
       </span>
     </span>

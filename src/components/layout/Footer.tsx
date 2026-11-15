@@ -6,16 +6,16 @@ import { services } from '../../data/services'
 export function Footer() {
   return (
     <footer className="band-dark text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 md:px-6">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div>
           <Logo tone="light" />
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
             {company.legalName}
           </p>
         </div>
         <div>
-          <p className="eyebrow text-white/40">Explore</p>
-          <ul className="mt-4 space-y-2.5 text-sm text-white/65">
+          <p className="eyebrow text-white/35">Explore</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             <li>
               <Link to="/" className="hover:text-white">
                 Home
@@ -39,8 +39,8 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-white/40">Services</p>
-          <ul className="mt-4 space-y-2.5 text-sm text-white/65">
+          <p className="eyebrow text-white/35">Disciplines</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             {services.map((s) => (
               <li key={s.id}>
                 <a href={`/#${s.id}`} className="hover:text-white">
@@ -51,8 +51,8 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="eyebrow text-white/40">Contact</p>
-          <ul className="mt-4 space-y-2.5 text-sm text-white/65">
+          <p className="eyebrow text-white/35">Colophon</p>
+          <ul className="mt-4 space-y-2.5 text-sm text-white/60">
             <li>
               <a href={`mailto:${company.email}`} className="hover:text-white">
                 {company.email}
@@ -65,7 +65,7 @@ export function Footer() {
                 </a>
               </li>
             ))}
-            <li className="leading-relaxed text-white/50">
+            <li className="leading-relaxed text-white/45">
               {company.registeredOffice.lines.map((line) => (
                 <span key={line} className="block">
                   {line}
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-4 md:px-6">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 text-xs text-white/40 sm:flex-row sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 text-xs text-white/35 sm:flex-row sm:justify-between">
           <span>
             © {new Date().getFullYear()} {company.legalName}
           </span>

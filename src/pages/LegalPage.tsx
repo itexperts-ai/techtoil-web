@@ -29,9 +29,9 @@ function Legal({ title, body }: { title: string; body: string }) {
 
 export function NotFoundPage() {
   return (
-    <div className="px-4 py-32 text-center">
+    <div className="bg-bg px-4 py-32 text-center">
       <h1 className="title">Page not found</h1>
-      <a href="/" className="mt-6 inline-block font-semibold text-accent">
+      <a href="/" className="mt-6 inline-block font-display font-semibold text-accent">
         Back home
       </a>
     </div>

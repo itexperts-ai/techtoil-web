@@ -1,24 +1,23 @@
 @import 'tailwindcss';
 
 /*
-  Clarity Studio — premium light landing system
-  Based on proven studio/SaaS landing patterns:
-  hero value prop → benefits → intelligence → services → process → CTA
+  Ash Instrument — mineral light editorial system
+  Cool ash layers · deep navy accent · Bricolage + Newsreader
 */
 @theme {
-  --color-bg: #eef2f5;
-  --color-paper: #f7f9fb;
-  --color-surface: #ffffff;
-  --color-ink: #0b1220;
-  --color-mute: #5a6573;
-  --color-faint: #8b96a5;
-  --color-line: rgba(11, 18, 32, 0.1);
-  --color-accent: #0d9488;
-  --color-accent-bright: #14b8a6;
-  --color-accent-deep: #0f766e;
-  --color-dark: #111827;
-  --font-display: 'Manrope', sans-serif;
-  --font-sans: 'Manrope', sans-serif;
+  --color-bg: #e6e8e4;
+  --color-paper: #f4f5f2;
+  --color-surface: #d9ddd8;
+  --color-ink: #141815;
+  --color-mute: #5a635e;
+  --color-faint: #7a847e;
+  --color-line: rgba(20, 24, 21, 0.12);
+  --color-accent: #1c3d5a;
+  --color-accent-bright: #2a5a82;
+  --color-accent-deep: #0f2740;
+  --color-dark: #0e1210;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Newsreader', Georgia, serif;
 }
 
 @layer base {
@@ -32,9 +31,10 @@
     background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16.5px;
-    line-height: 1.65;
-    letter-spacing: -0.018em;
+    font-size: 17.5px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -43,7 +43,15 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent) 26%, white);
+    background: color-mix(in oklab, var(--color-accent) 22%, white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
   }
 }
 
@@ -52,60 +60,59 @@
     font-family: var(--font-display);
   }
 
+  .font-body {
+    font-family: var(--font-sans);
+  }
+
   .band-dark {
     background:
-      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(20, 184, 166, 0.18), transparent 55%),
+      radial-gradient(ellipse 45% 50% at 0% 100%, rgba(28, 61, 90, 0.35), transparent 55%),
       var(--color-dark);
   }
 
   .eyebrow {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.4rem);
+    font-size: clamp(2.6rem, 6.5vw, 4.6rem);
     font-weight: 700;
-    letter-spacing: -0.045em;
-    line-height: 1.03;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.3vw, 2.75rem);
+    font-size: clamp(1.85rem, 3.4vw, 2.85rem);
     font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.12;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.35vw, 1.175rem);
-    line-height: 1.7;
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+    line-height: 1.65;
+    font-weight: 400;
   }
 
-  .hero-wash {
-    background: linear-gradient(
-      105deg,
-      rgba(247, 249, 251, 0.97) 0%,
-      rgba(247, 249, 251, 0.9) 34%,
-      rgba(247, 249, 251, 0.4) 55%,
-      transparent 78%
-    );
+  .rule {
+    height: 1px;
+    background: var(--color-line);
   }
 
-  @media (max-width: 767px) {
-    .hero-wash {
-      background: linear-gradient(
-        180deg,
-        rgba(247, 249, 251, 0.96) 0%,
-        rgba(247, 249, 251, 0.88) 45%,
-        rgba(247, 249, 251, 0.35) 72%,
-        transparent 100%
-      );
-    }
+  .paper-slab {
+    background: color-mix(in oklab, var(--color-paper) 94%, transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .hairline-draw {
+    transform-origin: left center;
   }
 }
 

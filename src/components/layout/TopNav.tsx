@@ -7,39 +7,42 @@ export function TopNav() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
+  const onHome = pathname === '/'
+  const overHero = onHome && !solid && !open
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 12)
+    const onScroll = () => setSolid(window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  const bar = solid || open
+  const bar = solid || open || !onHome
+  const link = 'px-3 py-2 text-sm font-medium text-mute hover:text-ink'
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         bar
-          ? 'border-b border-line bg-ice/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
+          ? 'border-b border-line bg-quartz/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
         <nav className="hidden items-center md:flex">
-          <Link to="/" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
+          <Link to="/" className={link}>
             Home
           </Link>
-          <a href="/#services" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
+          <a href="/#services" className={link}>
             Services
           </a>
-          <Link to="/about" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
+          <Link to="/about" className={link}>
             About
           </Link>
           <Link
             to="/contact"
-            className="ml-2 bg-ember px-4 py-2.5 text-sm font-bold text-white hover:bg-ember-deep"
+            className="ml-2 bg-teal px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-deep"
           >
             Contact
           </Link>
@@ -47,18 +50,20 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className="border border-line px-3 py-1.5 text-sm font-bold text-ink md:hidden"
+          className={`border px-3 py-1.5 text-sm font-semibold md:hidden ${
+            overHero ? 'border-ink/20 text-ink' : 'border-line text-ink'
+          }`}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
         </button>
       </div>
       {open && (
-        <div className="border-t border-line bg-ice px-4 py-5 md:hidden">
-          <Link to="/" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
+        <div className="border-t border-line bg-quartz px-4 py-5 md:hidden">
+          <Link to="/" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
             Home
           </Link>
-          <a href="/#services" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
+          <a href="/#services" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
             Services
           </a>
           {services.map((s) => (
@@ -71,12 +76,12 @@ export function TopNav() {
               {s.title}
             </a>
           ))}
-          <Link to="/about" className="mt-1 block py-2.5 font-semibold" onClick={() => setOpen(false)}>
+          <Link to="/about" className="mt-1 block py-2.5 font-medium" onClick={() => setOpen(false)}>
             About
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-ember py-3 text-sm font-bold text-white"
+            className="mt-3 flex justify-center bg-teal py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

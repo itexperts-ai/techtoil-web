@@ -1,23 +1,24 @@
 @import 'tailwindcss';
 
 /*
-  Polar Ember — completely new system (not Graphite Rose / Ink Azure)
-  Cool ice field + ember signal. Editorial runway layout.
+  Quartz Teal — premium light studio system
+  Full-bleed cinematic hero · editorial rhythm · refined contrast
+  Distinct from rose / azure / ember experiments
 */
 @theme {
-  --color-bg: #e9eef5;
-  --color-ice: #f4f7fb;
+  --color-bg: #f3f6f8;
+  --color-quartz: #fafcfd;
   --color-surface: #ffffff;
-  --color-ink: #0a0f1a;
-  --color-mute: #5c6b7f;
-  --color-faint: #8fa0b5;
-  --color-line: rgba(10, 15, 26, 0.1);
-  --color-ember: #ff4d1a;
-  --color-ember-deep: #d93a0c;
-  --color-polar: #0b1220;
-  --color-glacier: #c5d2e3;
-  --font-display: 'Unbounded', sans-serif;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --color-ink: #0b1215;
+  --color-mute: #5a6a73;
+  --color-faint: #8b9aa3;
+  --color-line: rgba(11, 18, 21, 0.1);
+  --color-teal: #0f766e;
+  --color-teal-bright: #14b8a6;
+  --color-teal-deep: #0d5c56;
+  --color-slate: #132028;
+  --font-display: 'Outfit', sans-serif;
+  --font-sans: 'Outfit', sans-serif;
 }
 
 @layer base {
@@ -28,15 +29,13 @@
   body {
     margin: 0;
     min-width: 320px;
-    background:
-      radial-gradient(ellipse 90% 55% at 10% -15%, rgba(255, 77, 26, 0.09), transparent 55%),
-      radial-gradient(ellipse 70% 45% at 95% 5%, rgba(11, 18, 32, 0.06), transparent 50%),
-      linear-gradient(180deg, #f4f7fb 0%, #e9eef5 45%, #e4ebf4 100%);
+    background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16.5px;
+    font-size: 17px;
     line-height: 1.65;
-    letter-spacing: -0.018em;
+    letter-spacing: -0.02em;
+    font-weight: 450;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -45,7 +44,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-ember) 28%, white);
+    background: color-mix(in oklab, var(--color-teal-bright) 30%, white);
   }
 }
 
@@ -54,49 +53,64 @@
     font-family: var(--font-display);
   }
 
-  .band-polar {
+  .band-slate {
     background:
-      radial-gradient(ellipse 55% 70% at 0% 0%, rgba(255, 77, 26, 0.2), transparent 55%),
-      radial-gradient(ellipse 40% 50% at 100% 100%, rgba(197, 210, 227, 0.12), transparent 50%),
-      var(--color-polar);
+      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(20, 184, 166, 0.18), transparent 55%),
+      var(--color-slate);
   }
 
   .eyebrow {
-    font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5.5vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
+    font-size: clamp(2.5rem, 6.2vw, 4.5rem);
+    font-weight: 650;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.55rem, 3vw, 2.45rem);
-    font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 1.12;
+    font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.35vw, 1.175rem);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     line-height: 1.7;
+    font-weight: 400;
   }
 
-  .mega-brand {
-    font-family: var(--font-display);
-    font-size: clamp(3.2rem, 11vw, 7.5rem);
-    font-weight: 800;
-    letter-spacing: -0.06em;
-    line-height: 0.9;
-    color: var(--color-polar);
+  .hero-wash {
+    background:
+      linear-gradient(
+        105deg,
+        rgba(250, 252, 253, 0.97) 0%,
+        rgba(250, 252, 253, 0.9) 32%,
+        rgba(250, 252, 253, 0.45) 52%,
+        rgba(250, 252, 253, 0.08) 72%,
+        transparent 100%
+      );
+  }
+
+  @media (max-width: 767px) {
+    .hero-wash {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(250, 252, 253, 0.96) 0%,
+          rgba(250, 252, 253, 0.88) 42%,
+          rgba(250, 252, 253, 0.35) 70%,
+          transparent 100%
+        );
+    }
   }
 }
 

@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowUpRight, Check } from 'lucide-react'
+import { Logo } from '../components/brand/Logo'
 import { aiHighlights, services } from '../data/services'
 
 const fade = {
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-50px' },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
 }
 
 export function HomePage() {
@@ -17,131 +18,99 @@ export function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const mediaY = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
 
   return (
     <div>
-      {/* NEW runway hero — ice field + mega brand + full-bleed media plane */}
-      <section ref={heroRef} className="relative overflow-hidden pt-[4.25rem]">
-        <div className="mx-auto max-w-6xl px-4 pb-10 pt-10 md:px-6 md:pb-12 md:pt-14">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="eyebrow text-ember">Studio · Vision → Execution</p>
-            <h1 className="mega-brand mt-5 text-polar">
-              Tech<span className="text-ember">toil</span>
-            </h1>
-            <div className="mt-8 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
-              <p className="display max-w-xl text-polar">
-                From vision to a business that runs.
-              </p>
-              <div className="md:pb-1">
-                <p className="lede text-mute">
-                  Design, build, grow, fund, automate, and hire — with AI in the loop.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="#services"
-                    className="inline-flex items-center gap-2 bg-ember px-5 py-3.5 text-sm font-bold text-white hover:bg-ember-deep"
-                  >
-                    Explore services <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center border border-ink/15 bg-surface px-5 py-3.5 text-sm font-bold text-ink hover:border-ink/35"
-                  >
-                    Talk to us
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="relative h-[42vh] min-h-[16rem] w-full overflow-hidden md:h-[52vh]">
-          <motion.img
+      {/* Full-bleed cinematic hero — one composition */}
+      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: imgY }}>
+          <img
             src="/media/hero.jpg"
             alt=""
-            className="absolute inset-0 h-[120%] w-full object-cover object-center"
-            style={{ y: mediaY }}
-            initial={{ opacity: 0.6, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
+            className="h-[115%] w-full object-cover object-[68%_center]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-polar/35 via-transparent to-bg/30" />
-          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-4 md:px-6">
-            <span className="eyebrow text-white/80">AIM · Product · Growth · Ops</span>
-            <span className="hidden text-xs font-semibold tracking-wide text-white/70 sm:inline">
-              7 connected capabilities
-            </span>
-          </div>
+        </motion.div>
+        <div className="hero-wash absolute inset-0" />
+
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-4 pb-16 pt-28 md:px-6 md:pb-20">
+          <motion.div
+            className="max-w-xl"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Logo to={null} size="hero" />
+            <h1 className="display mt-8 text-ink">
+              From vision to a business that runs.
+            </h1>
+            <p className="lede mt-5 max-w-md text-mute">
+              Design, build, grow, fund, automate, and hire — with AI in the loop.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a
+                href="#services"
+                className="inline-flex items-center gap-2 bg-teal px-5 py-3.5 text-sm font-semibold text-white hover:bg-teal-deep"
+              >
+                View services <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <Link
+                to="/contact"
+                className="inline-flex items-center border border-ink/15 bg-quartz/80 px-5 py-3.5 text-sm font-semibold text-ink backdrop-blur-sm hover:border-ink/30"
+              >
+                Contact us
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Capability strip — bento-inspired, not the old 3-column band only */}
-      <section className="border-y border-line bg-ice px-4 py-16 md:px-6 md:py-20">
+      <section className="bg-quartz px-4 py-20 md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <motion.div {...fade} className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="eyebrow text-ember">Operating system</p>
-              <h2 className="title mt-3 max-w-lg">One studio. One path. Multiple crafts.</h2>
-            </div>
-            <p className="max-w-sm text-sm text-mute">
-              Strategy, product, growth, and intelligence stay linked — so execution does not
-              fragment.
-            </p>
+          <motion.div {...fade}>
+            <p className="eyebrow text-teal">Direction</p>
+            <h2 className="title mt-4 max-w-2xl">
+              Strategy, product, growth, and intelligence — one path.
+            </h2>
           </motion.div>
-
-          <div className="mt-12 grid gap-3 md:grid-cols-6">
+          <div className="mt-14 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
             {[
               {
                 t: 'One partner',
-                d: 'Design through hiring under one roof.',
-                span: 'md:col-span-2',
+                d: 'Design, engineering, marketing, funding, AI ops, and hiring stay connected.',
               },
               {
                 t: 'Outcome first',
-                d: 'Start from the destination, then pick the craft.',
-                span: 'md:col-span-2',
+                d: 'We start from where you want to go — then choose the craft that moves it.',
               },
               {
                 t: 'AI with control',
-                d: 'Automate the repetitive. Keep human judgment.',
-                span: 'md:col-span-2',
-              },
-              {
-                t: 'Build & ship',
-                d: 'Product design and engineering that survive growth.',
-                span: 'md:col-span-3',
-              },
-              {
-                t: 'Grow & staff',
-                d: 'Demand systems, funding readiness, and hiring velocity.',
-                span: 'md:col-span-3',
+                d: 'Automate repetitive work while people keep judgment and ownership.',
               },
             ].map((item, i) => (
               <motion.div
                 key={item.t}
-                className={`border border-line bg-surface p-5 md:p-6 ${item.span}`}
+                className="bg-quartz p-7 md:p-8"
                 {...fade}
-                transition={{ ...fade.transition, delay: i * 0.04 }}
+                transition={{ ...fade.transition, delay: i * 0.05 }}
               >
-                <h3 className="font-display text-base font-semibold tracking-[-0.03em] md:text-lg">
+                <p className="font-display text-xs font-semibold tracking-[0.18em] text-teal">
+                  0{i + 1}
+                </p>
+                <h3 className="mt-4 font-display text-xl font-semibold tracking-[-0.03em]">
                   {item.t}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-mute">{item.d}</p>
+                <p className="mt-3 text-sm leading-relaxed text-mute">{item.d}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="band-polar px-4 py-20 text-white md:px-6 md:py-24">
+      <section className="band-slate px-4 py-20 text-white md:px-6 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div {...fade}>
-            <p className="eyebrow text-ember">Intelligence</p>
+            <p className="eyebrow text-teal-bright">Intelligence</p>
             <h2 className="title mt-4">AI built into operations.</h2>
             <p className="lede mt-4 text-white/65">
               Agents, workflows, and automation that remove friction — without giving up
@@ -150,7 +119,7 @@ export function HomePage() {
             <ul className="mt-8 space-y-5">
               {aiHighlights.map((h) => (
                 <li key={h.title} className="flex gap-3">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-ember" strokeWidth={2.5} />
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-teal-bright" strokeWidth={2.5} />
                   <div>
                     <p className="font-semibold">{h.title}</p>
                     <p className="mt-1 text-sm text-white/55">{h.body}</p>
@@ -159,13 +128,12 @@ export function HomePage() {
               ))}
             </ul>
           </motion.div>
-          <motion.div {...fade} className="relative">
+          <motion.div {...fade}>
             <img
               src="/media/svc-aiops.jpg"
               alt="AI operations"
               className="aspect-[4/3] w-full object-cover"
             />
-            <div className="absolute -right-3 -top-3 h-20 w-3 bg-ember" />
           </motion.div>
         </div>
       </section>
@@ -178,34 +146,27 @@ export function HomePage() {
               key={s.id}
               id={s.id}
               className={`scroll-mt-24 border-t border-line px-4 py-16 md:px-6 md:py-20 ${
-                reverse ? 'bg-bg' : 'bg-ice'
+                reverse ? 'bg-bg' : 'bg-quartz'
               }`}
             >
               <div
-                className={`mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 ${
-                  reverse ? 'lg:grid-cols-[1.1fr_0.9fr] lg:[&>*:first-child]:order-2' : ''
+                className={`mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16 ${
+                  reverse ? 'lg:[&>*:first-child]:order-2' : ''
                 }`}
               >
                 <motion.div {...fade}>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-display text-4xl font-bold tracking-[-0.06em] text-ember/90">
-                      {s.num}
-                    </span>
-                    <span className="eyebrow text-mute">Service</span>
-                  </div>
-                  <h2 className="title mt-4">{s.title}</h2>
-                  <p className="mt-3 text-lg font-semibold tracking-[-0.02em] text-ink/85">
-                    {s.tagline}
-                  </p>
+                  <p className="eyebrow text-teal">{s.num} · Service</p>
+                  <h2 className="title mt-3">{s.title}</h2>
+                  <p className="mt-3 text-lg font-medium text-ink/80">{s.tagline}</p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
-                  <ul className="mt-7 space-y-2">
+                  <ul className="mt-7 space-y-0">
                     {s.details.map((d) => (
                       <li
                         key={d}
-                        className="flex items-start gap-2.5 border-b border-line py-2.5 text-sm font-medium last:border-0"
+                        className="flex items-start gap-3 border-t border-line py-3 text-sm font-medium first:border-t-0 first:pt-0"
                       >
                         <Check
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ember"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-teal"
                           strokeWidth={2.5}
                         />
                         {d}
@@ -214,19 +175,18 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 bg-polar px-5 py-3.5 text-sm font-bold text-white hover:bg-ember"
+                    className="mt-8 inline-flex items-center gap-2 bg-slate px-5 py-3.5 text-sm font-semibold text-white hover:bg-teal"
                   >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
-                <motion.div {...fade} className="relative overflow-hidden">
+                <motion.div {...fade}>
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="aspect-[5/4] w-full object-cover md:aspect-[4/3]"
+                    className="aspect-[4/3] w-full object-cover"
                     loading="lazy"
                   />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-polar/25 to-transparent" />
                 </motion.div>
               </div>
             </section>
@@ -234,37 +194,20 @@ export function HomePage() {
         })}
       </div>
 
-      <section className="px-4 py-20 md:px-6 md:py-24">
-        <motion.div
-          className="mx-auto max-w-6xl overflow-hidden border border-line bg-surface"
-          {...fade}
-        >
-          <div className="grid lg:grid-cols-2">
-            <div className="p-8 md:p-12">
-              <p className="eyebrow text-ember">Next step</p>
-              <h2 className="title mt-4">Ready for a clearer path?</h2>
-              <p className="lede mt-4 text-mute">
-                Tell us your stage. We map design, build, growth, funding, automation, and
-                hiring into one plan.
-              </p>
-              <Link
-                to="/contact"
-                className="mt-8 inline-flex items-center gap-2 bg-ember px-5 py-3.5 text-sm font-bold text-white hover:bg-ember-deep"
-              >
-                Start a conversation <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="band-polar relative min-h-[14rem] p-8 text-white md:p-12">
-              <p className="font-display text-3xl font-bold tracking-[-0.04em] md:text-4xl">
-                Vision
-                <br />
-                <span className="text-ember">→</span> Execution
-              </p>
-              <p className="mt-6 max-w-xs text-sm text-white/55">
-                Product, growth, capital readiness, AI ops, and talent — connected.
-              </p>
-            </div>
-          </div>
+      <section className="bg-quartz px-4 py-20 md:px-6 md:py-24">
+        <motion.div className="band-slate mx-auto max-w-6xl px-8 py-14 text-white md:px-14 md:py-16" {...fade}>
+          <p className="eyebrow text-teal-bright">Next step</p>
+          <h2 className="title mt-4 max-w-xl">Ready for a clear next move?</h2>
+          <p className="lede mt-4 max-w-lg text-white/60">
+            Tell us your stage. We map design, build, growth, funding, automation, and
+            hiring into one plan.
+          </p>
+          <Link
+            to="/contact"
+            className="mt-8 inline-flex items-center gap-2 bg-teal-bright px-5 py-3.5 text-sm font-semibold text-slate hover:bg-white"
+          >
+            Start a conversation <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </motion.div>
       </section>
     </div>

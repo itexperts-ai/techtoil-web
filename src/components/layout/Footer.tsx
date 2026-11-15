@@ -5,7 +5,7 @@ import { services } from '../../data/services'
 
 export function Footer() {
   return (
-    <footer className="band-polar text-white">
+    <footer className="band-slate text-white">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 md:px-6">
         <div>
           <Logo tone="light" />

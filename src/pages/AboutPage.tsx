@@ -4,8 +4,9 @@ import { company } from '../data/company'
 
 export function AboutPage() {
   return (
-    <div className="bg-bg px-4 pb-24 pt-32 md:px-6 md:pt-40">
-      <div className="mx-auto max-w-2xl">
+    <div className="relative overflow-hidden bg-bg px-4 pb-24 pt-32 md:px-6 md:pt-40">
+      <div className="pointer-events-none absolute -left-20 top-32 h-56 w-56 rounded-full bg-teal/8 blur-3xl" />
+      <div className="relative mx-auto max-w-2xl">
         <p className="eyebrow text-teal">About</p>
         <h1 className="title mt-4">{company.legalName}</h1>
         <div className="lede mt-8 space-y-5 text-mute">

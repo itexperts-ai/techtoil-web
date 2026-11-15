@@ -5,8 +5,9 @@ import { company, mapsEmbedUrl, mapsOpenUrl } from '../data/company'
 export function ContactPage() {
   return (
     <div className="bg-bg">
-      <section className="border-b border-line bg-quartz px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
-        <div className="mx-auto max-w-6xl">
+      <section className="relative overflow-hidden border-b border-line bg-quartz px-4 pb-14 pt-32 md:px-6 md:pb-16 md:pt-36">
+        <div className="pointer-events-none absolute -right-16 top-20 h-48 w-48 rounded-full bg-teal/8 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl">
           <p className="eyebrow text-teal">Contact & location</p>
           <h1 className="display mt-4 max-w-2xl">Let’s talk.</h1>
           <p className="lede mt-5 max-w-xl text-mute">

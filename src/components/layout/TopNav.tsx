@@ -8,36 +8,47 @@ export function TopNav() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
   const onHome = pathname === '/'
-  const overHero = onHome && !solid && !open
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 24)
+    const onScroll = () => setSolid(window.scrollY > 16)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  const bar = solid || open || !onHome
-  const link = 'px-3 py-2 text-sm font-medium text-mute hover:text-ink'
+  // Always readable: frosted bar on home (even over hero) + solid elsewhere
+  const frosted = onHome || solid || open || !onHome
+  const elevated = solid || open || !onHome
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        bar
+        elevated
           ? 'border-b border-line bg-quartz/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
-          : 'bg-transparent'
+          : frosted
+            ? 'border-b border-line/60 bg-quartz/80 backdrop-blur-xl'
+            : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
         <nav className="hidden items-center md:flex">
-          <Link to="/" className={link}>
+          <Link
+            to="/"
+            className="px-3 py-2 text-sm font-semibold text-ink/80 hover:text-ink"
+          >
             Home
           </Link>
-          <a href="/#services" className={link}>
+          <a
+            href="/#services"
+            className="px-3 py-2 text-sm font-semibold text-ink/80 hover:text-ink"
+          >
             Services
           </a>
-          <Link to="/about" className={link}>
+          <Link
+            to="/about"
+            className="px-3 py-2 text-sm font-semibold text-ink/80 hover:text-ink"
+          >
             About
           </Link>
           <Link
@@ -50,9 +61,7 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className={`border px-3 py-1.5 text-sm font-semibold md:hidden ${
-            overHero ? 'border-ink/20 text-ink' : 'border-line text-ink'
-          }`}
+          className="border border-ink/20 bg-quartz/90 px-3 py-1.5 text-sm font-semibold text-ink md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
@@ -60,10 +69,14 @@ export function TopNav() {
       </div>
       {open && (
         <div className="border-t border-line bg-quartz px-4 py-5 md:hidden">
-          <Link to="/" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
+          <Link to="/" className="block py-2.5 font-semibold text-ink" onClick={() => setOpen(false)}>
             Home
           </Link>
-          <a href="/#services" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
+          <a
+            href="/#services"
+            className="block py-2.5 font-semibold text-ink"
+            onClick={() => setOpen(false)}
+          >
             Services
           </a>
           {services.map((s) => (
@@ -76,7 +89,11 @@ export function TopNav() {
               {s.title}
             </a>
           ))}
-          <Link to="/about" className="mt-1 block py-2.5 font-medium" onClick={() => setOpen(false)}>
+          <Link
+            to="/about"
+            className="mt-1 block py-2.5 font-semibold text-ink"
+            onClick={() => setOpen(false)}
+          >
             About
           </Link>
           <Link

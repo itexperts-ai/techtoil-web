@@ -18,7 +18,7 @@ export function AboutPage() {
             Those capabilities stay connected — so AI, craft, and strategy work as one path.
           </p>
         </div>
-        <div className="mt-10 border border-line bg-surface p-5 text-sm text-mute md:p-6">
+        <div className="mt-10 rounded-2xl border border-line bg-surface p-5 text-sm text-mute md:p-6">
           <p className="eyebrow text-accent">Registered Office</p>
           <p className="mt-3 leading-relaxed">
             {company.registeredOffice.lines.map((line) => (
@@ -31,7 +31,7 @@ export function AboutPage() {
         </div>
         <Link
           to="/contact"
-          className="mt-10 inline-flex items-center gap-2 bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
         >
           Work with us <ArrowUpRight className="h-4 w-4" />
         </Link>

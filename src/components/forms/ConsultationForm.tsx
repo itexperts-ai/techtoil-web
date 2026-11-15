@@ -41,7 +41,10 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 border border-line bg-surface p-6 md:p-8">
+    <form
+      onSubmit={onSubmit}
+      className="space-y-4 rounded-2xl border border-line bg-surface p-6 shadow-[0_20px_40px_-30px_rgba(23,26,24,0.3)] md:p-8"
+    >
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Name
         <input name="name" required className="field" placeholder="Your name" />
@@ -72,7 +75,7 @@ export function ConsultationForm() {
       {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
       <button
         type="submit"
-        className="w-full bg-accent py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
+        className="w-full rounded-full bg-accent py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
       >
         Send message
       </button>
@@ -80,13 +83,14 @@ export function ConsultationForm() {
         .field {
           width: 100%;
           border: 1px solid rgba(18, 22, 28, 0.1);
-          background: #f0eeea;
+          border-radius: 0.75rem;
+          background: #ebe8e2;
           padding: 0.85rem 1rem;
           font: inherit;
           outline: none;
         }
         .field:focus {
-          border-color: #3e6b58;
+          border-color: #3a6754;
           background: #ffffff;
         }
       `}</style>

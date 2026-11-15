@@ -25,7 +25,7 @@ export const services: Service[] = [
       'Usability validation',
     ],
     image: '/media/svc-design.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
   {
     id: 'product-development',
@@ -42,7 +42,7 @@ export const services: Service[] = [
       'Ongoing product maintenance',
     ],
     image: '/media/svc-dev.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
   {
     id: 'marketing',
@@ -59,7 +59,7 @@ export const services: Service[] = [
       'Analytics & nurture flows',
     ],
     image: '/media/svc-marketing.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
   {
     id: 'consultancy',
@@ -76,7 +76,7 @@ export const services: Service[] = [
       'MVP & roadmap planning',
     ],
     image: '/media/svc-consult.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
   {
     id: 'funding',
@@ -93,7 +93,7 @@ export const services: Service[] = [
       'Due diligence preparation',
     ],
     image: '/media/svc-funding.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
   {
     id: 'ai-automation',
@@ -110,7 +110,7 @@ export const services: Service[] = [
       'Custom AI integrations',
     ],
     image: '/media/svc-aiops.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
   {
     id: 'hr-hiring',
@@ -127,7 +127,7 @@ export const services: Service[] = [
       'Dedicated team augmentation',
     ],
     image: '/media/svc-hr.jpg',
-    accent: '#3E6B58',
+    accent: '#3A6754',
   },
 ]
 

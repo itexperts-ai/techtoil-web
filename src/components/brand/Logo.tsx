@@ -7,30 +7,25 @@ type Props = {
   className?: string
 }
 
-/** North Light — pine square with a column of light */
 function Mark({ size }: { size: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden className="shrink-0">
-      <rect width="64" height="64" rx="10" fill="#3E6B58" />
-      <rect x="28" y="12" width="8" height="40" rx="1" fill="#F6F4F0" />
+      <rect width="64" height="64" rx="14" fill="#3A6754" />
+      <rect x="29" y="14" width="6" height="36" rx="2" fill="#F7F5F1" />
     </svg>
   )
 }
 
 export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: Props) {
-  const mark = size === 'lg' ? 40 : 30
-  const text = size === 'lg' ? 'text-[1.45rem]' : 'text-[1.08rem]'
+  const mark = size === 'lg' ? 42 : 32
+  const text = size === 'lg' ? 'text-[1.5rem]' : 'text-[1.12rem]'
   const ink = tone === 'light' ? 'text-white' : 'text-ink'
-  const sub = tone === 'light' ? 'text-white/50' : 'text-mute'
 
   const node = (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <Mark size={mark} />
-      <span className="flex flex-col leading-none">
-        <span className={`font-semibold tracking-[-0.03em] ${ink} ${text}`}>Techtoil</span>
-        <span className={`mt-1 font-display text-[0.65rem] italic tracking-[0.14em] ${sub}`}>
-          Infosol
-        </span>
+      <span className={`font-display text-[length:inherit] font-semibold tracking-[-0.03em] ${ink} ${text}`}>
+        Tech<span className="italic font-medium">toil</span>
       </span>
     </span>
   )
@@ -40,7 +35,7 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
     <Link
       to={to ?? '/'}
       aria-label="Techtoil"
-      className="outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+      className="rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
     >
       {node}
     </Link>

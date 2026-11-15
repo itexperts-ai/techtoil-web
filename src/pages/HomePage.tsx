@@ -5,10 +5,10 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import { aiHighlights, services } from '../data/services'
 
 const fade = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 26 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' },
-  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
 }
 
 const process = [
@@ -24,44 +24,47 @@ export function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
+  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1])
 
   return (
     <div>
-      {/* Hero — cinematic wash, high readability */}
       <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ y: imgY }}>
+        <motion.div className="absolute inset-0" style={{ y: imgY, scale: imgScale }}>
           <img
             src="/media/hero.jpg"
             alt=""
-            className="h-[115%] w-full object-cover object-[65%_center]"
+            className="h-full w-full object-cover object-[62%_center]"
           />
         </motion.div>
         <div className="hero-wash absolute inset-0" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-4 pb-16 pt-28 md:px-6">
           <motion.div
-            className="max-w-xl"
+            className="max-w-[34rem]"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.85 }}
           >
             <p className="eyebrow text-accent">Product · Growth · Intelligence</p>
-            <h1 className="display mt-5 text-ink">From vision to a business that runs.</h1>
-            <p className="lede mt-5 max-w-md text-ink/75">
+            <h1 className="display mt-6 text-ink">
+              From vision to a business that{' '}
+              <span className="italic font-medium">runs.</span>
+            </h1>
+            <p className="lede mt-6 max-w-md text-ink/70">
               Design, build, grow, fund, automate, and hire — connected as one path, with AI
               in the loop.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 bg-accent px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-deep"
               >
                 Explore services <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center border border-ink/15 bg-paper/90 px-5 py-3.5 text-sm font-semibold text-ink backdrop-blur-sm hover:border-ink/30"
+                className="inline-flex items-center rounded-full border border-ink/12 bg-paper/90 px-6 py-3.5 text-sm font-semibold text-ink backdrop-blur-sm hover:border-ink/25"
               >
                 Book a call
               </Link>
@@ -70,19 +73,18 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Why */}
-      <section className="bg-paper px-4 py-20 md:px-6 md:py-24">
+      <section className="bg-paper px-4 py-20 md:px-6 md:py-28">
         <div className="mx-auto max-w-6xl">
-          <motion.div {...fade} className="max-w-2xl">
+          <motion.div {...fade} className="mx-auto max-w-2xl text-center">
             <p className="eyebrow text-accent">Why Techtoil</p>
             <h2 className="title mt-4">One studio for every stage of execution.</h2>
-            <p className="mt-4 text-mute">
+            <p className="mt-5 text-mute">
               Stop stitching vendors together. Keep product, growth, capital readiness,
               intelligence, and talent on a shared plan.
             </p>
           </motion.div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
             {[
               {
                 t: 'One partner',
@@ -99,12 +101,14 @@ export function HomePage() {
             ].map((item, i) => (
               <motion.div
                 key={item.t}
-                className="border border-line bg-surface p-7 md:p-8"
+                className="rounded-2xl bg-surface p-8 shadow-[0_24px_50px_-36px_rgba(23,26,24,0.35)] ring-1 ring-line"
                 {...fade}
-                transition={{ ...fade.transition, delay: i * 0.05 }}
+                transition={{ ...fade.transition, delay: i * 0.06 }}
               >
-                <p className="text-xs font-bold tracking-[0.14em] text-accent">0{i + 1}</p>
-                <h3 className="mt-5 text-xl font-bold tracking-[-0.03em]">{item.t}</h3>
+                <p className="font-display text-3xl font-medium text-accent/30">0{i + 1}</p>
+                <h3 className="mt-4 font-display text-2xl font-medium tracking-[-0.02em]">
+                  {item.t}
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-mute">{item.d}</p>
               </motion.div>
             ))}
@@ -112,23 +116,22 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* AI — elegant content, no chrome */}
-      <section className="band-dark px-4 py-20 text-white md:px-6 md:py-24">
+      <section className="band-dark px-4 py-20 text-white md:px-6 md:py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div {...fade}>
-            <p className="eyebrow text-accent-bright">Intelligence</p>
+            <p className="eyebrow text-accent-bright">AIM · Intelligence</p>
             <h2 className="title mt-4">AI built into operations.</h2>
-            <p className="lede mt-4 text-white/65">
+            <p className="lede mt-5 text-white/60">
               Agents, workflows, and automation that remove friction — without giving up
               control.
             </p>
-            <ul className="mt-8 space-y-5">
+            <ul className="mt-10 space-y-6">
               {aiHighlights.map((h) => (
                 <li key={h.title} className="flex gap-3">
                   <Check className="mt-1 h-4 w-4 shrink-0 text-accent-bright" strokeWidth={2.5} />
                   <div>
-                    <p className="font-semibold">{h.title}</p>
-                    <p className="mt-1 text-sm text-white/55">{h.body}</p>
+                    <p className="font-semibold tracking-[-0.02em]">{h.title}</p>
+                    <p className="mt-1 text-sm text-white/50">{h.body}</p>
                   </div>
                 </li>
               ))}
@@ -138,21 +141,18 @@ export function HomePage() {
             <img
               src="/media/svc-aiops.jpg"
               alt="AI operations"
-              className="aspect-[4/3] w-full object-cover"
+              className="aspect-[4/3] w-full rounded-2xl object-cover"
             />
           </motion.div>
         </div>
       </section>
 
-      {/* Services */}
       <div id="services" className="scroll-mt-24">
-        <div className="border-t border-line bg-paper px-4 py-16 md:px-6 md:py-20">
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="eyebrow text-accent">Services</p>
-              <h2 className="title mt-3">Seven capabilities. Full depth.</h2>
-            </div>
-            <p className="max-w-sm text-sm text-mute md:text-right">
+        <div className="bg-paper px-4 py-16 md:px-6 md:py-20">
+          <div className="mx-auto max-w-6xl text-center md:text-left">
+            <p className="eyebrow text-accent">Services</p>
+            <h2 className="title mt-3">Seven capabilities. Full depth.</h2>
+            <p className="mt-4 max-w-lg text-mute md:mt-3">
               Product-level detail for every craft — from first concept to hired teams.
             </p>
           </div>
@@ -164,7 +164,7 @@ export function HomePage() {
             <section
               key={s.id}
               id={s.id}
-              className={`scroll-mt-24 border-t border-line px-4 py-16 md:px-6 md:py-20 ${
+              className={`scroll-mt-24 px-4 py-16 md:px-6 md:py-20 ${
                 reverse ? 'bg-bg' : 'bg-paper'
               }`}
             >
@@ -174,16 +174,15 @@ export function HomePage() {
                 }`}
               >
                 <motion.div {...fade}>
-                  <p className="eyebrow text-accent">{s.num} · Service</p>
+                  <p className="eyebrow text-accent">
+                    {s.num} · Service
+                  </p>
                   <h2 className="title mt-3">{s.title}</h2>
-                  <p className="mt-3 text-lg font-semibold text-ink/85">{s.tagline}</p>
+                  <p className="mt-3 font-display text-xl italic text-ink/80">{s.tagline}</p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
-                  <ul className="mt-7 space-y-0">
+                  <ul className="mt-8 space-y-3">
                     {s.details.map((d) => (
-                      <li
-                        key={d}
-                        className="flex items-start gap-3 border-t border-line py-3 text-sm font-medium first:border-0 first:pt-0"
-                      >
+                      <li key={d} className="flex items-start gap-3 text-sm">
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={2.5} />
                         {d}
                       </li>
@@ -191,7 +190,7 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 bg-dark px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
+                    className="mt-9 inline-flex items-center gap-2 rounded-full bg-dark px-5 py-3.5 text-sm font-semibold text-white hover:bg-accent"
                   >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
@@ -200,7 +199,7 @@ export function HomePage() {
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="aspect-[4/3] w-full object-cover"
+                    className="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_30px_60px_-34px_rgba(23,26,24,0.45)]"
                     loading="lazy"
                   />
                 </motion.div>
@@ -210,23 +209,24 @@ export function HomePage() {
         })}
       </div>
 
-      {/* Process */}
-      <section className="border-t border-line bg-paper px-4 py-20 md:px-6 md:py-24">
+      <section className="bg-paper px-4 py-20 md:px-6 md:py-28">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fade} className="max-w-2xl">
             <p className="eyebrow text-accent">Process</p>
             <h2 className="title mt-4">A clear path from brief to running systems.</h2>
           </motion.div>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((step, i) => (
               <motion.div
                 key={step.n}
-                className="border-t-2 border-accent pt-6"
+                className="rounded-2xl bg-bg/80 p-6 ring-1 ring-line"
                 {...fade}
                 transition={{ ...fade.transition, delay: i * 0.05 }}
               >
-                <p className="text-sm font-bold tracking-[0.14em] text-accent">{step.n}</p>
-                <h3 className="mt-4 text-lg font-bold tracking-[-0.02em]">{step.t}</h3>
+                <p className="font-display text-2xl font-medium text-accent">{step.n}</p>
+                <h3 className="mt-4 font-display text-xl font-medium tracking-[-0.02em]">
+                  {step.t}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-mute">{step.d}</p>
               </motion.div>
             ))}
@@ -234,21 +234,20 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-bg px-4 py-20 md:px-6 md:py-24">
+      <section className="px-4 py-20 md:px-6 md:py-24">
         <motion.div
-          className="band-dark mx-auto max-w-6xl px-8 py-14 text-white md:px-12 md:py-16"
+          className="band-dark mx-auto max-w-6xl rounded-[1.75rem] px-8 py-14 text-white md:px-12 md:py-16"
           {...fade}
         >
           <p className="eyebrow text-accent-bright">Next step</p>
           <h2 className="title mt-4 max-w-xl">Ready for a clear next move?</h2>
-          <p className="lede mt-4 max-w-lg text-white/60">
+          <p className="lede mt-4 max-w-lg text-white/55">
             Tell us your stage. We’ll map design, build, growth, funding, automation, and
             hiring into one practical plan.
           </p>
           <Link
             to="/contact"
-            className="mt-8 inline-flex items-center gap-2 bg-accent-bright px-5 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-dark"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-bright px-6 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-dark"
           >
             Book a call <ArrowUpRight className="h-4 w-4" />
           </Link>

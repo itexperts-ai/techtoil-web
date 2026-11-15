@@ -20,9 +20,9 @@ export function ContactPage() {
           <div className="space-y-4">
             <a
               href={`mailto:${company.email}`}
-              className="flex gap-4 border border-line bg-surface p-5 transition hover:border-accent/40"
+              className="flex gap-4 rounded-2xl border border-line bg-surface p-5 transition hover:border-accent/40"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10">
                 <Mail className="h-5 w-5 text-accent" />
               </span>
               <span>
@@ -33,8 +33,8 @@ export function ContactPage() {
               </span>
             </a>
 
-            <div className="flex gap-4 border border-line bg-surface p-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10">
+            <div className="flex gap-4 rounded-2xl border border-line bg-surface p-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10">
                 <Phone className="h-5 w-5 text-accent" />
               </span>
               <div>
@@ -51,16 +51,18 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="border border-line bg-surface p-5 md:p-6">
+            <div className="rounded-2xl border border-line bg-surface p-5 md:p-6">
               <div className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10">
                   <MapPin className="h-5 w-5 text-accent" />
                 </span>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wide text-faint">
                     {company.registeredOffice.label}
                   </p>
-                  <p className="mt-2 text-lg font-bold tracking-[-0.03em]">{company.legalName}</p>
+                  <p className="mt-2 font-display text-lg font-medium tracking-[-0.03em]">
+                    {company.legalName}
+                  </p>
                   <p className="mt-2 text-sm leading-relaxed text-mute">
                     {company.registeredOffice.lines.map((line) => (
                       <span key={line} className="block">
@@ -73,7 +75,7 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="border border-line bg-surface p-5 md:p-6">
+            <div className="rounded-2xl border border-line bg-surface p-5 md:p-6">
               <p className="eyebrow text-accent">{company.operationsOffice.label}</p>
               <p className="mt-3 text-sm leading-relaxed text-mute">
                 {company.operationsOffice.lines.map((line) => (

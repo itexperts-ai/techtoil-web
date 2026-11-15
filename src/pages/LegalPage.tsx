@@ -21,8 +21,7 @@ function Legal({ title, body }: { title: string; body: string }) {
     <div className="bg-bg px-4 pb-20 pt-32 md:px-6">
       <div className="mx-auto max-w-2xl">
         <h1 className="title">{title}</h1>
-        <div className="horizon mt-6 max-w-xs" />
-        <p className="mt-6 leading-relaxed text-mute">{body}</p>
+        <p className="mt-4 leading-relaxed text-mute">{body}</p>
       </div>
     </div>
   )
@@ -32,7 +31,7 @@ export function NotFoundPage() {
   return (
     <div className="px-4 py-32 text-center">
       <h1 className="title">Page not found</h1>
-      <a href="/" className="mt-6 inline-block font-semibold text-signal">
+      <a href="/" className="mt-6 inline-block font-semibold text-accent">
         Back home
       </a>
     </div>

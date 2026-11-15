@@ -1,23 +1,24 @@
 @import 'tailwindcss';
 
 /*
-  HORIZON — full-site concept from scratch
-  Idea: a continuous horizon line guides vision → execution
-  Cool paper · deep ink · signal ember · Unbounded type
+  Clarity Studio — premium light landing system
+  Based on proven studio/SaaS landing patterns:
+  hero value prop → benefits → intelligence → services → process → CTA
 */
 @theme {
-  --color-bg: #eceff3;
-  --color-paper: #f4f6f9;
+  --color-bg: #eef2f5;
+  --color-paper: #f7f9fb;
   --color-surface: #ffffff;
-  --color-ink: #10141a;
-  --color-mute: #5e6774;
-  --color-faint: #9099a6;
-  --color-line: rgba(16, 20, 26, 0.1);
-  --color-signal: #ff4d2e;
-  --color-signal-deep: #e0391c;
-  --color-night: #0e1218;
-  --font-display: 'Unbounded', sans-serif;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --color-ink: #0b1220;
+  --color-mute: #5a6573;
+  --color-faint: #8b96a5;
+  --color-line: rgba(11, 18, 32, 0.1);
+  --color-accent: #0d9488;
+  --color-accent-bright: #14b8a6;
+  --color-accent-deep: #0f766e;
+  --color-dark: #111827;
+  --font-display: 'Manrope', sans-serif;
+  --font-sans: 'Manrope', sans-serif;
 }
 
 @layer base {
@@ -33,7 +34,7 @@
     font-family: var(--font-sans);
     font-size: 16.5px;
     line-height: 1.65;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.018em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -42,7 +43,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-signal) 25%, white);
+    background: color-mix(in oklab, var(--color-accent) 26%, white);
   }
 }
 
@@ -51,31 +52,31 @@
     font-family: var(--font-display);
   }
 
-  .band-night {
+  .band-dark {
     background:
-      radial-gradient(ellipse 55% 60% at 100% 0%, rgba(255, 77, 46, 0.18), transparent 55%),
-      var(--color-night);
+      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(20, 184, 166, 0.18), transparent 55%),
+      var(--color-dark);
   }
 
   .eyebrow {
-    font-size: 0.66rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 6.2vw, 4.4rem);
+    font-size: clamp(2.5rem, 6vw, 4.4rem);
     font-weight: 700;
     letter-spacing: -0.045em;
-    line-height: 1.05;
+    line-height: 1.03;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 3.3vw, 2.7rem);
-    font-weight: 600;
+    font-size: clamp(1.8rem, 3.3vw, 2.75rem);
+    font-weight: 700;
     letter-spacing: -0.035em;
     line-height: 1.12;
   }
@@ -85,16 +86,26 @@
     line-height: 1.7;
   }
 
-  .horizon {
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(90deg, var(--color-signal) 0%, var(--color-signal) 18%, rgba(16, 20, 26, 0.12) 18%);
+  .hero-wash {
+    background: linear-gradient(
+      105deg,
+      rgba(247, 249, 251, 0.97) 0%,
+      rgba(247, 249, 251, 0.9) 34%,
+      rgba(247, 249, 251, 0.4) 55%,
+      transparent 78%
+    );
   }
 
-  .horizon-light {
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(90deg, var(--color-signal) 0%, var(--color-signal) 14%, rgba(255, 255, 255, 0.2) 14%);
+  @media (max-width: 767px) {
+    .hero-wash {
+      background: linear-gradient(
+        180deg,
+        rgba(247, 249, 251, 0.96) 0%,
+        rgba(247, 249, 251, 0.88) 45%,
+        rgba(247, 249, 251, 0.35) 72%,
+        transparent 100%
+      );
+    }
   }
 }
 

@@ -5,7 +5,7 @@ import { Logo } from '../components/brand/Logo'
 import { aiHighlights, services } from '../data/services'
 
 const fade = {
-  initial: { opacity: 0, y: 22 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' },
   transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
@@ -14,58 +14,62 @@ const fade = {
 export function HomePage() {
   return (
     <div>
-      {/* LIGHT SPLIT HERO — completely different from dark full-bleed */}
-      <section className="min-h-[100svh] bg-ivory pt-20 md:pt-0">
-        <div className="mx-auto grid min-h-[100svh] max-w-6xl lg:grid-cols-2">
+      {/* Unique hero: content slab + clipped cinematic image */}
+      <section className="relative min-h-[100svh] overflow-hidden bg-bg pt-[4.25rem]">
+        <div className="absolute inset-y-0 right-0 hidden w-[58%] lg:block">
+          <img
+            src="/media/hero.jpg"
+            alt=""
+            className="hero-clip h-full w-full object-cover object-center"
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4.25rem)] max-w-6xl lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div
-            className="flex flex-col justify-center px-4 py-16 md:px-6 lg:pr-10"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            className="flex flex-col justify-center px-4 py-14 md:px-6 lg:py-20"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75 }}
           >
             <Logo to={null} size="hero" />
-            <h1 className="display mt-8 max-w-lg text-ink">
+            <div className="mt-8 h-1 w-16 bg-rose" />
+            <h1 className="display mt-7 max-w-xl text-ink">
               From vision to a business that runs.
             </h1>
-            <p className="lede mt-5 max-w-md text-soft">
+            <p className="lede mt-5 max-w-md text-mute">
               Design, build, grow, fund, automate, and hire — with AI in the loop.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 bg-leaf px-5 py-3.5 text-sm font-semibold text-white hover:bg-moss"
+                className="inline-flex items-center gap-2 bg-rose px-5 py-3.5 text-sm font-semibold text-white hover:bg-rose-deep"
               >
                 View services <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center border border-line px-5 py-3.5 text-sm font-semibold text-ink hover:bg-sand"
+                className="inline-flex items-center border border-line bg-surface px-5 py-3.5 text-sm font-semibold text-ink hover:border-ink/30"
               >
                 Contact us
               </Link>
             </div>
           </motion.div>
 
-          <motion.div
-            className="relative min-h-[48vh] lg:min-h-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-          >
+          {/* Mobile / tablet image */}
+          <div className="px-4 pb-10 md:px-6 lg:hidden">
             <img
               src="/media/hero.jpg"
               alt=""
-              className="absolute inset-0 h-full w-full object-cover"
+              className="aspect-[16/11] w-full object-cover"
             />
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Direction band */}
-      <section className="forest px-4 py-20 text-white md:px-6 md:py-24">
+      <section className="band-graphite px-4 py-20 text-white md:px-6 md:py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div {...fade}>
-            <p className="eyebrow text-fern">Our direction</p>
+            <p className="eyebrow text-rose">Our direction</p>
             <h2 className="title mt-4 max-w-2xl">
               Strategy, product, growth, and intelligence on one path.
             </h2>
@@ -99,23 +103,22 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* AI */}
-      <section className="bg-sand px-4 py-20 md:px-6 md:py-24">
+      <section className="bg-surface px-4 py-20 md:px-6 md:py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div {...fade}>
-            <p className="eyebrow text-moss">Intelligence</p>
+            <p className="eyebrow text-rose">Intelligence</p>
             <h2 className="title mt-4">AI built into operations.</h2>
-            <p className="lede mt-4 text-soft">
+            <p className="lede mt-4 text-mute">
               Agents, workflows, and automation that remove friction — without giving up
               control.
             </p>
             <ul className="mt-8 space-y-5">
               {aiHighlights.map((h) => (
                 <li key={h.title} className="flex gap-3">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-fern" strokeWidth={2.25} />
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-rose" strokeWidth={2.25} />
                   <div>
                     <p className="font-semibold">{h.title}</p>
-                    <p className="mt-1 text-sm text-soft">{h.body}</p>
+                    <p className="mt-1 text-sm text-mute">{h.body}</p>
                   </div>
                 </li>
               ))}
@@ -131,7 +134,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Services — product-design style sections only */}
       <div id="services" className="scroll-mt-24">
         {services.map((s, i) => {
           const reverse = i % 2 === 1
@@ -140,7 +142,7 @@ export function HomePage() {
               key={s.id}
               id={s.id}
               className={`scroll-mt-24 border-t border-line px-4 py-16 md:px-6 md:py-20 ${
-                reverse ? 'bg-sand' : 'bg-ivory'
+                reverse ? 'bg-bg' : 'bg-surface'
               }`}
             >
               <div
@@ -149,20 +151,20 @@ export function HomePage() {
                 }`}
               >
                 <motion.div {...fade}>
-                  <p className="eyebrow text-moss">
+                  <p className="eyebrow text-rose">
                     {s.num} · Service
                   </p>
                   <h2 className="title mt-3">{s.title}</h2>
                   <p className="mt-3 text-lg font-medium text-ink/80">{s.tagline}</p>
-                  <p className="lede mt-4 text-soft">{s.summary}</p>
+                  <p className="lede mt-4 text-mute">{s.summary}</p>
                   <ul className="mt-7 grid gap-2 sm:grid-cols-2">
                     {s.details.map((d) => (
                       <li
                         key={d}
-                        className="flex items-start gap-2 border border-line bg-ivory px-3.5 py-3 text-sm font-medium"
+                        className="flex items-start gap-2 border border-line bg-surface px-3.5 py-3 text-sm font-medium"
                       >
                         <Check
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-fern"
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-rose"
                           strokeWidth={2.25}
                         />
                         {d}
@@ -171,7 +173,7 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 bg-leaf px-5 py-3.5 text-sm font-semibold text-white hover:bg-moss"
+                    className="mt-8 inline-flex items-center gap-2 bg-graphite px-5 py-3.5 text-sm font-semibold text-white hover:bg-rose"
                   >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
@@ -191,7 +193,7 @@ export function HomePage() {
       </div>
 
       <section className="px-4 py-20 md:px-6 md:py-24">
-        <motion.div className="forest mx-auto max-w-6xl px-6 py-14 text-white md:px-12" {...fade}>
+        <motion.div className="band-graphite mx-auto max-w-6xl px-6 py-14 text-white md:px-12" {...fade}>
           <h2 className="title max-w-2xl">Ready for a clear next step?</h2>
           <p className="lede mt-4 max-w-xl text-white/60">
             Tell us your stage. We map design, build, growth, funding, automation, and
@@ -199,7 +201,7 @@ export function HomePage() {
           </p>
           <Link
             to="/contact"
-            className="mt-8 inline-flex items-center gap-2 bg-white px-5 py-3.5 text-sm font-semibold text-leaf hover:bg-sand"
+            className="mt-8 inline-flex items-center gap-2 bg-rose px-5 py-3.5 text-sm font-semibold text-white hover:bg-rose-deep"
           >
             Start a conversation <ArrowUpRight className="h-4 w-4" />
           </Link>

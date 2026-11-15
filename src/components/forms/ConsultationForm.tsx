@@ -27,11 +27,11 @@ export function ConsultationForm() {
 
   if (status === 'ready') {
     return (
-      <div className="border border-line bg-ivory p-6 text-sm md:p-8">
+      <div className="border border-line bg-surface p-6 text-sm md:p-8">
         <p className="font-semibold">Message ready.</p>
-        <p className="mt-2 text-soft">
+        <p className="mt-2 text-mute">
           Email{' '}
-          <a href={`mailto:${company.email}`} className="font-semibold text-moss">
+          <a href={`mailto:${company.email}`} className="font-semibold text-rose">
             {company.email}
           </a>{' '}
           or call {company.phones[0].display}.
@@ -41,16 +41,16 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 border border-line bg-ivory p-6 md:p-8">
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
+    <form onSubmit={onSubmit} className="space-y-4 border border-line bg-surface p-6 md:p-8">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Name
         <input name="name" required className="field" placeholder="Your name" />
       </label>
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Email
         <input name="email" type="email" required className="field" placeholder="you@company.com" />
       </label>
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Interest
         <select name="interest" className="field" defaultValue={services[0].id}>
           {services.map((s) => (
@@ -60,7 +60,7 @@ export function ConsultationForm() {
           ))}
         </select>
       </label>
-      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
+      <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-mute">
         Brief
         <textarea
           name="message"
@@ -72,20 +72,20 @@ export function ConsultationForm() {
       {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
       <button
         type="submit"
-        className="w-full bg-leaf py-3.5 text-sm font-semibold text-white hover:bg-moss"
+        className="w-full bg-rose py-3.5 text-sm font-semibold text-white hover:bg-rose-deep"
       >
         Send message
       </button>
       <style>{`
         .field {
           width: 100%;
-          border: 1px solid rgba(20,32,26,0.12);
-          background: #f3f5f2;
+          border: 1px solid rgba(15,17,21,0.12);
+          background: #f3f4f6;
           padding: 0.85rem 1rem;
           font: inherit;
           outline: none;
         }
-        .field:focus { border-color: #2d6a4f; background: #fbfcfb; }
+        .field:focus { border-color: #e11d48; background: #ffffff; }
       `}</style>
     </form>
   )

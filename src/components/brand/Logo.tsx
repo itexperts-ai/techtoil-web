@@ -7,49 +7,46 @@ type Props = {
   className?: string
 }
 
-/** Sheared cloth T — citron crossbar + ink stem + voltage nick */
-function Mark({ size }: { size: number }) {
+/** Neural node triad — orbit mark for AIM studio */
+function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
+  const plate = tone === 'light' ? '#F8FAFC' : '#0A0F1A'
+  const line = tone === 'light' ? '#0A0F1A' : '#F8FAFC'
+
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden className="shrink-0">
-      {/* Citron sheared crossbar */}
-      <path d="M8 16H46L42 24H8V16Z" fill="#D6F34C" />
-      {/* Ink stem */}
-      <path d="M26 16H34L30 52H22L26 16Z" fill="#0E0D0C" />
-      {/* Voltage nick */}
-      <path d="M34 16L42 10L45 16H34Z" fill="#D6F34C" />
-      {/* Basting stitches */}
-      <rect x="10" y="56" width="6" height="2" fill="#D6F34C" />
-      <rect x="20" y="56" width="6" height="2" fill="#D6F34C" />
-      <rect x="30" y="56" width="6" height="2" fill="#D6F34C" />
+      <rect width="64" height="64" rx="18" fill={plate} />
+      <circle cx="32" cy="32" r="17" stroke="#2D6BFF" strokeWidth="2.2" />
+      <circle cx="32" cy="17" r="4.2" fill="#00C9A7" />
+      <circle cx="46.5" cy="39" r="4.2" fill="#2D6BFF" />
+      <circle cx="17.5" cy="39" r="4.2" fill="#5B8CFF" />
+      <path
+        d="M32 17.5V32M32 32L46 39M32 32L18 39"
+        stroke={line}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   )
 }
 
 export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: Props) {
-  const mark = size === 'lg' ? 48 : 38
-  const text = size === 'lg' ? 'text-[1.6rem]' : 'text-[1.15rem]'
+  const mark = size === 'lg' ? 44 : 34
+  const text = size === 'lg' ? 'text-[1.55rem]' : 'text-[1.1rem]'
   const ink = tone === 'light' ? 'text-white' : 'text-ink'
 
   const node = (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
-      <Mark size={mark} />
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <Mark size={mark} tone={tone} />
       <span className="flex flex-col leading-none">
-        <span className={`font-display tracking-[-0.045em] ${ink} ${text}`}>
-          <span className="font-semibold">Tech</span>
-          <span className="relative italic font-medium">
-            toil
-            <span
-              className="absolute -bottom-1 left-0 h-0.5 w-full bg-accent-bright"
-              aria-hidden
-            />
-          </span>
+        <span className={`font-display font-extrabold tracking-[-0.05em] ${ink} ${text}`}>
+          Tech<span className="text-accent">toil</span>
         </span>
         <span
-          className={`mt-2 text-[0.55rem] font-semibold uppercase tracking-[0.26em] ${
-            tone === 'light' ? 'text-accent-bright' : 'text-mute'
+          className={`mt-1 text-[0.58rem] font-bold uppercase tracking-[0.2em] ${
+            tone === 'light' ? 'text-ai' : 'text-mute'
           }`}
         >
-          Infosol
+          AIM Studio
         </span>
       </span>
     </span>
@@ -60,7 +57,7 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
     <Link
       to={to ?? '/'}
       aria-label="Techtoil"
-      className="outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+      className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
     >
       {node}
     </Link>

@@ -1,24 +1,25 @@
 @import 'tailwindcss';
 
 /*
-  Silk Atelier — elevated Silk Voltage
-  Cool gallery porcelain · citron label · Fraunces + Sora
-  Magazine craft: uneven crops, italic accents, quiet luxury
+  Orbit Studio — stylish AI-forward light system
+  Mist porcelain · cobalt signal · mint neural · Syne + Plus Jakarta
 */
 @theme {
-  --color-bg: #f1efe9;
-  --color-paper: #faf8f4;
-  --color-surface: #e8e4dc;
-  --color-ink: #0e0d0c;
-  --color-mute: #56524e;
-  --color-faint: #857f78;
-  --color-line: #ddd8cf;
-  --color-accent: #c5e234;
-  --color-accent-bright: #d6f34c;
-  --color-accent-deep: #a8c42a;
-  --color-dark: #0e0d0c;
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-sans: 'Sora', sans-serif;
+  --color-bg: #eef2f7;
+  --color-paper: #f8fafc;
+  --color-surface: #ffffff;
+  --color-ink: #0c1222;
+  --color-mute: #5a6578;
+  --color-faint: #8b95a8;
+  --color-line: rgba(12, 18, 34, 0.1);
+  --color-accent: #2d6bff;
+  --color-accent-bright: #5b8cff;
+  --color-accent-deep: #1a4fd6;
+  --color-ai: #00c9a7;
+  --color-ai-soft: #e6fbf6;
+  --color-dark: #0a0f1a;
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {
@@ -29,12 +30,15 @@
   body {
     margin: 0;
     min-width: 320px;
-    background: var(--color-bg);
+    background:
+      radial-gradient(ellipse 70% 45% at 90% -5%, rgba(45, 107, 255, 0.07), transparent 50%),
+      radial-gradient(ellipse 50% 35% at 0% 20%, rgba(0, 201, 167, 0.05), transparent 45%),
+      var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 16.5px;
-    line-height: 1.7;
-    letter-spacing: -0.012em;
+    line-height: 1.65;
+    letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -43,7 +47,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-accent-bright) 50%, white);
+    background: color-mix(in oklab, var(--color-accent) 28%, white);
   }
 }
 
@@ -54,54 +58,52 @@
 
   .band-dark {
     background:
-      radial-gradient(ellipse 50% 40% at 100% 0%, rgba(214, 243, 76, 0.08), transparent 50%),
+      radial-gradient(ellipse 55% 60% at 85% 10%, rgba(45, 107, 255, 0.28), transparent 55%),
+      radial-gradient(ellipse 40% 45% at 10% 90%, rgba(0, 201, 167, 0.15), transparent 50%),
       var(--color-dark);
+  }
+
+  .band-ai {
+    background:
+      linear-gradient(145deg, #f0f7ff 0%, #f8fafc 40%, #eefbf7 100%);
   }
 
   .eyebrow {
     font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 5.75rem);
-    font-weight: 550;
-    letter-spacing: -0.04em;
-    line-height: 0.94;
-  }
-
-  .display-italic {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 450;
+    font-size: clamp(2.7rem, 6.8vw, 4.9rem);
+    font-weight: 750;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(2.1rem, 4vw, 3.35rem);
-    font-weight: 550;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
   }
 
   .lede {
-    font-size: clamp(1.08rem, 1.45vw, 1.25rem);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     line-height: 1.7;
-    font-weight: 400;
   }
 
   .hero-wash {
     background: linear-gradient(
       105deg,
-      rgba(250, 248, 244, 0.98) 0%,
-      rgba(250, 248, 244, 0.96) 32%,
-      rgba(250, 248, 244, 0.78) 50%,
-      rgba(250, 248, 244, 0.25) 70%,
-      transparent 88%
+      rgba(248, 250, 252, 0.98) 0%,
+      rgba(248, 250, 252, 0.94) 34%,
+      rgba(248, 250, 252, 0.55) 55%,
+      transparent 78%
     );
   }
 
@@ -109,71 +111,81 @@
     .hero-wash {
       background: linear-gradient(
         180deg,
-        rgba(250, 248, 244, 0.98) 0%,
-        rgba(250, 248, 244, 0.95) 45%,
-        rgba(250, 248, 244, 0.55) 72%,
+        rgba(248, 250, 252, 0.97) 0%,
+        rgba(248, 250, 252, 0.92) 45%,
+        rgba(248, 250, 252, 0.4) 72%,
         transparent 100%
       );
     }
   }
 
-  .hero-copy {
-    text-shadow: 0 1px 0 rgba(250, 248, 244, 0.5);
-  }
-
-  .citron-label {
+  .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    background: var(--color-accent-bright);
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    padding: 0.9rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 650;
+    color: white;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-deep);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(12, 18, 34, 0.14);
+    background: rgba(248, 250, 252, 0.85);
+    padding: 0.9rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 650;
     color: var(--color-ink);
-    font-family: var(--font-sans);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    padding: 0.4rem 0.7rem;
+    backdrop-filter: blur(8px);
   }
 
-  .lookbook-scroll {
-    display: flex;
-    gap: 0.75rem;
-    overflow-x: auto;
-    padding-bottom: 0.75rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  .btn-ghost:hover {
+    border-color: rgba(12, 18, 34, 0.3);
   }
 
-  .lookbook-scroll::-webkit-scrollbar {
-    height: 3px;
+  .node-grid {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(45, 107, 255, 0.12) 0 1.5px, transparent 2px),
+      radial-gradient(circle at 70% 20%, rgba(0, 201, 167, 0.14) 0 1.5px, transparent 2px),
+      radial-gradient(circle at 40% 70%, rgba(45, 107, 255, 0.1) 0 1.5px, transparent 2px),
+      radial-gradient(circle at 85% 65%, rgba(0, 201, 167, 0.1) 0 1.5px, transparent 2px),
+      linear-gradient(rgba(12, 18, 34, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(12, 18, 34, 0.035) 1px, transparent 1px);
+    background-size: auto, auto, auto, auto, 48px 48px, 48px 48px;
   }
 
-  .lookbook-scroll::-webkit-scrollbar-thumb {
-    background: var(--color-ink);
-  }
-
-  .grain {
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .link-line {
+  .ai-chip {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    border-bottom: 1.5px solid currentColor;
-    padding-bottom: 0.15rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    transition: opacity 0.2s ease;
+    border-radius: 9999px;
+    background: var(--color-ai-soft);
+    color: #057a66;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
   }
 
-  .link-line:hover {
-    opacity: 0.65;
+  .ai-chip::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--color-ai);
+    box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.25);
   }
 }
 

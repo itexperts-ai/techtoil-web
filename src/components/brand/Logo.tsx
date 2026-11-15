@@ -8,10 +8,10 @@ type Props = {
   className?: string
 }
 
-/** Cobalt ring-T — crisp studio mark */
+/** Elevated ring-T with path arc — unique but familiar */
 function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
   const uid = useId().replace(/:/g, '')
-  const plate = tone === 'light' ? '#ffffff' : '#0a0c12'
+  const plate = tone === 'light' ? '#ffffff' : '#0b1215'
 
   return (
     <svg
@@ -24,13 +24,22 @@ function Mark({ size, tone }: { size: number; tone: 'dark' | 'light' }) {
     >
       <defs>
         <linearGradient id={`${uid}-g`} x1="12" y1="10" x2="52" y2="54" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#5b7cff" />
-          <stop offset="1" stopColor="#2952ff" />
+          <stop stopColor="#2dd4bf" />
+          <stop offset="1" stopColor="#0f766e" />
         </linearGradient>
       </defs>
       <rect width="64" height="64" rx="16" fill={plate} />
-      <circle cx="32" cy="32" r="20" stroke={`url(#${uid}-g)`} strokeWidth="3.5" fill="none" />
-      <path d="M22 24h20v6.5H35.5V42h-7V30.5H22V24Z" fill={`url(#${uid}-g)`} />
+      <circle cx="32" cy="32" r="20" stroke={`url(#${uid}-g)`} strokeWidth="3.25" fill="none" />
+      <path
+        d="M18 44c6 4 22 4 28-6"
+        stroke={`url(#${uid}-g)`}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.55"
+      />
+      <path d="M22 23h20v6.5H35.5V41h-7V29.5H22V23Z" fill={`url(#${uid}-g)`} />
+      <circle cx="46" cy="38" r="3.25" fill={`url(#${uid}-g)`} />
     </svg>
   )
 }
@@ -49,8 +58,8 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
   const node = (
     <span className={`inline-flex items-center ${gap} ${className}`}>
       <Mark size={mark} tone={tone} />
-      <span className={`font-display font-extrabold leading-none tracking-[-0.05em] ${ink} ${text}`}>
-        Tech<span className="text-cobalt">toil</span>
+      <span className={`font-display font-semibold leading-none tracking-[-0.05em] ${ink} ${text}`}>
+        Tech<span className="text-teal">toil</span>
       </span>
     </span>
   )
@@ -60,7 +69,7 @@ export function Logo({ to = '/', size = 'sm', tone = 'dark', className = '' }: P
     <Link
       to={to ?? '/'}
       aria-label="Techtoil"
-      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40"
+      className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-teal/40"
     >
       {node}
     </Link>

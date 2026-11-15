@@ -12,22 +12,31 @@ export function TopNav() {
   }, [pathname])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-porcelain/95 shadow-sm shadow-ink/5 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-quartz/95 shadow-sm shadow-ink/5 backdrop-blur-xl">
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
         <nav className="hidden items-center md:flex">
-          <Link to="/" className="px-3 py-2 text-sm font-bold text-ink hover:text-cobalt">
+          <Link
+            to="/"
+            className="px-3 py-2 text-sm font-semibold text-ink hover:text-teal"
+          >
             Home
           </Link>
-          <a href="/#services" className="px-3 py-2 text-sm font-bold text-ink hover:text-cobalt">
+          <a
+            href="/#services"
+            className="px-3 py-2 text-sm font-semibold text-ink hover:text-teal"
+          >
             Services
           </a>
-          <Link to="/about" className="px-3 py-2 text-sm font-bold text-ink hover:text-cobalt">
+          <Link
+            to="/about"
+            className="px-3 py-2 text-sm font-semibold text-ink hover:text-teal"
+          >
             About
           </Link>
           <Link
             to="/contact"
-            className="ml-2 bg-cobalt px-4 py-2.5 text-sm font-bold text-white hover:bg-cobalt-deep"
+            className="ml-2 bg-teal px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-deep"
           >
             Contact
           </Link>
@@ -35,20 +44,20 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className="border border-ink/20 bg-porcelain px-3 py-1.5 text-sm font-bold text-ink md:hidden"
+          className="border border-ink/20 bg-quartz/90 px-3 py-1.5 text-sm font-semibold text-ink md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
         </button>
       </div>
       {open && (
-        <div className="border-t border-line bg-porcelain px-4 py-5 md:hidden">
-          <Link to="/" className="block py-2.5 font-bold text-ink" onClick={() => setOpen(false)}>
+        <div className="border-t border-line bg-quartz px-4 py-5 md:hidden">
+          <Link to="/" className="block py-2.5 font-semibold text-ink" onClick={() => setOpen(false)}>
             Home
           </Link>
           <a
             href="/#services"
-            className="block py-2.5 font-bold text-ink"
+            className="block py-2.5 font-semibold text-ink"
             onClick={() => setOpen(false)}
           >
             Services
@@ -65,14 +74,14 @@ export function TopNav() {
           ))}
           <Link
             to="/about"
-            className="mt-1 block py-2.5 font-bold text-ink"
+            className="mt-1 block py-2.5 font-semibold text-ink"
             onClick={() => setOpen(false)}
           >
             About
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-cobalt py-3 text-sm font-bold text-white"
+            className="mt-3 flex justify-center bg-teal py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

@@ -1,23 +1,22 @@
 @import 'tailwindcss';
 
 /*
-  Porcelain Cobalt — stylish light premium system
-  Keeps the approved full-bleed hero composition; new palette + type + rhythm
+  Quartz Teal Elevated — preferred teal system, sharper studio craft
 */
 @theme {
-  --color-bg: #eef1f6;
-  --color-porcelain: #f7f8fb;
+  --color-bg: #eef3f5;
+  --color-quartz: #f7fafb;
   --color-surface: #ffffff;
-  --color-ink: #0a0c12;
-  --color-mute: #5a6478;
-  --color-faint: #8b95a8;
-  --color-line: rgba(10, 12, 18, 0.1);
-  --color-cobalt: #2952ff;
-  --color-cobalt-bright: #5b7cff;
-  --color-cobalt-deep: #1a3ad9;
-  --color-noir: #0c1018;
-  --font-display: 'Manrope', sans-serif;
-  --font-sans: 'Manrope', sans-serif;
+  --color-ink: #0b1215;
+  --color-mute: #5a6a73;
+  --color-faint: #8b9aa3;
+  --color-line: rgba(11, 18, 21, 0.1);
+  --color-teal: #0f766e;
+  --color-teal-bright: #14b8a6;
+  --color-teal-deep: #0d5c56;
+  --color-slate: #101820;
+  --font-display: 'Sora', sans-serif;
+  --font-sans: 'Outfit', sans-serif;
 }
 
 @layer base {
@@ -29,14 +28,15 @@
     margin: 0;
     min-width: 320px;
     background:
-      radial-gradient(ellipse 70% 40% at 100% 0%, rgba(41, 82, 255, 0.06), transparent 50%),
+      radial-gradient(ellipse 80% 45% at 0% 0%, rgba(20, 184, 166, 0.07), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 100% 10%, rgba(15, 118, 110, 0.05), transparent 50%),
       var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16.5px;
+    font-size: 17px;
     line-height: 1.65;
     letter-spacing: -0.02em;
-    font-weight: 500;
+    font-weight: 450;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -45,7 +45,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-cobalt) 22%, white);
+    background: color-mix(in oklab, var(--color-teal-bright) 30%, white);
   }
 }
 
@@ -54,14 +54,15 @@
     font-family: var(--font-display);
   }
 
-  .band-noir {
+  .band-slate {
     background:
-      radial-gradient(ellipse 55% 70% at 100% 0%, rgba(41, 82, 255, 0.28), transparent 55%),
-      radial-gradient(ellipse 40% 50% at 0% 100%, rgba(91, 124, 255, 0.1), transparent 50%),
-      var(--color-noir);
+      radial-gradient(ellipse 50% 60% at 100% 0%, rgba(20, 184, 166, 0.22), transparent 55%),
+      radial-gradient(ellipse 35% 45% at 0% 100%, rgba(255, 255, 255, 0.04), transparent 50%),
+      var(--color-slate);
   }
 
   .eyebrow {
+    font-family: var(--font-sans);
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -70,16 +71,16 @@
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.55rem, 6.2vw, 4.6rem);
-    font-weight: 700;
-    letter-spacing: -0.05em;
+    font-size: clamp(2.5rem, 6.2vw, 4.5rem);
+    font-weight: 650;
+    letter-spacing: -0.045em;
     line-height: 1.02;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.9rem, 3.5vw, 2.9rem);
-    font-weight: 700;
+    font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+    font-weight: 650;
     letter-spacing: -0.04em;
     line-height: 1.1;
   }
@@ -87,17 +88,17 @@
   .lede {
     font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     line-height: 1.7;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .hero-wash {
     background:
       linear-gradient(
         105deg,
-        rgba(247, 248, 251, 0.97) 0%,
-        rgba(247, 248, 251, 0.9) 32%,
-        rgba(247, 248, 251, 0.45) 52%,
-        rgba(247, 248, 251, 0.08) 72%,
+        rgba(247, 250, 251, 0.97) 0%,
+        rgba(247, 250, 251, 0.9) 32%,
+        rgba(247, 250, 251, 0.45) 52%,
+        rgba(247, 250, 251, 0.08) 72%,
         transparent 100%
       );
   }
@@ -107,12 +108,16 @@
       background:
         linear-gradient(
           180deg,
-          rgba(247, 248, 251, 0.96) 0%,
-          rgba(247, 248, 251, 0.88) 42%,
-          rgba(247, 248, 251, 0.35) 70%,
+          rgba(247, 250, 251, 0.96) 0%,
+          rgba(247, 250, 251, 0.88) 42%,
+          rgba(247, 250, 251, 0.35) 70%,
           transparent 100%
         );
     }
+  }
+
+  .path-line {
+    background: linear-gradient(90deg, var(--color-teal), rgba(20, 184, 166, 0.25));
   }
 }
 

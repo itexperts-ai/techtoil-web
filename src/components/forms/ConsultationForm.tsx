@@ -31,7 +31,7 @@ export function ConsultationForm() {
         <p className="font-semibold">Message ready.</p>
         <p className="mt-2 text-mute">
           Email{' '}
-          <a href={`mailto:${company.email}`} className="font-semibold text-mint">
+          <a href={`mailto:${company.email}`} className="font-semibold text-signal">
             {company.email}
           </a>{' '}
           or call {company.phones[0].display}.
@@ -72,20 +72,20 @@ export function ConsultationForm() {
       {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
       <button
         type="submit"
-        className="w-full bg-mint py-3.5 text-sm font-semibold text-white hover:bg-mint-deep"
+        className="w-full bg-signal py-3.5 text-sm font-semibold text-white hover:bg-signal-deep"
       >
         Send message
       </button>
       <style>{`
         .field {
           width: 100%;
-          border: 1px solid rgba(15,20,25,0.1);
-          background: #e9eef2;
+          border: 1px solid rgba(16,20,26,0.1);
+          background: #eceff3;
           padding: 0.85rem 1rem;
           font: inherit;
           outline: none;
         }
-        .field:focus { border-color: #0d9488; background: #ffffff; }
+        .field:focus { border-color: #ff4d2e; background: #ffffff; }
       `}</style>
     </form>
   )

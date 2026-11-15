@@ -16,18 +16,18 @@ export function TopNav() {
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
         <Logo />
         <nav className="hidden items-center md:flex">
-          <Link to="/" className="px-3 py-2 text-sm font-semibold text-ink hover:text-mint">
+          <Link to="/" className="px-3 py-2 text-sm font-semibold text-ink hover:text-signal">
             Home
           </Link>
-          <a href="/#services" className="px-3 py-2 text-sm font-semibold text-ink hover:text-mint">
+          <a href="/#services" className="px-3 py-2 text-sm font-semibold text-ink hover:text-signal">
             Services
           </a>
-          <Link to="/about" className="px-3 py-2 text-sm font-semibold text-ink hover:text-mint">
+          <Link to="/about" className="px-3 py-2 text-sm font-semibold text-ink hover:text-signal">
             About
           </Link>
           <Link
             to="/contact"
-            className="ml-2 bg-mint px-4 py-2.5 text-sm font-semibold text-white hover:bg-mint-deep"
+            className="ml-2 bg-signal px-4 py-2.5 text-sm font-semibold text-white hover:bg-signal-deep"
           >
             Contact
           </Link>
@@ -64,7 +64,7 @@ export function TopNav() {
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-mint py-3 text-sm font-semibold text-white"
+            className="mt-3 flex justify-center bg-signal py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

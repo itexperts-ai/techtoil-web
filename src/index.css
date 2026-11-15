@@ -1,23 +1,23 @@
 @import 'tailwindcss';
 
 /*
-  Graphite Mint — new premium light system
-  Solid split hero · sharp Swiss rhythm · stylish type
+  HORIZON — full-site concept from scratch
+  Idea: a continuous horizon line guides vision → execution
+  Cool paper · deep ink · signal ember · Unbounded type
 */
 @theme {
-  --color-bg: #e9eef2;
-  --color-paper: #f5f7fa;
+  --color-bg: #eceff3;
+  --color-paper: #f4f6f9;
   --color-surface: #ffffff;
-  --color-ink: #0f1419;
-  --color-mute: #5c6773;
-  --color-faint: #8b96a3;
-  --color-line: rgba(15, 20, 25, 0.1);
-  --color-mint: #0d9488;
-  --color-mint-bright: #14b8a6;
-  --color-mint-deep: #0f766e;
-  --color-graphite: #151b22;
-  --font-display: 'Syne', sans-serif;
-  --font-sans: 'Outfit', sans-serif;
+  --color-ink: #10141a;
+  --color-mute: #5e6774;
+  --color-faint: #9099a6;
+  --color-line: rgba(16, 20, 26, 0.1);
+  --color-signal: #ff4d2e;
+  --color-signal-deep: #e0391c;
+  --color-night: #0e1218;
+  --font-display: 'Unbounded', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {
@@ -42,7 +42,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-mint) 26%, white);
+    background: color-mix(in oklab, var(--color-signal) 25%, white);
   }
 }
 
@@ -51,14 +51,14 @@
     font-family: var(--font-display);
   }
 
-  .band-graphite {
+  .band-night {
     background:
-      radial-gradient(ellipse 50% 70% at 100% 0%, rgba(20, 184, 166, 0.2), transparent 55%),
-      var(--color-graphite);
+      radial-gradient(ellipse 55% 60% at 100% 0%, rgba(255, 77, 46, 0.18), transparent 55%),
+      var(--color-night);
   }
 
   .eyebrow {
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -66,23 +66,35 @@
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.55rem, 6.5vw, 4.6rem);
-    font-weight: 750;
-    letter-spacing: -0.05em;
-    line-height: 0.98;
+    font-size: clamp(2.4rem, 6.2vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.85rem, 3.5vw, 2.85rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.08;
+    font-size: clamp(1.7rem, 3.3vw, 2.7rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
   }
 
   .lede {
     font-size: clamp(1.05rem, 1.35vw, 1.175rem);
     line-height: 1.7;
+  }
+
+  .horizon {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--color-signal) 0%, var(--color-signal) 18%, rgba(16, 20, 26, 0.12) 18%);
+  }
+
+  .horizon-light {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--color-signal) 0%, var(--color-signal) 14%, rgba(255, 255, 255, 0.2) 14%);
   }
 }
 

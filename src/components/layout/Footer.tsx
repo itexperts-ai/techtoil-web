@@ -5,8 +5,11 @@ import { services } from '../../data/services'
 
 export function Footer() {
   return (
-    <footer className="band-graphite text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 md:px-6">
+    <footer className="band-night text-white">
+      <div className="mx-auto max-w-6xl px-4 pt-14 md:px-6">
+        <div className="horizon-light" />
+      </div>
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 md:grid-cols-2 lg:grid-cols-4 md:px-6">
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">

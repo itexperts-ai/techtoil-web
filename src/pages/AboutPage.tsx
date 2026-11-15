@@ -5,8 +5,8 @@ export function AboutPage() {
   return (
     <div className="bg-bg px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto max-w-3xl">
-        <p className="type-kicker text-blue">About</p>
-        <h1 className="mt-4 font-sans text-[clamp(2rem,4vw,2.75rem)] font-semibold tracking-[-0.03em]">
+        <p className="type-mono text-blue">About</p>
+        <h1 className="type-title mt-4">
           An AIM-led studio for businesses that need to move.
         </h1>
         <div className="type-lead mt-8 space-y-5 text-soft">

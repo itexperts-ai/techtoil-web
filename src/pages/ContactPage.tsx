@@ -6,7 +6,7 @@ export function ContactPage() {
     <div className="bg-bg px-4 pb-24 pt-32 md:px-6 md:pt-40">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue">Contact</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal">Contact</p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
             Tell us what you need.
           </h1>

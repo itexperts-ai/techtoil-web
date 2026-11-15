@@ -26,7 +26,7 @@ export function ConsultationForm() {
 
   if (status === 'ready') {
     return (
-      <div className="rounded-3xl border border-blue/25 bg-white p-6 text-sm">
+      <div className="border border-line bg-surface p-6 text-sm">
         <p className="font-bold">Message ready.</p>
         <p className="mt-2 text-soft">
           Email{' '}
@@ -40,7 +40,7 @@ export function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 rounded-3xl border border-line bg-white p-6 shadow-sm shadow-ink/5 md:p-8">
+    <form onSubmit={onSubmit} className="space-y-4 border border-line bg-surface p-6 md:p-8">
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Name
         <input name="name" required className="field" placeholder="Your name" />
@@ -51,7 +51,7 @@ export function ConsultationForm() {
       </label>
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Interest
-        <select name="interest" className="field" defaultValue={services[0].id}>
+        <select name="interest" className="field" defaultValue="aim">
           <option value="aim">Our AIM / general</option>
           <option value="ai">AI operations</option>
           {services.map((s) => (
@@ -63,23 +63,30 @@ export function ConsultationForm() {
       </label>
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-wide text-soft">
         Brief
-        <textarea name="message" required className="field min-h-28" placeholder="What are you building?" />
+        <textarea
+          name="message"
+          required
+          className="field min-h-28"
+          placeholder="What are you building?"
+        />
       </label>
       {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
-      <button type="submit" className="w-full rounded-full bg-blue py-3.5 text-sm font-bold text-white hover:bg-blue-deep">
+      <button
+        type="submit"
+        className="w-full bg-slate py-3.5 text-sm font-bold text-white hover:bg-blue"
+      >
         Send message
       </button>
       <style>{`
         .field {
           width: 100%;
-          border-radius: 0.85rem;
-          border: 1px solid rgba(14,20,32,0.1);
-          background: #f4f7fb;
+          border: 1px solid rgba(17,24,39,0.12);
+          background: #e4e9f0;
           padding: 0.85rem 1rem;
           font: inherit;
           outline: none;
         }
-        .field:focus { border-color: #2F6BFF; background: #fff; }
+        .field:focus { border-color: #1a56db; background: #f0f3f7; }
       `}</style>
     </form>
   )

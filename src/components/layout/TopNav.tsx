@@ -1,57 +1,70 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Logo } from '../brand/Logo'
 import { services } from '../../data/services'
 
 export function TopNav() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const onHome = pathname === '/'
+  const overHero = onHome && !solid
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 12)
+    const onScroll = () => setSolid(window.scrollY > 40)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const link = overHero
+    ? 'px-3 py-2 text-sm font-semibold text-white/80 hover:text-white'
+    : 'px-3 py-2 text-sm font-semibold text-soft hover:text-ink'
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        solid ? 'border-b border-line bg-white/90 backdrop-blur-xl' : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        solid || open
+          ? 'border-b border-line bg-surface/92 backdrop-blur-xl'
+          : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-[4.25rem] md:px-6">
-        <Logo />
-        <nav className="hidden items-center gap-1 md:flex">
+        <Logo tone={overHero && !open ? 'light' : 'dark'} />
+        <nav className="hidden items-center gap-0.5 md:flex">
           {['Aim', 'AI', 'Services'].map((label) => (
-            <a
-              key={label}
-              href={`/#${label.toLowerCase()}`}
-              className="px-3 py-2 text-sm font-semibold text-soft hover:text-ink"
-            >
+            <a key={label} href={`/#${label.toLowerCase()}`} className={link}>
               {label}
             </a>
           ))}
-          <Link to="/about" className="px-3 py-2 text-sm font-semibold text-soft hover:text-ink">
+          <Link to="/about" className={link}>
             About
           </Link>
           <Link
             to="/contact"
-            className="ml-2 rounded-full bg-ink px-4 py-2 text-sm font-bold text-white hover:bg-blue"
+            className={`ml-3 px-4 py-2 text-sm font-bold transition ${
+              overHero
+                ? 'bg-white text-ink hover:bg-mist'
+                : 'bg-slate text-white hover:bg-blue'
+            }`}
           >
             Contact
           </Link>
         </nav>
         <button
           type="button"
-          className="rounded-full border border-line px-3 py-1.5 text-sm font-bold md:hidden"
+          className={`border px-3 py-1.5 text-sm font-bold md:hidden ${
+            overHero && !open
+              ? 'border-white/35 text-white'
+              : 'border-line text-ink'
+          }`}
           onClick={() => setOpen((v) => !v)}
         >
           Menu
         </button>
       </div>
       {open && (
-        <div className="border-t border-line bg-white px-4 py-4 md:hidden">
+        <div className="border-t border-line bg-surface px-4 py-4 md:hidden">
           <a href="/#aim" className="block py-2 font-semibold" onClick={() => setOpen(false)}>
             Aim
           </a>
@@ -70,7 +83,7 @@ export function TopNav() {
           ))}
           <Link
             to="/contact"
-            className="mt-3 flex justify-center rounded-full bg-ink py-3 text-sm font-bold text-white"
+            className="mt-3 flex justify-center bg-slate py-3 text-sm font-bold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

@@ -1,19 +1,24 @@
 @import 'tailwindcss';
 
-/* Ink Azure — refined light premium studio system */
+/*
+  Forge Signal — advanced light studio system
+  Inspired by editorial precision (COVEX) + light clarity (Featherless)
+  Evolves the prior Graphite Rose structure with stronger type & atmosphere
+*/
 @theme {
-  --color-bg: #f5f7fb;
+  --color-bg: #eef1f6;
+  --color-bg-warm: #f6f3ef;
   --color-surface: #ffffff;
-  --color-ink: #0a0c10;
-  --color-mute: #5a6578;
-  --color-faint: #93a0b4;
-  --color-line: rgba(10, 12, 16, 0.09);
-  --color-azure: #2563eb;
-  --color-azure-deep: #1d4ed8;
-  --color-cyan: #0891b2;
-  --color-ink-soft: #151922;
-  --font-display: 'Syne', sans-serif;
-  --font-sans: 'Outfit', sans-serif;
+  --color-ink: #0c0e14;
+  --color-mute: #5a6475;
+  --color-faint: #94a0b4;
+  --color-line: rgba(12, 14, 20, 0.1);
+  --color-signal: #e11d48;
+  --color-signal-deep: #be123c;
+  --color-forge: #151922;
+  --color-mist: #d7dee9;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Figtree', sans-serif;
 }
 
 @layer base {
@@ -24,12 +29,15 @@
   body {
     margin: 0;
     min-width: 320px;
-    background: var(--color-bg);
+    background:
+      radial-gradient(ellipse 80% 50% at 0% -10%, rgba(225, 29, 72, 0.07), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(15, 25, 45, 0.05), transparent 45%),
+      var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 16.5px;
     line-height: 1.65;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.016em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -38,7 +46,7 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-azure) 24%, white);
+    background: color-mix(in oklab, var(--color-signal) 24%, white);
   }
 }
 
@@ -47,39 +55,64 @@
     font-family: var(--font-display);
   }
 
-  .ink-band {
+  .band-forge {
     background:
-      radial-gradient(ellipse 60% 80% at 0% 0%, rgba(37, 99, 235, 0.28), transparent 55%),
-      radial-gradient(ellipse 40% 50% at 100% 100%, rgba(8, 145, 178, 0.16), transparent 45%),
-      #0a0c10;
+      radial-gradient(ellipse 50% 80% at 100% 0%, rgba(225, 29, 72, 0.22), transparent 55%),
+      radial-gradient(ellipse 40% 50% at 0% 100%, rgba(255, 255, 255, 0.06), transparent 50%),
+      var(--color-forge);
   }
 
   .eyebrow {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 
   .display {
     font-family: var(--font-display);
-    font-size: clamp(2.35rem, 5.8vw, 4.25rem);
-    font-weight: 750;
-    letter-spacing: -0.05em;
-    line-height: 1.02;
+    font-size: clamp(2.45rem, 6vw, 4.35rem);
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
   }
 
   .title {
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 3.2vw, 2.65rem);
+    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
     font-weight: 700;
     letter-spacing: -0.04em;
-    line-height: 1.1;
+    line-height: 1.08;
   }
 
   .lede {
-    font-size: clamp(1.05rem, 1.35vw, 1.15rem);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     line-height: 1.7;
+  }
+
+  /* Diagonal cinematic clip — refined from prior hero */
+  .hero-clip {
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-clip {
+      clip-path: none;
+    }
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 

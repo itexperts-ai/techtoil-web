@@ -8,47 +8,39 @@ export function TopNav() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
   const onHome = pathname === '/'
-  const overDarkHero = onHome && !solid && !open
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 24)
+    const onScroll = () => setSolid(window.scrollY > 20)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
   const bar = solid || open || !onHome
-  const link = overDarkHero
-    ? 'px-3 py-2 text-sm font-medium text-white/80 hover:text-white'
-    : 'px-3 py-2 text-sm font-medium text-mute hover:text-ink'
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         bar
-          ? 'border-b border-line bg-surface/95 shadow-sm shadow-ink/5 backdrop-blur-lg'
+          ? 'border-b border-line bg-surface/95 shadow-sm shadow-ink/5 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 md:px-6">
-        <Logo tone={overDarkHero ? 'light' : 'dark'} />
-        <nav className="hidden items-center md:flex">
-          <Link to="/" className={link}>
+        <Logo />
+        <nav className="hidden items-center gap-0.5 md:flex">
+          <Link to="/" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
             Home
           </Link>
-          <a href="/#services" className={link}>
+          <a href="/#services" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
             Services
           </a>
-          <Link to="/about" className={link}>
+          <Link to="/about" className="px-3 py-2 text-sm font-semibold text-mute hover:text-ink">
             About
           </Link>
           <Link
             to="/contact"
-            className={`ml-3 px-4 py-2.5 text-sm font-semibold transition ${
-              overDarkHero
-                ? 'bg-white text-ink hover:bg-bg'
-                : 'bg-azure px-4 text-white hover:bg-azure-deep'
-            }`}
+            className="ml-2 bg-signal px-4 py-2.5 text-sm font-semibold text-white hover:bg-signal-deep"
           >
             Contact
           </Link>
@@ -56,9 +48,7 @@ export function TopNav() {
         <button
           type="button"
           aria-label="Menu"
-          className={`border px-3 py-1.5 text-sm font-semibold md:hidden ${
-            overDarkHero ? 'border-white/35 text-white' : 'border-line text-ink'
-          }`}
+          className="border border-line px-3 py-1.5 text-sm font-semibold text-ink md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? 'Close' : 'Menu'}
@@ -66,10 +56,10 @@ export function TopNav() {
       </div>
       {open && (
         <div className="border-t border-line bg-surface px-4 py-5 md:hidden">
-          <Link to="/" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
+          <Link to="/" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             Home
           </Link>
-          <a href="/#services" className="block py-2.5 font-medium" onClick={() => setOpen(false)}>
+          <a href="/#services" className="block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             Services
           </a>
           {services.map((s) => (
@@ -82,12 +72,12 @@ export function TopNav() {
               {s.title}
             </a>
           ))}
-          <Link to="/about" className="mt-1 block py-2.5 font-medium" onClick={() => setOpen(false)}>
+          <Link to="/about" className="mt-1 block py-2.5 font-semibold" onClick={() => setOpen(false)}>
             About
           </Link>
           <Link
             to="/contact"
-            className="mt-3 flex justify-center bg-azure py-3 text-sm font-semibold text-white"
+            className="mt-3 flex justify-center bg-signal py-3 text-sm font-semibold text-white"
             onClick={() => setOpen(false)}
           >
             Contact

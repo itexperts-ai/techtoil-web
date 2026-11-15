@@ -22,7 +22,7 @@ export function HomePage() {
 
   return (
     <div>
-      {/* Keep this top section — user confirmed perfect */}
+      {/* Approved hero composition — retokened to Porcelain Cobalt */}
       <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: imgY }}>
           <img
@@ -50,13 +50,13 @@ export function HomePage() {
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 bg-teal px-5 py-3.5 text-sm font-semibold text-white hover:bg-teal-deep"
+                className="inline-flex items-center gap-2 bg-cobalt px-5 py-3.5 text-sm font-bold text-white hover:bg-cobalt-deep"
               >
                 View services <ArrowUpRight className="h-4 w-4" />
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center border border-ink/15 bg-quartz/80 px-5 py-3.5 text-sm font-semibold text-ink backdrop-blur-sm hover:border-ink/30"
+                className="inline-flex items-center border border-ink/15 bg-porcelain/85 px-5 py-3.5 text-sm font-bold text-ink backdrop-blur-sm hover:border-ink/30"
               >
                 Contact us
               </Link>
@@ -65,50 +65,67 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Improved direction */}
-      <section className="relative overflow-hidden bg-quartz px-4 py-20 md:px-6 md:py-28">
-        <div className="pointer-events-none absolute -right-24 top-0 h-64 w-64 rounded-full bg-teal/5 blur-3xl" />
+      <section className="border-y border-line bg-noir px-4 py-5 text-white md:px-6">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-white/65">
+          <span>Product Design</span>
+          <span className="text-cobalt-bright">/</span>
+          <span>Development</span>
+          <span className="text-cobalt-bright">/</span>
+          <span>Marketing</span>
+          <span className="text-cobalt-bright">/</span>
+          <span>Consultancy</span>
+          <span className="text-cobalt-bright">/</span>
+          <span>Funding</span>
+          <span className="text-cobalt-bright">/</span>
+          <span>AI Ops</span>
+          <span className="text-cobalt-bright">/</span>
+          <span>Hiring</span>
+        </div>
+      </section>
+
+      <section className="bg-porcelain px-4 py-20 md:px-6 md:py-28">
         <div className="mx-auto max-w-6xl">
-          <motion.div {...fade} className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <motion.div {...fade} className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="eyebrow text-teal">Direction</p>
+              <p className="eyebrow text-cobalt">Direction</p>
               <h2 className="title mt-4 max-w-xl">
                 Strategy, product, growth, and intelligence — one path.
               </h2>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed text-mute md:pb-1">
+            <p className="max-w-xs text-sm leading-relaxed text-mute">
               Connected crafts so vision does not stall between teams, tools, or stages.
             </p>
           </motion.div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-14 grid gap-4 lg:grid-cols-12">
             {[
               {
                 t: 'One partner',
                 d: 'Design, engineering, marketing, funding, AI ops, and hiring stay connected.',
+                span: 'lg:col-span-4',
               },
               {
                 t: 'Outcome first',
                 d: 'We start from where you want to go — then choose the craft that moves it.',
+                span: 'lg:col-span-4',
               },
               {
                 t: 'AI with control',
                 d: 'Automate repetitive work while people keep judgment and ownership.',
+                span: 'lg:col-span-4',
               },
             ].map((item, i) => (
               <motion.div
                 key={item.t}
-                className="group relative border border-line bg-surface p-7 transition hover:border-teal/35 md:p-8"
+                className={`relative overflow-hidden border border-line bg-surface p-7 md:p-8 ${item.span}`}
                 {...fade}
                 transition={{ ...fade.transition, delay: i * 0.05 }}
               >
-                <span className="absolute left-0 top-0 h-full w-1 bg-teal/0 transition group-hover:bg-teal" />
-                <p className="font-display text-3xl font-semibold tracking-[-0.06em] text-teal/25">
+                <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-cobalt/5" />
+                <p className="font-display text-5xl font-extrabold tracking-[-0.08em] text-cobalt/15">
                   0{i + 1}
                 </p>
-                <h3 className="mt-5 font-display text-xl font-semibold tracking-[-0.03em]">
-                  {item.t}
-                </h3>
+                <h3 className="mt-6 font-display text-xl font-bold tracking-[-0.03em]">{item.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-mute">{item.d}</p>
               </motion.div>
             ))}
@@ -116,24 +133,26 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Improved AI band */}
-      <section className="band-slate px-4 py-20 text-white md:px-6 md:py-28">
+      <section className="band-noir px-4 py-20 text-white md:px-6 md:py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <motion.div {...fade}>
-            <p className="eyebrow text-teal-bright">Intelligence</p>
+            <p className="eyebrow text-cobalt-bright">Intelligence</p>
             <h2 className="title mt-4">AI built into operations.</h2>
             <p className="lede mt-4 text-white/65">
               Agents, workflows, and automation that remove friction — without giving up
               control.
             </p>
-            <ul className="mt-10 space-y-6">
-              {aiHighlights.map((h) => (
-                <li key={h.title} className="flex gap-4 border-t border-white/10 pt-6 first:border-0 first:pt-0">
-                  <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center bg-teal-bright/15">
-                    <Check className="h-4 w-4 text-teal-bright" strokeWidth={2.5} />
+            <ul className="mt-10 space-y-1">
+              {aiHighlights.map((h, idx) => (
+                <li
+                  key={h.title}
+                  className="grid grid-cols-[auto_1fr] gap-4 border-t border-white/10 py-5"
+                >
+                  <span className="font-display text-sm font-bold text-cobalt-bright">
+                    0{idx + 1}
                   </span>
                   <div>
-                    <p className="font-semibold tracking-[-0.02em]">{h.title}</p>
+                    <p className="font-bold tracking-[-0.02em]">{h.title}</p>
                     <p className="mt-1.5 text-sm leading-relaxed text-white/55">{h.body}</p>
                   </div>
                 </li>
@@ -141,22 +160,29 @@ export function HomePage() {
             </ul>
           </motion.div>
           <motion.div {...fade} className="relative">
-            <div className="absolute -left-3 -top-3 h-full w-full border border-teal-bright/30" />
+            <div className="absolute -inset-3 border border-cobalt/40" />
             <img
               src="/media/svc-aiops.jpg"
               alt="AI operations"
               className="relative aspect-[4/3] w-full object-cover"
             />
+            <div className="absolute bottom-4 left-4 right-4 bg-noir/80 px-4 py-3 text-sm font-semibold backdrop-blur-md">
+              Governed agents · Human judgment · Real systems
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Improved services */}
       <div id="services" className="scroll-mt-24">
-        <div className="border-t border-line bg-quartz px-4 py-14 md:px-6 md:py-16">
-          <div className="mx-auto max-w-6xl">
-            <p className="eyebrow text-teal">Capabilities</p>
-            <h2 className="title mt-3">Seven services. One studio.</h2>
+        <div className="border-t border-line bg-porcelain px-4 py-16 md:px-6 md:py-20">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow text-cobalt">Capabilities</p>
+              <h2 className="title mt-3">Seven services. One studio.</h2>
+            </div>
+            <p className="max-w-sm text-sm text-mute">
+              Deep product-style detail for every capability — from design to hiring.
+            </p>
           </div>
         </div>
 
@@ -167,7 +193,7 @@ export function HomePage() {
               key={s.id}
               id={s.id}
               className={`scroll-mt-24 border-t border-line px-4 py-16 md:px-6 md:py-20 ${
-                reverse ? 'bg-bg' : 'bg-quartz'
+                reverse ? 'bg-bg' : 'bg-porcelain'
               }`}
             >
               <div
@@ -176,15 +202,14 @@ export function HomePage() {
                 }`}
               >
                 <motion.div {...fade}>
-                  <div className="flex items-center gap-3">
-                    <span className="font-display text-4xl font-semibold tracking-[-0.06em] text-teal">
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex h-12 w-12 items-center justify-center bg-cobalt font-display text-sm font-extrabold text-white">
                       {s.num}
                     </span>
-                    <span className="h-px flex-1 bg-line" />
                     <span className="eyebrow text-faint">Service</span>
                   </div>
-                  <h2 className="title mt-5">{s.title}</h2>
-                  <p className="mt-3 text-lg font-medium tracking-[-0.02em] text-ink/80">
+                  <h2 className="title mt-6">{s.title}</h2>
+                  <p className="mt-3 text-lg font-semibold tracking-[-0.02em] text-ink/85">
                     {s.tagline}
                   </p>
                   <p className="lede mt-4 text-mute">{s.summary}</p>
@@ -192,10 +217,10 @@ export function HomePage() {
                     {s.details.map((d) => (
                       <li
                         key={d}
-                        className="flex items-start gap-2.5 bg-surface px-3.5 py-3 text-sm font-medium shadow-[inset_0_0_0_1px_rgba(11,18,21,0.08)]"
+                        className="flex items-start gap-2.5 border border-line bg-surface px-3.5 py-3 text-sm font-semibold"
                       >
                         <Check
-                          className="mt-0.5 h-4 w-4 shrink-0 text-teal"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-cobalt"
                           strokeWidth={2.5}
                         />
                         {d}
@@ -204,19 +229,19 @@ export function HomePage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className="mt-8 inline-flex items-center gap-2 bg-slate px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-teal"
+                    className="mt-8 inline-flex items-center gap-2 bg-noir px-5 py-3.5 text-sm font-bold text-white hover:bg-cobalt"
                   >
                     Discuss {s.title} <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
-                <motion.div {...fade} className="relative">
-                  <div className="absolute bottom-0 right-0 h-1/3 w-1 bg-teal" />
+                <motion.div {...fade} className="relative overflow-hidden">
                   <img
                     src={s.image}
                     alt={s.title}
-                    className="aspect-[4/3] w-full object-cover"
+                    className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.03]"
                     loading="lazy"
                   />
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-cobalt" />
                 </motion.div>
               </div>
             </section>
@@ -224,43 +249,45 @@ export function HomePage() {
         })}
       </div>
 
-      {/* Improved CTA */}
-      <section className="bg-quartz px-4 py-20 md:px-6 md:py-24">
-        <motion.div
-          className="mx-auto grid max-w-6xl overflow-hidden lg:grid-cols-[1.2fr_0.8fr]"
-          {...fade}
-        >
-          <div className="band-slate px-8 py-14 text-white md:px-12 md:py-16">
-            <p className="eyebrow text-teal-bright">Next step</p>
-            <h2 className="title mt-4 max-w-xl">Ready for a clear next move?</h2>
-            <p className="lede mt-4 max-w-lg text-white/60">
-              Tell us your stage. We map design, build, growth, funding, automation, and
-              hiring into one plan.
-            </p>
-            <Link
-              to="/contact"
-              className="mt-8 inline-flex items-center gap-2 bg-teal-bright px-5 py-3.5 text-sm font-semibold text-slate hover:bg-white"
-            >
-              Start a conversation <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="relative min-h-[14rem] overflow-hidden bg-teal">
-            <img
-              src="/media/svc-design.jpg"
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-luminosity"
-            />
-            <div className="relative flex h-full flex-col justify-end p-8 text-white md:p-10">
-              <p className="font-display text-2xl font-semibold tracking-[-0.04em] md:text-3xl">
-                Vision → Execution
+      <section className="bg-porcelain px-4 py-20 md:px-6 md:py-24">
+        <motion.div className="mx-auto max-w-6xl overflow-hidden" {...fade}>
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="band-noir px-8 py-14 text-white md:px-12 md:py-16">
+              <p className="eyebrow text-cobalt-bright">Next step</p>
+              <h2 className="title mt-4 max-w-xl">Ready for a clear next move?</h2>
+              <p className="lede mt-4 max-w-lg text-white/60">
+                Tell us your stage. We map design, build, growth, funding, automation, and
+                hiring into one plan.
               </p>
-              <p className="mt-3 max-w-xs text-sm text-white/80">
-                Product, growth, capital readiness, AI ops, and talent — connected.
-              </p>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex items-center gap-2 bg-cobalt px-5 py-3.5 text-sm font-bold text-white hover:bg-cobalt-bright hover:text-noir"
+              >
+                Start a conversation <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="relative min-h-[16rem] bg-cobalt">
+              <img
+                src="/media/svc-design.jpg"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-luminosity"
+              />
+              <div className="relative flex h-full flex-col justify-between p-8 text-white md:p-10">
+                <p className="eyebrow text-white/70">Studio promise</p>
+                <div>
+                  <p className="font-display text-3xl font-extrabold tracking-[-0.04em] md:text-4xl">
+                    Vision → Execution
+                  </p>
+                  <p className="mt-3 max-w-xs text-sm text-white/85">
+                    Product, growth, capital readiness, AI ops, and talent — connected.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
       </section>
+
     </div>
   )
 }
